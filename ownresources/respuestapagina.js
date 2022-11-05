@@ -1,6 +1,7 @@
 // Respuestas de los ENDPOINTS permitidos:
 
-//https://api.spoonacular.com/recipes/complexSearch?apiKey=26623d87ef014d3daeab072510ec275a
+//https://api.spoonacular.com/recipes/complexSearch?apiKey=26623d87ef014d3daeab072510ec275a (este por default devuelve 10 resultados)
+//https://api.spoonacular.com/recipes/complexSearch?apiKey=26623d87ef014d3daeab072510ec275a&number=100 (para que tire 100)
 /*
 {
     "results": [
@@ -307,6 +308,8 @@
 
 
 //https://api.spoonacular.com/recipes/complexSearch?apiKey=26623d87ef014d3daeab072510ec275a&addRecipeInformation=true
+
+
     /*
 
     {
