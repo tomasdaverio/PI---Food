@@ -1972,4 +1972,6 @@ const last = [
     'whole 30'
   ]
 
+  module.exports = last ;
+
    //faltarian varios: pescetarian,ovo vegetarian, lacto vegetarian,ketogenic,paleo,low fodmap, whole 360, omnivore, fruitarian
