@@ -7,53 +7,11 @@ module.exports = (sequelize) => {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
-      allowNull: false,
+      primaryKey: true
     },
-    name: {
-        type: DataTypes.STRING,
-        allowNull: false
+    nombre: {
+      type: DataTypes.STRING,
     }
 
   });
 };
-
-//real diets found:
-/*
-["gluten free",
-"dairy free",
-"lacto ovo vegetarian",
-"vegan",
-"dairy free",
-"lacto ovo vegetarian",
-"vegan",
-"lacto ovo vegetarian",
-"gluten free",
-"dairy free",
-"paleolithic",
-"lacto ovo vegetarian",
-"primal",
-"whole 30",
-"vegan",
-"gluten free",
-"dairy free",
-"gluten free",
-"dairy free",
-"paleolithic",
-"primal",
-"whole 30",
-"gluten free",
-"dairy free",
-"paleolithic",
-"primal",
-"whole 30",
-"gluten free",
-"dairy free",
-"lacto ovo vegetarian",
-"vegan",
-"lacto ovo vegetarian",
-"vegan",
-"gluten free",
-"dairy free"]
-
-
-*/
