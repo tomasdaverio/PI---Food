@@ -37,12 +37,16 @@ module.exports = {
             summary,
             hscore: hscore ? hscore : null,
             steps: steps ? steps : null,
-        }) ;
+        }) 
     
             
         //ahora que esta creada deberia asociarla con los tipos de dieta informados por el usuario (si es que asocio):
-        if(diets.length){
-            diets.map(async diet => await recipe.setDiet(diet.id)) 
+        console.log(await recipe)
+        console.log(diets,diets.length)
+        console.log(typeof diets)
+        const dietsAdapted = JSON.parse(diets);
+        if(dietsAdapted.length){
+            dietsAdapted.map(async diet => await recipe.setDiet(diet.id)) 
         } 
        
         return recipe ;

@@ -1,4 +1,5 @@
 const { Router } = require('express');
+var express = require("express");
 
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
@@ -21,7 +22,7 @@ const router = Router();
 
 router.use('/recipes/',getRecipeById) ; 
 router.route('/recipes')
-.post(postRecipe)
+.post(express.json(),postRecipe)
 .get(getRecipeByName) ;
 router.use('/diets',getDiets) ;
 
