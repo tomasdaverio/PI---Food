@@ -2,12 +2,10 @@ const { Router } = require('express');
 
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
-const getRecipeByName = require('./getRecipeByName') ;
-const getRecipeById = require('./getRecipeById') ;
-const postRecipe = require('./postRecipe') ;
-const getDiets = require('./getDiets') ;
-
-
+const getRecipeByName = require('./middlewares/getRecipeByName.js') ;
+const getRecipeById = require('./middlewares/getRecipeById.js') ;
+const postRecipe = require('./middlewares/postRecipe.js') ;
+const getDiets = require('./middlewares/getDiets.js') ;
 
 const router = Router();
 
@@ -21,7 +19,7 @@ const router = Router();
 //es más difícil que se equivoque. 
 //derivadores : ver si van con la primera barra o no.
 
-router.use('/recipes?name',getRecipeByName) ;
+router.use('/recipes?name',getRecipeByName) ;  //este es medio bizarro. Ver si va. El lío está entre recipes?name y recipes. Podría resolver en un mismo midd y ahí que derive por método (post/get)
 router.use('/recipes/:id',getRecipeById) ;
 router.use('/recipes',postRecipe) ;
 router.use('/diets',getDiets) ;
