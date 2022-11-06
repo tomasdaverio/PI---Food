@@ -1,8 +1,12 @@
 const { Router } = require('express');
-const { Recipe , Diet } = require('../db') ;  //agregado por mi
 
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
+const getRecipeByName = require('./getRecipeByName') ;
+const getRecipeById = require('./getRecipeById') ;
+const postRecipe = require('./postRecipe') ;
+const getDiets = require('./getDiets') ;
+
 
 
 const router = Router();
@@ -10,42 +14,17 @@ const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
-//a partir de aca, todo agregado por mi; Hay que pasarlo a archivos aparte. ver el tema app.use(). Tambien fetch.
+//a partir de aca, todo agregado por mi. Tambien fetch.
+//Ver acá la posibilidad de reutilización. Es decir, la facilidad para crear nuevas rutas a partir de lo que armé. Es fácil de armar nuevas??
+//probar rutas alternativas. Podria separar entre /diets y /recipes. Luego a partir de ahí derivar.
+//también ver rutas de errores de usuario en la URL. 'Atajar todos los posibles errores' - Aunque al ser el back, que recibirá requests del front,
+//es más difícil que se equivoque. 
+//derivadores : ver si van con la primera barra o no.
 
-router.get('/recipes/:id',(req,res)=>{
-
-})
-
-router.get('/recipes', async (req,res)=>{
-const {name} = req.query ;
-try{
-    var recipesDB =  Recipe.findAll({where:{name: {[Op.substring]: name}}}) ;
-} catch(e){
-    console.log(e)
-}
-try{
-
- if(recipesDB) {
-    const recipesApi = await fetch('https://api.spoonacular.com/recipes/complexSearch?apiKey=26623d87ef014d3daeab072510ec275a&addRecipeInformation=true&number=100')
-    const arrayAdaptado = recipesApi.results.map(recipe => {return {
-        image: recipe.image,
-        name: recipe.title,
-        diets: [...new Set([...recipe.diets,recipe.vegetarian ? 'vegetarian' : null,recipe.vegan ? 'vegan' : null,recipe.glutenFree ? 'gluten free' : null ].filter( a => a !== null))]
-    }
-    })
-    const recipesArray = [recipesDB,arrayAdaptado] ;
-    await Promise.all(recipesArray) ;
-    return res.json(recipesArray.flat()) ;
-} else {
-   const recipesApi = await fetch('https://api.spoonacular.com/recipes/complexSearch?apiKey=26623d87ef014d3daeab072510ec275a&addRecipeInformation=true&number=100')
-   
-}
-} catch (error){
- res.send('No existen coincidencias con la palabra solicitada')
-}
-})
-
-
+router.use('/recipes?name',getRecipeByName) ;
+router.use('/recipes/:id',getRecipeById) ;
+router.use('/recipes',postRecipe) ;
+router.use('/diets',getDiets) ;
 
 
 module.exports = router;
