@@ -1,5 +1,8 @@
-const { Router } = require('express');
-const router = Router();
 
-module.exports = router ;
+
+module.exports = (req,res)=>{
+
+    res.send(`Acá haría un POST de Recipes`)
+
+}
 

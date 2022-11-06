@@ -1,9 +1,8 @@
-const { Router } = require('express');
-const router = Router();
+
 const { Recipe , Diet } = require('../db') ; 
 
-
-router.get('/recipes?name', async (req,res)=>{
+//esta funcion es la que se exporta (en lugar de la que está en el module.exports)
+const toexport = async (req,res)=>{
     const {name} = req.query ;
     try{
         var recipesDB =  Recipe.findAll({where:{name: {[Op.substring]: name}}}) ;
@@ -30,7 +29,10 @@ router.get('/recipes?name', async (req,res)=>{
     } catch (error){
      res.send('No existen coincidencias con la palabra solicitada')
     }
-    })
+    }
 
-module.exports = router ;
+module.exports = (req,res)=>{
 
+    res.send(`Acá haría un get de Recipes by Name ${req.query.name}`)
+
+} ;
