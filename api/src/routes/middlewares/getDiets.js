@@ -8,11 +8,11 @@ router.get('/', async (req,res) => {
     try{
 
         const diets = await fngetDiets();
-        res.json(diets) ;
+        return res.json(diets) ;
 
     } catch (e){
 
-        res.send(e.message)
+        return res.send(e.message)
 
     }
 })

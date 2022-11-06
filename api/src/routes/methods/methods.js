@@ -4,6 +4,8 @@
 const dietSet = require('../../../../ownresources/dietset.js')
 const { Diet } = require('../../db.js')
 
+//fnpostRecipe:
+const { Recipe } = require('../../db.js')
 
 module.exports = {
      fngetDiets : async () => {
@@ -19,5 +21,32 @@ module.exports = {
     
         return dietsAnswer ;
           
+    },
+    fnpostRecipe : async (name,summary,hscore,steps,diets) => {
+
+        //Chequeo los campos obligatorios (name,summary) - aunque deberia validarse en el front:
+
+        if(!name || !summary) throw new Error({message: 'Recipe cannot be created with lack of name or summary'}) ;
+
+        if(typeof name !== 'string' || typeof summary !== 'string') throw new Error({message: 'typeof name|summary must be string'}) ;
+
+        //Creo la receta con los parametros enviados por el usuario a traves del formulario/front:
+    
+        const recipe = await Recipe.create({
+            name,
+            summary,
+            hscore: hscore ? hscore : null,
+            steps: steps ? steps : null,
+        }) ;
+    
+            
+        //ahora que esta creada deberia asociarla con los tipos de dieta informados por el usuario (si es que asocio):
+        if(diets.length){
+            diets.map(async diet => await recipe.setDiet(diet.id)) 
+        } 
+       
+        return recipe ;
+          
     }
+
 }
