@@ -18983,14 +18983,14 @@ const answer = {
         const arraytoNest = results.map( recipe => recipe.diets) ;
         return [...new Set(arraytoNest.flat())] ;
     }
-console.log(extracting(answer));
+
 //set de id:
 extracting = (answer) => {
     const results = answer.recipes ;
     const arraytoNest = results.map( recipe => recipe.id) ;
     return [...new Set(arraytoNest.flat())] ;
 }
-console.log(extracting(answer1));
+
 
 const last = [
     'gluten free',

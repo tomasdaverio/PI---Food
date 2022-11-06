@@ -1,5 +1,5 @@
 
-const { Recipe , Diet } = require('../db') ; 
+const { Recipe , Diet } = require('../../db.js') ; 
 
 //esta funcion es la que se exporta (en lugar de la que está en el module.exports)
 const toexport = async (req,res)=>{
