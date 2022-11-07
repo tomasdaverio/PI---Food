@@ -25,39 +25,29 @@ module.exports = {
     fnpostRecipe : async (name,summary,hscore,steps,diets) => {
 
         //Chequeo los campos obligatorios (name,summary) - aunque deberia validarse en el front:
-
         if(!name || !summary) throw new Error({message: 'Recipe cannot be created with lack of name or summary'}) ;
 
         if(typeof name !== 'string' || typeof summary !== 'string') throw new Error({message: 'typeof name|summary must be string'}) ;
 
         //Creo la receta con los parametros enviados por el usuario a traves del formulario/front:
+        const recipeObj = {
+            name,
+            summary,
+            hscore: hscore ? hscore : null,
+            steps: steps ? steps : null,
+        }
+
+        const recipe = await Recipe.create(recipeObj);
 
         if(diets.length){
 
-            const dietObjects = diets.map( diet => {return {name:diet}})
+            const dietsObj = diets.map( diet => { return {name: diet} }) ;
 
-                const recipe = await Recipe.create({
-                name,
-                summary,
-                hscore: hscore ? hscore : null,
-                steps: steps ? steps : null,
-                diets: dietObjects
-                }, 
-                {include: Diet});
-         
-            return recipe ;
-            
-        } else {
-
-                const recipe = await Recipe.create({
-                name,
-                summary,
-                hscore: hscore ? hscore : null,
-                steps: steps ? steps : null
-                })
-
-            return recipe ;
-        }         
+            for(let i = 0 ; i < dietsObj.length ; i++){
+                const [dietInstance,created] = await Diet.findOrCreate({where:dietsObj[i]}) ;
+                dietInstance.setRecipes(recipe.id) ;
+            }
+        }    
+        return recipe ;           
     }
-
 }
