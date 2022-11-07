@@ -5,7 +5,7 @@ const dietSet = require('../../../../ownresources/dietset.js')
 const { Diet } = require('../../db.js')
 
 //fnpostRecipe:
-const { Recipe } = require('../../db.js')
+const { Recipe, Recipe_Diet } = require('../../db.js')
 
 module.exports = {
      fngetDiets : async () => {
@@ -31,34 +31,33 @@ module.exports = {
         if(typeof name !== 'string' || typeof summary !== 'string') throw new Error({message: 'typeof name|summary must be string'}) ;
 
         //Creo la receta con los parametros enviados por el usuario a traves del formulario/front:
-    
-        const recipe = await Recipe.create({
-            name,
-            summary,
-            hscore: hscore ? hscore : null,
-            steps: steps ? steps : null,
-        }) 
-    
-            
-        //ahora que esta creada deberia asociarla con los tipos de dieta informados por el usuario (si es que asocio):
-        
+
         if(diets.length){
 
-            const dietInstances = diets.map(async diet => { 
-                const [newdiet, created] = await Diet.findOrCreate({where: { name: diet }}) 
-                return newdiet ;
-            })
-            
-            Promise.all(dietInstances)
-            
-            const promises = await dietInstances.map( diet => recipe.setDiets(diet.id))
+            const dietObjects = diets.map( diet => {return {name:diet}})
 
+                const recipe = await Recipe.create({
+                name,
+                summary,
+                hscore: hscore ? hscore : null,
+                steps: steps ? steps : null,
+                diets: dietObjects
+                }, 
+                {include: Diet});
+         
+            return recipe ;
             
+        } else {
 
-        } 
-       
-        return await recipe ;
-          
+                const recipe = await Recipe.create({
+                name,
+                summary,
+                hscore: hscore ? hscore : null,
+                steps: steps ? steps : null
+                })
+
+            return recipe ;
+        }         
     }
 
 }
