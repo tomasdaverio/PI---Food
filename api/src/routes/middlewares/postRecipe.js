@@ -23,19 +23,7 @@ const testigo = (req,res) =>{
 
 }
 
-//esta es la funcion que deberia exportarse en realidad:
-const postRecipe = async (req,res) => {
 
-    const {name,summary,hscore,steps,diets} = req.body ;
+const json = {"name":"ags","summary":"etcetc","hscore":4,"steps":"p","diets":["vegan"]}
 
-    try {
-
-      const recipe = await fnpostRecipe(name,summary,hscore,steps,diets) ;
-      return res.json(recipe) ;
-
-    } catch (error) {
-
-      return res.send(e.message) ;
-
-    }
-}
+// http://localhost:3001/recipes 

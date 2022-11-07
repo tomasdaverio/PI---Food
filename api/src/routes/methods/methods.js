@@ -41,15 +41,23 @@ module.exports = {
     
             
         //ahora que esta creada deberia asociarla con los tipos de dieta informados por el usuario (si es que asocio):
-        console.log(await recipe)
-        console.log(diets,diets.length)
-        console.log(typeof diets)
-        const dietsAdapted = JSON.parse(diets);
-        if(dietsAdapted.length){
-            dietsAdapted.map(async diet => await recipe.setDiet(diet.id)) 
+        
+        if(diets.length){
+
+            const dietInstances = diets.map(async diet => { 
+                const [newdiet, created] = await Diet.findOrCreate({where: { name: diet }}) 
+                return newdiet ;
+            })
+            
+            Promise.all(dietInstances)
+            
+            const promises = await dietInstances.map( diet => recipe.setDiets(diet.id))
+
+            
+
         } 
        
-        return recipe ;
+        return await recipe ;
           
     }
 
