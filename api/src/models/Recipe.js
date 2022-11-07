@@ -31,6 +31,10 @@ module.exports = (sequelize) => {
     },
     steps: {
     type: DataTypes.STRING
+    },
+    image: {
+      type: DataTypes.STRING,
+      defaultValue :'https://www.rawshorts.com/freeicons/wp-content/uploads/2017/01/orange_travelpictdinner_1484336833.png' 
     }
   });
 };

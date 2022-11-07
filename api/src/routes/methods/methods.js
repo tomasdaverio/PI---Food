@@ -49,5 +49,33 @@ module.exports = {
             }
         }    
         return recipe ;           
+    },
+    fngetRecipebyId : async (id) => {
+
+        if(!id || (typeof id !== 'number' && typeof id !== 'string')) throw new Error({message: 'ID error'}) ;
+
+        //La busco en la DB (si no la encuentra devuelve null en teoria)
+        let recipe;
+
+        if(Number(id)<30000) {
+            recipe = await Recipe.findByPk(Number(id));
+        } else {
+            const answer = await fetch('https://api.spoonacular.com/recipes/715594/information?apiKey=26623d87ef014d3daeab072510ec275a') ;
+            const vegetarian = answer.vegetarian === 'true'  ? 'vegetarian' : 'no' ;
+            const vegan = answer.vegan === 'true'  ? 'vegan' : 'no' ;
+            const glutenFree = answer.glutenFree === 'true' ? 'gluten free' : 'no' ;
+            const dietsArray = [...new Set([...answer.diets,vegetarian,vegan,glutenFree])]
+            const finalArray = dietsArray.filter( e => e !== 'no') ;
+            recipe = {
+                id:answer.id,
+                name: answer.title,
+                summary: answer.summary,
+                hscore: answer.healthScore,
+                steps: answer.instructions,
+                image: answer.image,
+                diets: finalArray
+            }
+        }
+        return recipe ;           
     }
 }

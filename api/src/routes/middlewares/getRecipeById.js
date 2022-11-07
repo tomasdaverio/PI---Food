@@ -1,10 +1,19 @@
 const { Router } = require('express');
 const router = Router();
+const { fngetRecipebyId } = require('../methods/methods.js')
 
-router.get('/:id',(req,res)=>{
+router.get('/:id', async (req,res)=>{
     const id = req.params.id ;
-    res.send(`Acá haría un get de Recipes by ID ${id}`)
+    try {
 
+        const recipe = await fngetRecipebyId(id) ;
+        res.json(recipe) ;
+
+    } catch (error){
+
+        res.send(error.message)
+
+    }
 })
 
 module.exports = router ;
