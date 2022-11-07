@@ -35,7 +35,12 @@ module.exports = (sequelize) => {
     image: {
       type: DataTypes.STRING,
       defaultValue :'https://www.rawshorts.com/freeicons/wp-content/uploads/2017/01/orange_travelpictdinner_1484336833.png' 
+    },
+    dishTypes: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      defaultValue :['Not specified']
     }
+
   });
 };
 

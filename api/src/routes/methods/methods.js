@@ -2,13 +2,15 @@
 
 //fngetDiets:
 const dietSet = require('../../../../ownresources/dietset.js')
-const { Diet } = require('../../db.js')
+const { Diet, Op } = require('../../db.js')
 
 //fnpostRecipe:
 const { Recipe, Recipe_Diet } = require('../../db.js')
 
 //getrecypebyid:
 const fetch = require('node-fetch') ;
+
+
 
 module.exports = {
      fngetDiets : async () => {
@@ -73,14 +75,63 @@ module.exports = {
             const finalArray = dietsArray.filter( e => e !== 'no') ;
             recipe = {
                 id:answer.id,
+                image: answer.image,
                 name: answer.title,
+                diets: finalArray,
+                dishTypes: answer.dishTypes,
                 summary: answer.summary,
                 hscore: answer.healthScore,
-                steps: answer.instructions,
-                image: answer.image,
-                diets: finalArray
+                steps: answer.instructions          
             }
         }
         return recipe ;           
+    },
+    fngetRecipebyName : async (name) => {
+
+        if(!name || typeof name !== 'string') throw new Error({message: 'Lack of name'}) ;
+
+        //La busco en la DB (si no la encuentra devuelve null en teoria)
+        let recipesDB;
+        let recipesAPI;
+        
+        let searchDB = await Recipe.findAll({where:{ [Op.or]: [{ name: {[Op.like]: `%${name}` }}, { name: {[Op.like]: `${name}%` } }]}});
+
+       if(searchDB) {
+        recipesDB = searchDB.map( recipe => {
+            const obj = {
+                id:recipe.id,
+                image: recipe.image,
+                name: recipe.name,
+                diets: recipe.diets,
+                dishTypes: recipe.dishTypes,
+                hscore: recipe.hscore,          
+            }
+          
+            return obj ;  
+          }) 
+        } else {
+            recipesDB = undefined ;
+        }
+        const search = await fetch('https://api.spoonacular.com/recipes/complexSearch?apiKey=26623d87ef014d3daeab072510ec275a&addRecipeInformation=true&number=100')
+        const answer = await search.json() ;
+        recipesAPI = answer.map( recipe => {            
+          const vegetarian = recipe.vegetarian === 'true'  ? 'vegetarian' : 'no' ;
+          const vegan = recipe.vegan === 'true'  ? 'vegan' : 'no' ;
+          const glutenFree = recipe.glutenFree === 'true' ? 'gluten free' : 'no' ;
+          const dietsArray = [...new Set([...recipe.diets,vegetarian,vegan,glutenFree])]
+          const finalArray = dietsArray.filter( e => e !== 'no') ;
+          const obj = {
+              id:answer.id,
+              image: answer.image,
+              name: answer.title,
+              diets: finalArray,
+              dishTypes: answer.dishTypes,
+              hscore: answer.healthScore,          
+          }
+        
+          return obj ;  
+        })    
+        
+        
     }
 }
