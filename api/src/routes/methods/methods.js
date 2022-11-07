@@ -2,13 +2,16 @@
 
 //fngetDiets:
 const dietSet = require('../../../../ownresources/dietset.js')
-const { Diet, Op } = require('../../db.js')
+const { Diet } = require('../../db.js')
 
 //fnpostRecipe:
-const { Recipe, Recipe_Diet } = require('../../db.js')
+const { Recipe } = require('../../db.js')
 
 //getrecypebyid:
 const fetch = require('node-fetch') ;
+
+//getrecipebyname:
+const {Op} = require('sequelize');
 
 
 
@@ -96,7 +99,7 @@ module.exports = {
         
         let searchDB = await Recipe.findAll({where:{ [Op.or]: [{ name: {[Op.like]: `%${name}` }}, { name: {[Op.like]: `${name}%` } }]}});
 
-       if(searchDB) {
+       if(searchDB.length) {
         recipesDB = searchDB.map( recipe => {
             const obj = {
                 id:recipe.id,
@@ -104,34 +107,40 @@ module.exports = {
                 name: recipe.name,
                 diets: recipe.diets,
                 dishTypes: recipe.dishTypes,
-                hscore: recipe.hscore,          
+                hscore: recipe.hscore          
             }
           
             return obj ;  
           }) 
         } else {
-            recipesDB = undefined ;
+            recipesDB = [] ;
         }
-        const search = await fetch('https://api.spoonacular.com/recipes/complexSearch?apiKey=26623d87ef014d3daeab072510ec275a&addRecipeInformation=true&number=100')
+        const search = await fetch('https://api.spoonacular.com/recipes/complexSearch?apiKey=26623d87ef014d3daeab072510ec275a&addRecipeInformation=true&number=3')
         const answer = await search.json() ;
-        recipesAPI = answer.map( recipe => {            
-          const vegetarian = recipe.vegetarian === 'true'  ? 'vegetarian' : 'no' ;
-          const vegan = recipe.vegan === 'true'  ? 'vegan' : 'no' ;
-          const glutenFree = recipe.glutenFree === 'true' ? 'gluten free' : 'no' ;
+        let recipesApp = answer.results.map( recipe => {   
+                
+          const vegetarian = recipe.vegetarian ? 'vegetarian' : 'no' ;
+          const vegan = recipe.vegan ? 'vegan' : 'no' ;
+          const glutenFree = recipe.glutenFree ? 'gluten free' : 'no' ;
           const dietsArray = [...new Set([...recipe.diets,vegetarian,vegan,glutenFree])]
           const finalArray = dietsArray.filter( e => e !== 'no') ;
           const obj = {
-              id:answer.id,
-              image: answer.image,
-              name: answer.title,
+              id:recipe.id,
+              image: recipe.image,
+              name: recipe.title,
               diets: finalArray,
-              dishTypes: answer.dishTypes,
-              hscore: answer.healthScore,          
+              dishTypes: recipe.dishTypes,
+              hscore: recipe.healthScore          
           }
-        
+          console.log(obj)
           return obj ;  
         })    
         
+        recipesAPI = recipesApp.filter( recipe => recipe.name.includes(name))
+
+       
+        const finalAnswer = [...new Set([recipesDB,recipesAPI].flat())]
         
+        return finalAnswer.length ? finalAnswer : '0 coincidences'
     }
 }
