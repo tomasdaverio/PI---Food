@@ -7,6 +7,9 @@ const { Diet } = require('../../db.js')
 //fnpostRecipe:
 const { Recipe, Recipe_Diet } = require('../../db.js')
 
+//getrecypebyid:
+const fetch = require('node-fetch') ;
+
 module.exports = {
      fngetDiets : async () => {
         //tiene que sacarlas de la tabla Diets de la DB, que tiene que tenerlas previamente asi que las creo:
@@ -60,7 +63,9 @@ module.exports = {
         if(Number(id)<30000) {
             recipe = await Recipe.findByPk(Number(id));
         } else {
-            const answer = await fetch('https://api.spoonacular.com/recipes/715594/information?apiKey=26623d87ef014d3daeab072510ec275a') ;
+            const search = await fetch('https://api.spoonacular.com/recipes/715594/information?apiKey=26623d87ef014d3daeab072510ec275a') ;
+            const answer = await search.json() ;
+            
             const vegetarian = answer.vegetarian === 'true'  ? 'vegetarian' : 'no' ;
             const vegan = answer.vegan === 'true'  ? 'vegan' : 'no' ;
             const glutenFree = answer.glutenFree === 'true' ? 'gluten free' : 'no' ;
