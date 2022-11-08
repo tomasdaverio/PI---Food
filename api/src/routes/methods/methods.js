@@ -94,53 +94,59 @@ module.exports = {
         if(!name || typeof name !== 'string') throw new Error({message: 'Lack of name'}) ;
 
         //La busco en la DB (si no la encuentra devuelve null en teoria)
-        let recipesDB;
-        let recipesAPI;
-        
-        let searchDB = await Recipe.findAll({where:{ [Op.or]: [{ name: {[Op.like]: `%${name}` }}, { name: {[Op.like]: `${name}%` } }]}});
+        let recipesDB ;
+        //deberia hacer mi propio metodo para que tenga lowercase ademas. Faltan diets ademas
+        let searchDB = await Recipe.findAll({where: {name:{[Op.or]: { [Op.like]: `${name}%`, [Op.like]: `%${name}%`}}}})
 
-       if(searchDB.length) {
-        recipesDB = searchDB.map( recipe => {
-            const obj = {
-                id:recipe.id,
-                image: recipe.image,
-                name: recipe.name,
-                diets: recipe.diets,
-                dishTypes: recipe.dishTypes,
-                hscore: recipe.hscore          
-            }
+        console.log(searchDB)
+        // if(searchDB.length) {
+        //  recipesDB = searchDB.map( recipe => {
+        //     const obj = {
+        //         id:recipe.id,
+        //         image: recipe.image,
+        //         name: recipe.name,
+        //         diets: recipe.diets,
+        //         dishTypes: recipe.dishTypes,
+        //         hscore: recipe.hscore          
+        //     }
           
-            return obj ;  
-          }) 
-        } else {
-            recipesDB = [] ;
-        }
-        const search = await fetch('https://api.spoonacular.com/recipes/complexSearch?apiKey=26623d87ef014d3daeab072510ec275a&addRecipeInformation=true&number=3')
-        const answer = await search.json() ;
-        let recipesApp = answer.results.map( recipe => {   
-                
-          const vegetarian = recipe.vegetarian ? 'vegetarian' : 'no' ;
-          const vegan = recipe.vegan ? 'vegan' : 'no' ;
-          const glutenFree = recipe.glutenFree ? 'gluten free' : 'no' ;
-          const dietsArray = [...new Set([...recipe.diets,vegetarian,vegan,glutenFree])]
-          const finalArray = dietsArray.filter( e => e !== 'no') ;
-          const obj = {
-              id:recipe.id,
-              image: recipe.image,
-              name: recipe.title,
-              diets: finalArray,
-              dishTypes: recipe.dishTypes,
-              hscore: recipe.healthScore          
-          }
-          console.log(obj)
-          return obj ;  
-        })    
+        //     return obj ;  
+        // }) 
         
-        recipesAPI = recipesApp.filter( recipe => recipe.name.includes(name))
-
+        //  await Promise.all(recipesDB)
        
-        const finalAnswer = [...new Set([recipesDB,recipesAPI].flat())]
+        // } else {
+        //     recipesDB = [] ;
+        // }
+        // const search = await fetch('https://api.spoonacular.com/recipes/complexSearch?apiKey=26623d87ef014d3daeab072510ec275a&addRecipeInformation=true&number=3')
+        // const answer = await search.json() ;
+        // let recipesApp = answer.results.map( recipe => {   
+                
+        //   const vegetarian = recipe.vegetarian ? 'vegetarian' : 'no' ;
+        //   const vegan = recipe.vegan ? 'vegan' : 'no' ;
+        //   const glutenFree = recipe.glutenFree ? 'gluten free' : 'no' ;
+        //   const dietsArray = [...new Set([...recipe.diets,vegetarian,vegan,glutenFree])]
+        //   const finalArray = dietsArray.filter( e => e !== 'no') ;
+        //   const obj = {
+        //       id:recipe.id,
+        //       image: recipe.image,
+        //       name: recipe.title,
+        //       diets: finalArray,
+        //       dishTypes: recipe.dishTypes,
+        //       hscore: recipe.healthScore          
+        //   }
+          
+        //   return obj ;  
+        // }) 
         
-        return finalAnswer.length ? finalAnswer : '0 coincidences'
+        // await Promise.all(recipesApp)
+                     
+        // let recipesAPI = recipesApp.filter( recipe => recipe['name'].toLowerCase().includes(name))
+        
+        // //despues agregar el Set
+        // const finalAnswer = [recipesDB,recipesAPI].flat() ;
+        
+        // return finalAnswer.length ? finalAnswer : '0 coincidences'
+        
     }
 }

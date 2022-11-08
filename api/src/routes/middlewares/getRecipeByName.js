@@ -2,10 +2,8 @@ const { fngetRecipebyName } = require('../methods/methods.js')
 
 module.exports = async (req,res)=>{
 
-    const {name} = req.query ;
-
     try{
-
+    const name = req.query.name.toLowerCase() ;
     const recipes = await fngetRecipebyName(name) ;
     return res.json(recipes) ;
 
