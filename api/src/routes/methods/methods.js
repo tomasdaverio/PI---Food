@@ -96,16 +96,24 @@ module.exports = {
         //La busco en la DB (si no la encuentra devuelve null en teoria)
         let recipesDB ;
         //deberia hacer mi propio metodo para que tenga lowercase ademas. Faltan diets ademas
-        let searchDB = await Recipe.findAll({where: {name:{[Op.or]: { [Op.like]: `${name}%`, [Op.like]: `%${name}%`}}}})
-
-        console.log(searchDB)
+        let searchDB = await Recipe.findAll({where: {name:{[Op.or]: { [Op.iLike]: `${name}%`, [Op.iLike]: `%${name}%`}}},
+           attributes: { exclude: ['steps','createdAt','updatedAt'] },
+            include: {
+              model: Diet,
+              through: {
+                attributes: [] 
+              }
+            }
+          })
+        
+       return searchDB
         // if(searchDB.length) {
         //  recipesDB = searchDB.map( recipe => {
         //     const obj = {
         //         id:recipe.id,
         //         image: recipe.image,
         //         name: recipe.name,
-        //         diets: recipe.diets,
+        //         diets: recipe.diets.map( diet => diet.name),
         //         dishTypes: recipe.dishTypes,
         //         hscore: recipe.hscore          
         //     }
