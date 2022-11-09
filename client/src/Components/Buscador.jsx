@@ -1,4 +1,6 @@
 import React, { Component } from 'react' ;
+import { getRecipeByName } from '../Redux/actions.js' ;
+import { connect } from "react-redux";
 
 class Buscador extends Component {
     constructor(props){
@@ -11,13 +13,11 @@ class Buscador extends Component {
         
           this.handleSubmit = (event) => {
             event.preventDefault();
-            alert(this.cleanInput(this.state.recipe))
-            console.log(this.cleanInput(this.state.recipe))
+            this.props.getRecipeByName(this.cleanInput(this.state.recipe))
            }
 
           this.validate = (input) => {
             if(input.length<=2) return true ; 
-            console.log(! /^[A-Z ]+$/i.test(input))
             return ! /^[A-Z ]+$/i.test(input)
             
           }
@@ -86,4 +86,10 @@ class Buscador extends Component {
 }
 
 
-export default Buscador ; 
+export const mapDispatchToProps = (dispatch) => {
+    return{
+        getRecipeByName: (recipe) => {dispatch(getRecipeByName(recipe))}
+    }
+};
+
+export default connect(null,mapDispatchToProps) (Buscador);
