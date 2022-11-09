@@ -1,17 +1,22 @@
 import './App.css';
-import Buscador from '../src/Components/Buscador.jsx'
-import Cards from '../src/Components/Cards.jsx'
+import { Route } from "react-router-dom";
+import Buscador from '../src/Components/Buscador.jsx' ;
+import Cards from '../src/Components/Cards.jsx' ;
+import CardDetail from '../src/Components/CardDetail.jsx' ;
 
 function App() {
   return (
     <div className="App">
+
       <h1>Henry Food</h1>
-      <div>
+
+      <Route exact path={"/"} >
       <Buscador />
-      </div>
-      <div>
       <Cards />
-      </div>
+      </Route>
+   
+      <Route path={"/recipes/:id"} component={CardDetail} />
+
     </div>
   );
 }

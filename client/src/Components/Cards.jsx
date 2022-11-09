@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react' ;
+import React from 'react' ;
 import Card from './Card.jsx' ;
 import { connect } from "react-redux";
-import { Link } from 'react-router-dom';
 import { getRecipeByName } from '../Redux/actions.js'
 
 function Cards(props){
@@ -14,6 +13,8 @@ if(props.recipes){
         name = {recipe.name}
         image = {recipe.image}
         diets = {recipe.diets}
+        id = {recipe.id}
+        key = {recipe.id}
         />
         )}
         </div>
@@ -25,7 +26,6 @@ if(props.recipes){
                
 }
 }
-
 
 const mapStateToProps = (state) => {
     return {
