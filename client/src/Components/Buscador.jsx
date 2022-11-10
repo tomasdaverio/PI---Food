@@ -7,47 +7,28 @@ class Buscador extends Component {
         super(props) ;
         this.state = {
             recipe: "" ,
-            button: true,
-            reason: ""
+            button: true
           };
         
           this.handleSubmit = (event) => {
             event.preventDefault();
-            this.props.getRecipeByName(this.cleanInput(this.state.recipe))
+            this.props.getRecipeByName(this.state.recipe.trim())
            }
 
           this.validate = (input) => {
-            if(input.length<=2) return true ; 
-            return ! /^[A-Z ]+$/i.test(input)
-            
-          }
-
-          this.cleanInput = (input) => {
-            let start = 0 ;
-            let end = null;
-            for(let i=0 ; i < input.length ; i++ ){
-                if(input[i]!==" ") {
-                    start = i ;
-                    break;
-                }
-            }
-            for(let i=input.length-1 ; i >=0 ; i-- ){
-                if(input[i]!==" ") {
-                    end = i+1 ;
-                    break;
-                }
-            }
-            return input.slice(start,end)
+            const value = input.trim() ;
+            if(value.length<=2) return false ; 
+            return /^[A-Z ]+$/i.test(value) ;
           }
 
           this.handleChange = (event) => {
             const value = event.target.value ; 
-            this.setState({button: this.validate(value)}) ;
+            this.setState({button: ! this.validate(value)}) ;
             this.setState({recipe: value}) ;
           }
     }
     render() {
-        let {button,recipe,reason} = this.state ;
+        let {button,recipe} = this.state ;
         return (
             <>
             <ul>
@@ -68,18 +49,14 @@ class Buscador extends Component {
                 type="submit" 
                 name="submit"
                 >
-                Let's Search
+                Let's search!
                 </button>
                 </form>
                </li>
-                <li>{button && "Invalid"}</li>
-                <li> {button && "Only letters: (a-z) | Not Allowed: 0-9/%$&#,etc"}  </li>
-                <li>{button && "Examples of valid searchs: Rice, Hamburguer, etc."}</li>
-                
-                
-            </ul>
-            
-            
+                <li>{ (recipe ? true : null) && button && "Not valid"}</li>
+                <li> { (recipe ? true : null) && button && "Allowed: (Aa-Zz) | Not Allowed: (0-9)(/%$&#]}{})"} </li>
+                <li>{ (recipe ? true : null) && button && "I.E: Valid: Rice, Hamburguer, etc. - Not valid: Rice8, Rice*"}</li>         
+            </ul>           
             </>
         )
     }
@@ -93,3 +70,4 @@ export const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(null,mapDispatchToProps) (Buscador);
+

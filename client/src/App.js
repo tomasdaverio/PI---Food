@@ -3,6 +3,8 @@ import { Route } from "react-router-dom";
 import Buscador from '../src/Components/Buscador.jsx' ;
 import Cards from '../src/Components/Cards.jsx' ;
 import CardDetail from '../src/Components/CardDetail.jsx' ;
+import Nav from '../src/Components/Nav.jsx' ;
+import Form from '../src/Components/Form.jsx' ;
 
 function App() {
   return (
@@ -10,12 +12,16 @@ function App() {
 
       <h1>Henry Food</h1>
 
+      <Route path={'/'} component={Nav} />
+
       <Route exact path={"/"} >
       <Buscador />
       <Cards />
       </Route>
    
-      <Route path={"/recipes/:id"} component={CardDetail} />
+      <Route exact path={"/recipes/:id"} component={CardDetail} />
+
+      <Route exact path={'/create'} component={Form} />
 
     </div>
   );
