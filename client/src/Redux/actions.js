@@ -1,6 +1,6 @@
 import { GET_RECIPE_BY_NAME , GET_RECIPE_BY_ID , ADD_NEW_RECIPE, 
     ORDER_BY_HEALTHSCORE_ASC, ORDER_BY_HEALTHSCORE_DESC, ORDER_BY_AZ_ASC,
-    ORDER_BY_AZ_DESC, FILTER_BY_DIET } from './actiontypes.js' ;
+    ORDER_BY_AZ_DESC, FILTER_BY_DIET, REMOVE_FILTER} from './actiontypes.js' ;
 
 export const getRecipeByName = (recipe) => {
     return function (dispatch) {
@@ -32,6 +32,14 @@ export const orderByAZASC = () => {
 
 export const orderByAZDESC = () => {
     return {type:ORDER_BY_AZ_DESC}
+}
+
+export const filterByDiet = (diets) => {
+    return {type:FILTER_BY_DIET,payload:diets}
+}
+
+export const removefilter = () => {
+    return {type:REMOVE_FILTER}
 }
 
 export const addRecipe = (data) => {
