@@ -14,12 +14,12 @@ function App() {
 
       <Route path={'/'} component={Nav} />
 
-      <Route exact path={"/"} >
+      <Route exact path={'/'} >
       <Buscador />
       <Cards />
       </Route>
    
-      <Route exact path={"/recipes/:id"} component={CardDetail} />
+      <Route exact path={'/recipes/:id'} component={CardDetail} />
 
       <Route exact path={'/create'} component={Form} />
 

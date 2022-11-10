@@ -1,4 +1,8 @@
-import {GET_RECIPE_BY_NAME , GET_RECIPE_BY_ID , ADD_NEW_RECIPE} from './actiontypes.js'
+import { GET_RECIPE_BY_NAME , GET_RECIPE_BY_ID , ADD_NEW_RECIPE, 
+    ORDER_BY_HEALTHSCORE_ASC, ORDER_BY_HEALTHSCORE_DESC, ORDER_BY_AZ_ASC,
+    ORDER_BY_AZ_DESC, FILTER_BY_DIET } from './actiontypes.js' ;
+
+import { quickSort, quickSortABC } from './methods.js' ;
 
 const initialState = {
     recipes: [],
@@ -25,7 +29,32 @@ const rootReducer = (state=initialState,action)=>{
             
         return {
             ...state, recipes:[...state.recipes,action.payload]
-        } 
+        }
+
+        case ORDER_BY_HEALTHSCORE_ASC:
+            
+        return {
+            ...state, recipes: quickSort(...state.recipes)
+        }
+
+        case ORDER_BY_HEALTHSCORE_DESC:
+            
+            return {
+                ...state, recipes: (quickSort(...state.recipes).reverse())
+            }
+        case ORDER_BY_AZ_ASC:
+            
+        return {
+            ...state, recipes: quickSortABC(...state.recipes)
+        }
+
+        case ORDER_BY_AZ_DESC:
+            
+            return {
+                ...state, recipes: (quickSortABC(...state.recipes).reverse())
+            }
+
+        
 
         default: return state ;
     }
