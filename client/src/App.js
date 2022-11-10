@@ -5,6 +5,7 @@ import Cards from '../src/Components/Cards.jsx' ;
 import CardDetail from '../src/Components/CardDetail.jsx' ;
 import Nav from '../src/Components/Nav.jsx' ;
 import Form from '../src/Components/Form.jsx' ;
+import Sorter from '../src/Components/Sorter.jsx' ;
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
 
       <Route exact path={'/'} >
       <Buscador />
+      <Sorter />
       <Cards />
       </Route>
    
