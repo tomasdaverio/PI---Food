@@ -8,10 +8,9 @@ function Cards(props){
 let recipes = props.recipes ;
 let filtered = props.filteredRecipes ;
 
-
-
-if(recipes){
-   
+if(recipes.length){
+    let array;
+   filtered.length ?  array = filtered  : array = recipes ;
     return(
         <div>
         {recipes.map( recipe =>

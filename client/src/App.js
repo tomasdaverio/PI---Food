@@ -1,6 +1,6 @@
 import './App.css';
 import { Route } from "react-router-dom";
-import Buscador from '../src/Components/Buscador.jsx' ;
+import SearchBar from '../src/Components/SearchBar.jsx' ;
 import Cards from '../src/Components/Cards.jsx' ;
 import CardDetail from '../src/Components/CardDetail.jsx' ;
 import Nav from '../src/Components/Nav.jsx' ;
@@ -16,7 +16,7 @@ function App() {
       <Route path={'/'} component={Nav} />
 
       <Route exact path={'/'} >
-      <Buscador />
+      <SearchBar />
       <Sorter />
       <Cards />
       </Route>

@@ -2,7 +2,7 @@ import React, { Component } from 'react' ;
 import { getRecipeByName } from '../Redux/actions.js' ;
 import { connect } from "react-redux";
 
-class Buscador extends Component {
+class SearchBar extends Component {
     constructor(props){
         super(props) ;
         this.state = {
@@ -17,7 +17,7 @@ class Buscador extends Component {
 
           this.validate = (input) => {
             const value = input.trim() ;
-            if(value.length<=2) return false ; 
+            if(value.length<1) return false ; 
             return /^[A-Z ]+$/i.test(value) ;
           }
 
@@ -69,5 +69,5 @@ export const mapDispatchToProps = (dispatch) => {
     }
 };
 
-export default connect(null,mapDispatchToProps) (Buscador);
+export default connect(null,mapDispatchToProps) (SearchBar);
 

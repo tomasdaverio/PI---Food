@@ -18,7 +18,7 @@ export const quickSort=(array) =>{
 
 
 export const quickSortABC = (array) =>{
-  const letras = ['a','b','c','d','e','f','g','h','i','j','k','l', 'ñ','m','n','o','p','q','r','s','t','u','v','w','x','y','z'] ;
+  const letras = ['a','b','c','d','e','f','g','h','i','j','k','l', 'ñ','m','n','o','p','q','r','s','t','u','v','w','x','y','z'] 
     if(array.length>1){
       let right = [];
       let left = [];
@@ -32,3 +32,27 @@ export const quickSortABC = (array) =>{
       } 
       return array;
       }
+
+export const sortAZ = (array) => {
+  return array.sort(function (a, b) {
+    if (a.name > b.name) {
+      return 1;
+    }
+    if (a.name < b.name) {
+      return -1;
+    }
+      return 0;
+  })
+}
+
+export const sortZA = (array) => {
+  return array.sort(function (a, b) {
+    if (a.name > b.name) {
+      return -1;
+    }
+    if (a.name < b.name) {
+      return 1;
+    }
+      return 0;
+  })
+}
