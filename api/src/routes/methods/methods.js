@@ -75,8 +75,14 @@ module.exports = {
         let recipe;
 
         if(Number(id)<30000) {
-            recipe = await Recipe.findByPk(Number(id),
-            {include: Diet});
+            recipe = await Recipe.findByPk(Number(id),{
+            attributes: { exclude: ['createdAt','updatedAt'] },
+            include: {
+              model: Diet,
+              through: {
+                attributes: [] 
+              }
+            }});
             console.log(recipe)
         } else {
             const search = await fetch('https://api.spoonacular.com/recipes/715594/information?apiKey=26623d87ef014d3daeab072510ec275a') ;
