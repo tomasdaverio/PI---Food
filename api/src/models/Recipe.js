@@ -23,8 +23,8 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       validate:{
         isonRange(value) {
-          if (value<1 || value>100 ) {
-            throw new Error('hscore must be between 1 and 100');
+          if (value<0 || value>100 ) {
+            throw new Error('hscore must be between 0 and 100');
           }
         }
       }

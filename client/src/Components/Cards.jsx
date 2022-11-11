@@ -1,14 +1,20 @@
-import React from 'react' ;
+import React, { useEffect } from 'react' ;
 import Card from './Card.jsx' ;
 import { connect } from "react-redux";
-import { getRecipeByName } from '../Redux/actions.js'
+import { getRecipeByName , filterByDiet } from '../Redux/actions.js'
 
 function Cards(props){
 
-if(props.recipes){
+let recipes = props.recipes ;
+let filtered = props.filteredRecipes ;
+
+
+
+if(recipes){
+   
     return(
         <div>
-        {props.recipes.map( recipe =>
+        {recipes.map( recipe =>
         <Card 
         name = {recipe.name}
         image = {recipe.image}
@@ -29,7 +35,8 @@ if(props.recipes){
 
 const mapStateToProps = (state) => {
     return {
-        recipes: state.recipes
+        recipes: state.recipes,
+        filteredRecipes: state.filteredRecipes
     }
 }
 

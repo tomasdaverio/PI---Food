@@ -1,20 +1,33 @@
 import React, { useState } from 'react' ;
-import { connect } from "react-redux" ;
+import { connect, useDispatch , useSelector } from "react-redux" ;
 import { orderByAZASC, orderByAZDESC , orderbyHealthScoreASC,orderbyHealthScoreDESC } from '../Redux/actions.js' ;
 
+
 function Sorter (props){
+   
+    const dispatch = useDispatch() ;
 
     const [state,setState] = useState(null) ;
-    
+
+    const recipes = useSelector((state) => state.recipes) ;
 
     const changeHandler = (event) => {
-        setState(event.target.value) ;
-        console.log(event.target.value)
+        const value = event.target.value ;
+        setState(value) ;
+        console.log(value)
+
     }
 
     const submitHandler = (event) => {
         event.preventDefault();
-        alert(state)
+        
+        switch(state){
+            case 'AZ' : {dispatch(props.orderByAZASC()) ; return }
+            case 'ZA' : {dispatch(props.orderByAZDESC()) ; return}
+            case 'ASC' : {dispatch(props.orderbyHealthScoreASC()) ; return}
+            case 'DESC' : {dispatch(props.orderbyHealthScoreDESC()) ; return}
+            default: {dispatch(props.orderByAZASC()) ; return}
+        }
     }
 
     return(
@@ -31,7 +44,7 @@ function Sorter (props){
             <label htmlFor="ASC"> - Healthy </label>
             <input type="radio" id="DESC" name="Order" value="DESC" ></input>
             <label htmlFor="DESC"> + Healthy</label>
-            <input type="submit" value="Apply"></input>
+            <input type="submit" value="Apply" disabled={(recipes.length && state) ? false : true}></input>
             </p>
             </form>	
 

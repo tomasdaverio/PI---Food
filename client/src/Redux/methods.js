@@ -18,7 +18,7 @@ export const quickSort=(array) =>{
 
 
 export const quickSortABC = (array) =>{
-  const letras = ['a','b','c','d','e','f','g','h','i','j','k','l', 'ñ','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+  const letras = ['a','b','c','d','e','f','g','h','i','j','k','l', 'ñ','m','n','o','p','q','r','s','t','u','v','w','x','y','z'] ;
     if(array.length>1){
       let right = [];
       let left = [];

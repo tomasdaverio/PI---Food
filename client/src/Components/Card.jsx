@@ -5,7 +5,7 @@ function Card (props){
 return(
     <div>
         <h1>Title:<Link to={`/recipes/${props.id}`}>{props.name}</Link></h1>
-        <p>Diets:{props.diets.map(diet => - {diet} )}</p>
+        <h3>Diets:{props.diets.length ? props.diets.map(diet => <span>- {diet} </span> ) : <span>-</span>}</h3>
         <img alt='img' src={props.image}/>
         
     </div>
