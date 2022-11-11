@@ -6,6 +6,7 @@ import CardDetail from '../src/Components/CardDetail.jsx' ;
 import Nav from '../src/Components/Nav.jsx' ;
 import Form from '../src/Components/Form.jsx' ;
 import Sorter from '../src/Components/Sorter.jsx' ;
+import Filter from '../src/Components/Filter.jsx' ;
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route exact path={'/'} >
       <SearchBar />
       <Sorter />
+      <Filter />
       <Cards />
       </Route>
    

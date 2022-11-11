@@ -12,6 +12,8 @@ const initialState = {
 
 const rootReducer = (state=initialState,action)=>{
 
+    var array = state.filteredRecipes.length ? 'filteredRecipes' : 'recipes' ;
+
      switch(action.type){
 
         case GET_RECIPE_BY_NAME:
@@ -35,25 +37,25 @@ const rootReducer = (state=initialState,action)=>{
         case ORDER_BY_HEALTHSCORE_ASC:
         
             return {
-                ...state, recipes: quickSort(state.recipes)
+                ...state, [array]: quickSort(state[array])
             }
         
         case ORDER_BY_HEALTHSCORE_DESC:
             
             return {
-                ...state, recipes: (quickSort(state.recipes).reverse())
+                ...state, [array]: (quickSort(state[array]).reverse())
             }
 
         case ORDER_BY_AZ:
             
             return {
-                ...state, recipes: sortAZ(state.recipes)
+                ...state, [array]: sortAZ(state[array])
             }
 
         case ORDER_BY_ZA:
             
             return {
-                ...state, recipes: sortZA(state.recipes)
+                ...state, [array]: sortZA(state[array])
             }
 
         case FILTER_BY_DIET:

@@ -2,7 +2,7 @@ import React, { useState } from 'react' ;
 import { connect, useDispatch , useSelector } from "react-redux" ;
 import { orderCreator } from '../Redux/actions.js' ;
 import {ORDER_BY_HEALTHSCORE_ASC, ORDER_BY_HEALTHSCORE_DESC, ORDER_BY_AZ,
-    ORDER_BY_ZA, FILTER_BY_DIET, REMOVE_FILTER} from '../Redux/actiontypes.js' ;
+    ORDER_BY_ZA} from '../Redux/actiontypes.js' ;
 
 
 function Sorter (props){

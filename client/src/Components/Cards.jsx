@@ -1,19 +1,20 @@
-import React, { useEffect } from 'react' ;
+import React from 'react' ;
 import Card from './Card.jsx' ;
-import { connect } from "react-redux";
-import { getRecipeByName , filterByDiet } from '../Redux/actions.js'
+import { useSelector } from "react-redux" ;
 
 function Cards(props){
 
-let recipes = props.recipes ;
-let filtered = props.filteredRecipes ;
+let recipes = useSelector( (state) => state.recipes) ;
+let filtered = useSelector( (state) => state.filteredRecipes) ;
 
-if(recipes.length){
-    let array;
-   filtered.length ?  array = filtered  : array = recipes ;
+let array = [] ;
+filtered.length ?  array = filtered  : array = recipes ;
+
+if(array.length){
+    
     return(
         <div>
-        {recipes.map( recipe =>
+        {array.map( recipe =>
         <Card 
         name = {recipe.name}
         image = {recipe.image}
@@ -25,6 +26,7 @@ if(recipes.length){
         </div>
     )
 } else {
+    
     return(
         <h2>Search your recipes</h2>
     )
@@ -32,16 +34,5 @@ if(recipes.length){
 }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        recipes: state.recipes,
-        filteredRecipes: state.filteredRecipes
-    }
-}
-
-const mapDispatchToProps = {
-    getRecipeByName
-}
-
-export default connect(mapStateToProps,mapDispatchToProps) (Cards);
+export default Cards ;
 

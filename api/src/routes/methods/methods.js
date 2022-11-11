@@ -49,12 +49,21 @@ module.exports = {
 
         if(diets.length){
 
-            const dietsObj = diets.map( diet => { return {name: diet} }) ;
+            let dietArray =[];
+
+            const dietsObj = diets.map( diet => { return {['name']: diet} }) ;
 
             for(let i = 0 ; i < dietsObj.length ; i++){
-                const [dietInstance,created] = await Diet.findOrCreate({where:dietsObj[i]}) ;
-                dietInstance.setRecipes(recipe.id) ;
+                console.log(dietsObj[i])
+                let [dietInstance,created] = await Diet.findOrCreate({where:dietsObj[i],defaults: dietsObj[i]}) ;
+                dietArray.push(dietInstance)
             }
+
+            await Promise.all(dietArray) ;
+
+            let asoc = dietArray.map(dietinst => recipe.setDiets(dietinst))
+
+            await Promise.all(asoc) ;
         }    
         return recipe ;           
     },
@@ -66,7 +75,9 @@ module.exports = {
         let recipe;
 
         if(Number(id)<30000) {
-            recipe = await Recipe.findByPk(Number(id));
+            recipe = await Recipe.findByPk(Number(id),
+            {include: Diet});
+            console.log(recipe)
         } else {
             const search = await fetch('https://api.spoonacular.com/recipes/715594/information?apiKey=26623d87ef014d3daeab072510ec275a') ;
             const answer = await search.json() ;
@@ -125,36 +136,40 @@ module.exports = {
        
         } else {
             recipesDB = [] ;
+
+            
         }
-        const search = await fetch('https://api.spoonacular.com/recipes/complexSearch?apiKey=26623d87ef014d3daeab072510ec275a&addRecipeInformation=true&number=100')
-        const answer = await search.json() ;
-        let recipesApp = answer.results.map( recipe => {   
+        return recipesDB ;
+        // }
+        // const search = await fetch('https://api.spoonacular.com/recipes/complexSearch?apiKey=26623d87ef014d3daeab072510ec275a&addRecipeInformation=true&number=100')
+        // const answer = await search.json() ;
+        // let recipesApp = answer.results.map( recipe => {   
                 
-          const vegetarian = recipe.vegetarian ? 'vegetarian' : 'no' ;
-          const vegan = recipe.vegan ? 'vegan' : 'no' ;
-          const glutenFree = recipe.glutenFree ? 'gluten free' : 'no' ;
-          const dietsArray = [...new Set([...recipe.diets,vegetarian,vegan,glutenFree])]
-          const finalArray = dietsArray.filter( e => e !== 'no') ;
-          const obj = {
-              id:recipe.id,
-              image: recipe.image,
-              name: recipe.title,
-              diets: finalArray,
-              dishTypes: recipe.dishTypes,
-              hscore: recipe.healthScore          
-          }
+        //   const vegetarian = recipe.vegetarian ? 'vegetarian' : 'no' ;
+        //   const vegan = recipe.vegan ? 'vegan' : 'no' ;
+        //   const glutenFree = recipe.glutenFree ? 'gluten free' : 'no' ;
+        //   const dietsArray = [...new Set([...recipe.diets,vegetarian,vegan,glutenFree])]
+        //   const finalArray = dietsArray.filter( e => e !== 'no') ;
+        //   const obj = {
+        //       id:recipe.id,
+        //       image: recipe.image,
+        //       name: recipe.title,
+        //       diets: finalArray,
+        //       dishTypes: recipe.dishTypes,
+        //       hscore: recipe.healthScore          
+        //   }
           
-          return obj ;  
-        }) 
+        //   return obj ;  
+        // }) 
         
-        await Promise.all(recipesApp)
+        // await Promise.all(recipesApp)
                      
-        let recipesAPI = recipesApp.filter( recipe => recipe['name'].toLowerCase().includes(name))
+        // let recipesAPI = recipesApp.filter( recipe => recipe['name'].toLowerCase().includes(name))
         
-        //despues agregar el Set
-        const finalAnswer = [recipesDB,recipesAPI].flat() ;
+        // //despues agregar el Set
+        // const finalAnswer = [recipesDB,recipesAPI].flat() ;
         
-        return finalAnswer 
+        // return finalAnswer 
         
     }
 }

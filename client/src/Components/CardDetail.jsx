@@ -10,15 +10,15 @@ function CardDetail (props){
 
     const dispatch = useDispatch() ;
 
-    useEffect(()=> dispatch(getRecipeById(id)),[recipe]) ;
+    useEffect(()=> dispatch(getRecipeById(id)),[id]) ;
 
     if(recipe){
 
         return(
             <div>
             <h1>Recipe: {recipe.name}</h1>
-            <h3>Diets: {recipe.diets ? recipe.diets.map(diet => <span> - {diet} </span> ) : '' }</h3>
-            <h4>Dish Types: {recipe.dishTypes ? recipe.dishTypes.map(dish => <span> - {dish} </span> ) : '' }</h4>
+            <h3>Diets: {recipe.diets ? recipe.diets.map(diet => <span> - {diet.name} </span> ) : '' }</h3>
+            <h4>Dish Types: {recipe.dishTypes ? recipe.dishTypes.map(dish => - {dish} ) : '' }</h4>
             <h5>Health Score = {recipe.hscore}</h5>
             <p>Summary: {recipe.summary}</p>
             <img src={recipe.image} alt='img'/>
