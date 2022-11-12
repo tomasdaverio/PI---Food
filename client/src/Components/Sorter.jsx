@@ -4,7 +4,7 @@ import { orderCreator } from '../Redux/actions.js' ;
 import {ORDER_BY_HEALTHSCORE_ASC, ORDER_BY_HEALTHSCORE_DESC, ORDER_BY_AZ,ORDER_BY_ZA} from '../Redux/actiontypes.js' ;
 
 
- function Menu (props){
+ function Sorter (props){
    
     const dispatch = useDispatch() ;
 
@@ -43,6 +43,6 @@ import {ORDER_BY_HEALTHSCORE_ASC, ORDER_BY_HEALTHSCORE_DESC, ORDER_BY_AZ,ORDER_B
     } else { return(null) }
 }
 
-export default Menu ;
+export default Sorter ;
 
 

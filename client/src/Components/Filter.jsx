@@ -1,6 +1,5 @@
 import React, { useState } from 'react' ;
 import { useSelector , useDispatch } from 'react-redux' ;
-
 import { filterByDiet , removefilter } from '../Redux/actions.js' ;
 
 const dietset = [
@@ -15,8 +14,7 @@ const dietset = [
     'ketogenic',
     'fodmap friendly',
     'vegetarian'
-  ]
-
+  ] 
 
 function Filter(props){
 
@@ -47,33 +45,22 @@ if(recipes.length){
     return (
         <div>
             
-            <form onSubmit={submitHandler} onChange={changeHandler}>
-            <p><span>Filter by diet type:</span><br></br>
-            {dietset.map( diet => { return (
-            <span>
-            <input type="radio" id={diet} name="Filter" value={diet}></input>
-            <label htmlFor={diet}> {diet} </label>
-            </span>
-            )
-            })}
-            </p>
-            <p>
-            <input type="submit" value="Apply" disabled={(recipes.length && filter) ? false : true}></input>
-            </p>
-            </form>	
-            <div>
+          <form onSubmit={submitHandler} onChange={changeHandler}>
+          <label for="filter">Select a Diet Type: </label>
+          <select name="filter" id="filter">
+          {dietset.map( diet => { return (
+            <option value={diet}>{diet}</option>
+          )})}
+          </select>
+          <input type="submit" value="Apply" disabled={(recipes.length && filter) ? false : true}></input>
+          </form>
             
-            <button type='button' onClick={removefilt}>remove filter</button>
-            
-            </div>
+          <button type='button' onClick={removefilt}>remove filter</button>
 
         </div>
     )
 } else {
-    return(
-        null
-    )
-        
+    return(null)      
 }
 }
 
