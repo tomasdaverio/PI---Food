@@ -71,12 +71,13 @@ module.exports = {
 
         if(!id || (typeof id !== 'number' && typeof id !== 'string')) throw new Error({message: 'ID error'}) ;
 
-        //La busco en la DB (si no la encuentra devuelve null en teoria)
         let recipe;
+        let diets;
+        let precipe;
 
         if(id<30000) {
 
-          let recipeDB = await Recipe.findByPk(id, {
+          precipe = await Recipe.findByPk(id, {
                 include: {
                     model: Diet,
                     attributes: ['name']
@@ -85,39 +86,29 @@ module.exports = {
                     }
                   }
               })
-        const diet = recipeDB.diets.length ? recipeDB.diets.map(d=>d.name) : [] ;
+        diets = precipe.diets.length ? precipe.diets.map(d=>d.name) : [] ;
+                
+        } else {
+            const search = await fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=26623d87ef014d3daeab072510ec275a`) ;
+            precipe = await search.json() ;
+            const vegetarian = answer.vegetarian === 'true'  ? 'vegetarian' : 'no' ;
+            const vegan = answer.vegan === 'true'  ? 'vegan' : 'no' ;
+            const glutenFree = answer.glutenFree === 'true' ? 'gluten free' : 'no' ;
+            const dietsArray = [...new Set([...answer.diets,vegetarian,vegan,glutenFree])]
+            diets = dietsArray.filter( e => e !== 'no') ;  
+        }
+      
         recipe = {
-            id: recipeDB.id, 
-            name: recipeDB.name,
-            summary: recipeDB.summary,
-            dishTypes: recipeDB.dishTypes,
-            steps: recipeDB.steps,
-            image: recipeDB.image,
-            hscore: recipeDB.hscore,
-            diets: diet
-        }    
-                       
-        // } else {
-        //     const search = await fetch('https://api.spoonacular.com/recipes/715594/information?apiKey=26623d87ef014d3daeab072510ec275a') ;
-        //     const answer = await search.json() ;
-            
-        //     const vegetarian = answer.vegetarian === 'true'  ? 'vegetarian' : 'no' ;
-        //     const vegan = answer.vegan === 'true'  ? 'vegan' : 'no' ;
-        //     const glutenFree = answer.glutenFree === 'true' ? 'gluten free' : 'no' ;
-        //     const dietsArray = [...new Set([...answer.diets,vegetarian,vegan,glutenFree])]
-        //     const finalArray = dietsArray.filter( e => e !== 'no') ;
-        //     recipe = {
-        //         id:answer.id,
-        //         image: answer.image,
-        //         name: answer.title,
-        //         diets: finalArray,
-        //         dishTypes: answer.dishTypes,
-        //         summary: answer.summary,
-        //         hscore: answer.healthScore,
-        //         steps: answer.instructions          
-        //     }
-        // }
-        return recipe ;   }        
+            id: precipe.id, 
+            name: precipe.name ? precipe.name : precipe.title,
+            summary: precipe.summary,
+            dishTypes: precipe.dishTypes,
+            steps: precipe.steps ? precipe.steps : precipe.instructions,
+            image: precipe.image,
+            hscore: precipe.hscore ? precipe.hscore : precipe.healthScore,
+            diets: diets
+        }
+        return recipe ;          
     },
     fngetRecipebyName : async (name) => {
 
