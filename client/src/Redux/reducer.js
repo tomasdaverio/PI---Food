@@ -12,7 +12,9 @@ const initialState = {
 
 const rootReducer = (state=initialState,action)=>{
 
-    var array = state.filteredRecipes.length ? 'filteredRecipes' : 'recipes' ;
+    let filtered = state.filteredRecipes ;
+
+    var array = (filtered !== 'empty' && filtered.length) ? 'filteredRecipes' : 'recipes' ;
 
      switch(action.type){
 

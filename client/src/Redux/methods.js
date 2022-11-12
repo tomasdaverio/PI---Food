@@ -17,24 +17,8 @@ export const quickSort=(array) =>{
     }
 
 
-export const quickSortABC = (array) =>{
-  const letras = ['a','b','c','d','e','f','g','h','i','j','k','l', 'ñ','m','n','o','p','q','r','s','t','u','v','w','x','y','z'] 
-    if(array.length>1){
-      let right = [];
-      let left = [];
-      let pivote = [array[0]];
-      for(let i=1 ; i<array.length ; i++){
-        if(letras.indexOf(array[i].name.slice(0,1))>=letras.indexOf(array[0].name.slice(0,1))){
-              right.push(array[i]);
-        } else { left.push(array[i]);
-        }
-      } array = (quickSortABC(left).concat(pivote)).concat(quickSortABC(right))
-      } 
-      return array;
-      }
-
 export const sortAZ = (array) => {
-  return array.sort(function (a, b) {
+  let result = array.sort(function (a, b) {
     if (a.name > b.name) {
       return 1;
     }
@@ -43,10 +27,11 @@ export const sortAZ = (array) => {
     }
       return 0;
   })
+  return result
 }
 
 export const sortZA = (array) => {
-  return array.sort(function (a, b) {
+ let result = array.sort(function (a, b) {
     if (a.name > b.name) {
       return -1;
     }
@@ -55,4 +40,5 @@ export const sortZA = (array) => {
     }
       return 0;
   })
+  return result
 }

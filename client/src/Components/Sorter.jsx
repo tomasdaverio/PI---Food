@@ -1,30 +1,24 @@
 import React, { useState } from 'react' ;
-import { connect, useDispatch , useSelector } from "react-redux" ;
+import { useDispatch , useSelector } from 'react-redux' ;
 import { orderCreator } from '../Redux/actions.js' ;
-import {ORDER_BY_HEALTHSCORE_ASC, ORDER_BY_HEALTHSCORE_DESC, ORDER_BY_AZ,
-    ORDER_BY_ZA} from '../Redux/actiontypes.js' ;
+import {ORDER_BY_HEALTHSCORE_ASC, ORDER_BY_HEALTHSCORE_DESC, ORDER_BY_AZ,ORDER_BY_ZA} from '../Redux/actiontypes.js' ;
 
 
-function Sorter (props){
+ function Sorter (props){
    
     const dispatch = useDispatch() ;
 
-    const [order,setOrder] = useState(null) ;
+    let [order,setOrder] = useState(ORDER_BY_AZ) ;
 
-    const recipes = useSelector((state) => state.recipes) ;
+    let recipes = useSelector((state) => state.recipes) ;
 
     const changeHandler = (event) => {
-        const value = event.target.value ;
-        setOrder(value) ;
-        console.log(value)
-
+      setOrder(event.target.value) ;
     }
 
     const submitHandler = (event) => {
         event.preventDefault();
-        dispatch(props.orderCreator(order)) ;
-        console.log(order)
-        return ;
+        dispatch(orderCreator(order)) ;
     }
 
     if(recipes.length){
@@ -33,7 +27,7 @@ function Sorter (props){
         <div>
 
             <form onSubmit={submitHandler} onChange={changeHandler}>
-            <p> <span>Select which to see first:</span><br></br>
+            <p><span>Select which to see first:</span><br></br>
             <input type="radio" id="AZ" name="Order" value={ORDER_BY_AZ}></input>
             <label htmlFor="AZ"> A-Z </label>
             <input type="radio" id="ZA" name="Order" value={ORDER_BY_ZA} ></input>
@@ -56,10 +50,6 @@ function Sorter (props){
     }
 }
 
-const mapDispatchToProps = {
-    orderCreator
-}
-
-export default connect(null,mapDispatchToProps) (Sorter);
+export default Sorter ;
 
 
