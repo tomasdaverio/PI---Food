@@ -14,7 +14,7 @@ function Page(props){
 
     let pages = enteros + resto ;
 
-    if(pages>1){
+    if(pages>1 && filtered !== 'empty'){
         var dev = [] ;
         for(let i=1;i<pages+1;i++){
             dev.push(<span><Link to={`/${i}`}>{i}</Link></span>)
@@ -24,7 +24,7 @@ function Page(props){
         {dev.map( page => page)}  
         </footer>
       )
-    } else if(pages === 1){
+    } else if(pages === 1 && filtered !== 'empty'){
       return (
         <footer>
        <span><Link to={`/1`}>1</Link></span> 

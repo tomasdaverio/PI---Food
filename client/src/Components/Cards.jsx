@@ -4,9 +4,6 @@ import { useSelector } from "react-redux" ;
 
 function Cards(props){
 
-    // este deberia sacar la cuenta de cuantos renderizar segun props.match.params.id y filtered/recipes, con un state interno.
-    //y hacerle un slice al selector q corresponda.
-
 let recipes = useSelector( (state) => state.recipes) ;
 let filtered = useSelector( (state) => state.filteredRecipes) ;
 
@@ -19,7 +16,7 @@ if(page === undefined || page === 1) array = array.slice(0,array.length >=9 ? 9 
 
 if(page>1) array = array.slice((page-1)*9,(array.length-((page-1)*9)) >=9 ? page*9 : array.length) ;
 
-if(array.length && filtered !== 'empty' ){
+if(array.length && filtered !== 'empty'){
     
     return(
         <div>
