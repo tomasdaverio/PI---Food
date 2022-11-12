@@ -1,12 +1,8 @@
-import React, { useState , useEffect } from 'react' ;
-import Cards from './Cards.jsx' ;
-import { useDispatch , useSelector } from 'react-redux' ;
+import React from 'react' ;
+import { useSelector } from 'react-redux' ;
 import { Link } from 'react-router-dom' ;
-import { Redirect } from 'react-router' ;
 
 function Page(props){
-
-    let [page,setPage] = useState(1) ;
 
     let recipes = useSelector((state)=> state.recipes) ;
     let filtered = useSelector((state)=> state.filteredRecipes) ;
