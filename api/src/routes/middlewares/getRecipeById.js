@@ -3,7 +3,8 @@ const router = Router();
 const { fngetRecipebyId } = require('../methods/methods.js')
 
 router.get('/:id', async (req,res)=>{
-    const id = req.params.id ;
+    const id = Number(req.params.id) ;
+    
     try {
 
         const recipe = await fngetRecipebyId(id) ;

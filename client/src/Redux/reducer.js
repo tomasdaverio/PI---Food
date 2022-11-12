@@ -59,9 +59,10 @@ const rootReducer = (state=initialState,action)=>{
             }
 
         case FILTER_BY_DIET:
-            
+            let results = state.recipes.filter( recipe => recipe.diets.includes(action.payload)) ;
+            let prop = results.length ? results : 'empty' ;
             return {
-                ...state, filteredRecipes: state.recipes.filter( recipe => recipe.diets.includes(action.payload) )
+                ...state, filteredRecipes: prop
             }
 
         case REMOVE_FILTER:

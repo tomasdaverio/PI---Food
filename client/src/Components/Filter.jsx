@@ -1,7 +1,7 @@
 import React, { useState } from 'react' ;
 import { useSelector , useDispatch } from 'react-redux' ;
 
-import { filterByDiet } from '../Redux/actions.js' ;
+import { filterByDiet , removefilter } from '../Redux/actions.js' ;
 
 const dietset = [
     'gluten free',
@@ -37,8 +37,9 @@ const submitHandler = (event) => {
     return ;
 }
 
-const removefilter = (event) => {
+const removefilt = (event) => {
     event.preventDefault();
+    console.log(removefilter())
     dispatch(removefilter()) ;
 }
 
@@ -61,9 +62,9 @@ if(recipes.length){
             </p>
             </form>	
             <div>
-            <form>
-            <button type='submit' onSubmit={removefilter}>Remove filter</button>
-            </form>
+            
+            <button type='button' onClick={removefilt}>remove filter</button>
+            
             </div>
 
         </div>

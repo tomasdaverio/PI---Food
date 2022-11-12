@@ -10,7 +10,7 @@ let filtered = useSelector( (state) => state.filteredRecipes) ;
 let array = [] ;
 filtered.length ?  array = filtered  : array = recipes ;
 
-if(array.length){
+if(array.length && filtered !== 'empty' ){
     
     return(
         <div>
@@ -25,8 +25,10 @@ if(array.length){
         )}
         </div>
     )
+} else if(filtered === 'empty'){
+    return (<h2>0 results</h2>)
 } else {
-    
+
     return(
         <h2>Search your recipes</h2>
     )

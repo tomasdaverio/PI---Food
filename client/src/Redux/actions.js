@@ -17,8 +17,8 @@ export const getRecipeById = (id) => {
 }
 
 
-export const orderCreator = (type) => {
-    return {type:type}
+export const orderCreator = (arg) => {
+    return {type:arg}
 }
 
 export const filterByDiet = (diets) => {

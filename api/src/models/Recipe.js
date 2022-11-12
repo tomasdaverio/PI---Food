@@ -40,8 +40,11 @@ module.exports = (sequelize) => {
       type: DataTypes.ARRAY(DataTypes.STRING),
       defaultValue :['Not specified']
     }
-
-  });
+  },
+  {
+    timestamps: false
+    }
+  );
 };
 
 
