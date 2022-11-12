@@ -4,7 +4,7 @@ import { orderCreator } from '../Redux/actions.js' ;
 import {ORDER_BY_HEALTHSCORE_ASC, ORDER_BY_HEALTHSCORE_DESC, ORDER_BY_AZ,ORDER_BY_ZA} from '../Redux/actiontypes.js' ;
 
 
- function Sorter (props){
+ function Menu (props){
    
     const dispatch = useDispatch() ;
 
@@ -26,30 +26,23 @@ import {ORDER_BY_HEALTHSCORE_ASC, ORDER_BY_HEALTHSCORE_DESC, ORDER_BY_AZ,ORDER_B
     return(
         <div>
 
-            <form onSubmit={submitHandler} onChange={changeHandler}>
-            <p><span>Select which to see first:</span><br></br>
-            <input type="radio" id="AZ" name="Order" value={ORDER_BY_AZ}></input>
-            <label htmlFor="AZ"> A-Z </label>
-            <input type="radio" id="ZA" name="Order" value={ORDER_BY_ZA} ></input>
-            <label htmlFor="ZA"> Z-A </label>
-        
-            <input type="radio" id="ASC" name="Order" value={ORDER_BY_HEALTHSCORE_ASC}></input>
-            <label htmlFor="ASC"> - Healthy </label>
-            <input type="radio" id="DESC" name="Order" value={ORDER_BY_HEALTHSCORE_DESC} ></input>
-            <label htmlFor="DESC"> + Healthy</label>
-            <input type="submit" value="Apply" disabled={(recipes.length && order) ? false : true}></input>
-            </p>
-            </form>	
+          <form onSubmit={submitHandler} onChange={changeHandler}>
+          <label for="order">Order From:</label>
+          <select name="order" id="order">
+          <option value={ORDER_BY_AZ}>A to Z</option>
+          <option value={ORDER_BY_ZA}>Z to A</option>
+          <option value={ORDER_BY_HEALTHSCORE_ASC}> More Healthy to Less Healthy</option>
+          <option value={ORDER_BY_HEALTHSCORE_DESC}>Less Healthy to More Healthy</option>
+          </select>
+          <input type="submit" value="Apply" disabled={(recipes.length && order) ? false : true} />
+          </form>
 
         </div>
         )
-    } else {
-        return(
-            null
-        )
-    }
+
+    } else { return(null) }
 }
 
-export default Sorter ;
+export default Menu ;
 
 
