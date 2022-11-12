@@ -7,6 +7,7 @@ import Nav from '../src/Components/Nav.jsx' ;
 import Form from '../src/Components/Form.jsx' ;
 import Sorter from '../src/Components/Sorter.jsx' ;
 import Filter from '../src/Components/Filter.jsx' ;
+import Page from '../src/Components/Page.jsx' ;
 
 function App() {
   return (
@@ -20,8 +21,17 @@ function App() {
       <SearchBar />
       <Sorter />
       <Filter />
-      <Cards />
+      <Page />
       </Route>
+
+      <Route exact path={'/:page'} >
+      <Sorter />
+      <Filter />
+      <Page />
+      </Route>
+
+      <Route exact path={'/:page'} component={Cards} />
+      <Route exact path={'/'} component={Cards} />
    
       <Route exact path={'/recipes/:id'} component={CardDetail} />
 
