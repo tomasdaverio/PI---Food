@@ -64,7 +64,8 @@ module.exports = {
             let asoc = dietArray.map(dietinst => recipe.setDiets(dietinst))
 
             await Promise.all(asoc) ;
-        }    
+        }
+        
         return recipe ;           
     },
     fngetRecipebyId : async (id) => {
@@ -91,10 +92,10 @@ module.exports = {
         } else {
             const search = await fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=26623d87ef014d3daeab072510ec275a`) ;
             precipe = await search.json() ;
-            const vegetarian = answer.vegetarian === 'true'  ? 'vegetarian' : 'no' ;
-            const vegan = answer.vegan === 'true'  ? 'vegan' : 'no' ;
-            const glutenFree = answer.glutenFree === 'true' ? 'gluten free' : 'no' ;
-            const dietsArray = [...new Set([...answer.diets,vegetarian,vegan,glutenFree])]
+            const vegetarian = precipe.vegetarian === 'true'  ? 'vegetarian' : 'no' ;
+            const vegan = precipe.vegan === 'true'  ? 'vegan' : 'no' ;
+            const glutenFree = precipe.glutenFree === 'true' ? 'gluten free' : 'no' ;
+            const dietsArray = [...new Set([...precipe.diets,vegetarian,vegan,glutenFree])]
             diets = dietsArray.filter( e => e !== 'no') ;  
         }
       
@@ -108,6 +109,7 @@ module.exports = {
             hscore: precipe.hscore ? precipe.hscore : precipe.healthScore,
             diets: diets
         }
+        console.log(recipe.summary,typeof recipe.summary)
         return recipe ;          
     },
     fngetRecipebyName : async (name) => {
@@ -126,8 +128,6 @@ module.exports = {
               }
             }
           })
-        
-       
         if(searchDB.length) {
          recipesDB = searchDB.map( recipe => {
             const obj = {
@@ -138,48 +138,44 @@ module.exports = {
                 dishTypes: recipe.dishTypes,
                 hscore: recipe.hscore          
             }
-          
             return obj ;  
         }) 
         
          await Promise.all(recipesDB)
        
         } else {
-            recipesDB = [] ;
-
-            
+            recipesDB = [] ;   
         }
-        return recipesDB ;
-        // }
-        // const search = await fetch('https://api.spoonacular.com/recipes/complexSearch?apiKey=26623d87ef014d3daeab072510ec275a&addRecipeInformation=true&number=100')
-        // const answer = await search.json() ;
-        // let recipesApp = answer.results.map( recipe => {   
+       
+        const search = await fetch('https://api.spoonacular.com/recipes/complexSearch?apiKey=26623d87ef014d3daeab072510ec275a&addRecipeInformation=true&number=100')
+        const answer = await search.json() ;
+        let recipesApp = answer.results.map( recipe => {   
                 
-        //   const vegetarian = recipe.vegetarian ? 'vegetarian' : 'no' ;
-        //   const vegan = recipe.vegan ? 'vegan' : 'no' ;
-        //   const glutenFree = recipe.glutenFree ? 'gluten free' : 'no' ;
-        //   const dietsArray = [...new Set([...recipe.diets,vegetarian,vegan,glutenFree])]
-        //   const finalArray = dietsArray.filter( e => e !== 'no') ;
-        //   const obj = {
-        //       id:recipe.id,
-        //       image: recipe.image,
-        //       name: recipe.title,
-        //       diets: finalArray,
-        //       dishTypes: recipe.dishTypes,
-        //       hscore: recipe.healthScore          
-        //   }
+          const vegetarian = recipe.vegetarian ? 'vegetarian' : 'no' ;
+          const vegan = recipe.vegan ? 'vegan' : 'no' ;
+          const glutenFree = recipe.glutenFree ? 'gluten free' : 'no' ;
+          const dietsArray = [...new Set([...recipe.diets,vegetarian,vegan,glutenFree])]
+          const finalArray = dietsArray.filter( e => e !== 'no') ;
+          const obj = {
+              id:recipe.id,
+              image: recipe.image,
+              name: recipe.title,
+              diets: finalArray,
+              dishTypes: recipe.dishTypes,
+              hscore: recipe.healthScore          
+          }
           
-        //   return obj ;  
-        // }) 
+          return obj ;  
+        }) 
         
-        // await Promise.all(recipesApp)
+        await Promise.all(recipesApp)
                      
-        // let recipesAPI = recipesApp.filter( recipe => recipe['name'].toLowerCase().includes(name))
+        let recipesAPI = recipesApp.filter( recipe => recipe['name'].toLowerCase().includes(name))
         
-        // //despues agregar el Set
-        // const finalAnswer = [recipesDB,recipesAPI].flat() ;
+        //despues agregar el Set
+        const finalAnswer = [recipesDB,recipesAPI].flat() ;
         
-        // return finalAnswer 
+        return finalAnswer ;
         
     }
 }
