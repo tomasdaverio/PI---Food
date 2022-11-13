@@ -9,7 +9,7 @@ const dietset = [
     'vegan',
     'paleolithic',
     'primal',
-    'whole 360',
+    'whole 30',
     'pescatarian',
     'ketogenic',
     'fodmap friendly',
@@ -46,7 +46,7 @@ if(recipes.length){
         <div>
             
           <form onSubmit={submitHandler} onChange={changeHandler}>
-          <label for="filter">Select a Diet Type: </label>
+          <label htmlFor="filter">Select a Diet Type: </label>
           <select name="filter" id="filter">
           {dietset.map( diet => { return (
             <option value={diet}>{diet}</option>

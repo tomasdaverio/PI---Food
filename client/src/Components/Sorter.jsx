@@ -27,7 +27,7 @@ import {ORDER_BY_HEALTHSCORE_ASC, ORDER_BY_HEALTHSCORE_DESC, ORDER_BY_AZ,ORDER_B
         <div>
 
           <form onSubmit={submitHandler} onChange={changeHandler}>
-          <label for="order">Order From:</label>
+          <label htmlFor="order">Order From:</label>
           <select name="order" id="order">
           <option value={ORDER_BY_AZ}>A to Z</option>
           <option value={ORDER_BY_ZA}>Z to A</option>

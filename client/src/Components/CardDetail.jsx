@@ -2,6 +2,7 @@ import React, { useEffect } from 'react' ;
 import { useDispatch,useSelector } from 'react-redux' ;
 import { getRecipeById } from '../Redux/actions.js' ;
 
+
 function CardDetail (props){
 
     const id = props.match.params.id ;
@@ -21,7 +22,7 @@ function CardDetail (props){
             <h4>Dish Types: {recipe.dishTypes ? recipe.dishTypes.map(dish => <span> - {dish} </span> ) : '' }</h4>
             <h5>Health Score = {recipe.hscore}</h5>
             <h6>Summary:</h6>
-            <p>{recipe.summary}</p>
+            <p>{recipe.summary ? recipe.summary: null}</p>
             <img src={recipe.image} alt='img'/>
             <div>{recipe.steps ? recipe.steps : null}</div>
             </div>
