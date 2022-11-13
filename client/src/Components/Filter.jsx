@@ -1,20 +1,7 @@
 import React, { useState } from 'react' ;
 import { useSelector , useDispatch } from 'react-redux' ;
 import { filterByDiet , removefilter } from '../Redux/actions.js' ;
-
-const dietset = [
-    'gluten free',
-    'dairy free',
-    'lacto ovo vegetarian',
-    'vegan',
-    'paleolithic',
-    'primal',
-    'whole 30',
-    'pescatarian',
-    'ketogenic',
-    'fodmap friendly',
-    'vegetarian'
-  ] 
+import { dietset } from '../resources/resources.js' ;
 
 function Filter(props){
 

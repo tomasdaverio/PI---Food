@@ -29,17 +29,9 @@ module.exports = (sequelize) => {
         }
       }
     },
-    steps: {
+    instructions: {
     type: DataTypes.STRING
     },
-    image: {
-      type: DataTypes.STRING,
-      defaultValue :'https://i.pinimg.com/474x/73/f6/6c/73f66cacdd98a6d9d2a735765b044eaf.jpg' 
-    },
-    dishTypes: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
-      defaultValue :['Not specified']
-    }
   },
   {
     timestamps: false

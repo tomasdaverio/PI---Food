@@ -1,20 +1,7 @@
 import React , { useState } from "react";
 import { addRecipe } from '../Redux/actions.js' ;
 import { useDispatch } from 'react-redux' ;
-
-const dietset = [
-    'gluten free',
-    'dairy free',
-    'lacto ovo vegetarian',
-    'vegan',
-    'paleolithic',
-    'primal',
-    'whole 30',
-    'pescatarian',
-    'ketogenic',
-    'fodmap friendly',
-    'vegetarian'
-  ] 
+import { dietset } from '../resources/resources.js' ;
 
 export const Form = (props) => {
 
@@ -25,19 +12,16 @@ export const Form = (props) => {
     name: "" ,
    summary: "" ,
     hscore: 50,
-    steps: "" ,
-    image: "",
-    dishTypes: [],
+    instructions: "" ,
     diets:[]
   })
 
   const [error,setError] = useState({
-    name: "" ,
-   summary: "" ,
-    hscore: "",
-    steps: "" ,
-    image: "",
-    dishTypes: []
+    name: "" , //que no este vacio, que no contenga simbolos.
+   summary: "" , //que no este vacio, que no contenga simbolos.
+    hscore: "", //que no este vacio, que este entre 0 y 100 aclarando el criterio.
+    instructions: "" ,
+    diets: ""
   })
 
   const validate = (input) => {
@@ -78,14 +62,8 @@ export const Form = (props) => {
                 <label htmlFor="hscore">Health Score: </label>
                 <input type="number" name="hscore" id="hscore" value={recipe.hscore} onChange={changeHandler}></input>
 
-                <label htmlFor="steps">Steps: </label>
-                <input type="text" name="steps" id="steps" value={recipe.steps} onChange={changeHandler}></input> 
-
-                <label htmlFor="image">URL image: </label>
-                <input type="text" name="image" id="image" value={recipe.image} onChange={changeHandler}></input> 
-
-                <label htmlFor="dishTypes">Dish Types: </label>
-                <input type="text" name="dishTypes" id="dishTypes" value={recipe.dishTypes} onChange={changeHandler}></input> 
+                <label htmlFor="instructions">Steps: </label>
+                <input type="text" name="instructions" id="instructions" value={recipe.instructions} onChange={changeHandler}></input> 
 
                 <fieldset onChange={changeHandler}>
                  <legend>Kind of diets related. If you are not sure or you are not professional in this subject, skip this step:</legend>

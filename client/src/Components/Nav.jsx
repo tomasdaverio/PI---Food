@@ -10,7 +10,7 @@ function Nav (){
             <img alt="img not loaded.." src={image} />
             <span><Link to={'/'}>Home</Link></span>
             <SearchBar />
-            <span><Link to={'/create'}>Create your own Recipe!</Link></span>
+            <span><Link to={'/recipe/create'}>Create your own Recipe!</Link></span>
             
         </div>
     )

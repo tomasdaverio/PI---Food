@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react' ;
 import { useDispatch,useSelector } from 'react-redux' ;
 import { getRecipeById } from '../Redux/actions.js' ;
+import { imgdefault } from '../resources/resources.js' ;
 
 
 function CardDetail (props){
@@ -23,8 +24,8 @@ function CardDetail (props){
             <h5>Health Score = {recipe.hscore}</h5>
             <h6>Summary:</h6>
             <p>{recipe.summary ? recipe.summary: null}</p>
-            <img src={recipe.image} alt='img'/>
-            <div>{recipe.steps ? recipe.steps : null}</div>
+            <img src={recipe.image ? recipe.image : imgdefault } alt='img'/>
+            <div><p>{recipe.instructions}</p></div>
             </div>
         )
 

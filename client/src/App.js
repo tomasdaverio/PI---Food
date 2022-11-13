@@ -1,6 +1,5 @@
 import './App.css';
 import { Route } from "react-router-dom";
-// import SearchBar from '../src/Components/SearchBar.jsx' ;
 import Cards from '../src/Components/Cards.jsx' ;
 import CardDetail from '../src/Components/CardDetail.jsx' ;
 import Nav from '../src/Components/Nav.jsx' ;
@@ -19,11 +18,12 @@ function App() {
       <Route path={'/'} component={Nav} />
 
       <Route exact path={'/'} >
-      {/* <SearchBar /> */}
       <Sorter />
       <Filter />
       <Page />
       </Route>
+
+      <Route exact path={'/'} component={Cards} />
 
       <Route exact path={'/:page'} >
       <Sorter />
@@ -32,11 +32,11 @@ function App() {
       </Route>
       
       <Route exact path={'/:page'} component={Cards} />
-      <Route exact path={'/'} component={Cards} />
+      
         
       <Route exact path={'/recipes/:id'} component={CardDetail} />
 
-      <Route exact path={'/create'} component={Form} />
+      <Route exact path={'/recipe/create'} component={Form} />
 
     </div>
   );

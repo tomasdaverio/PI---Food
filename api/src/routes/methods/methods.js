@@ -30,7 +30,7 @@ module.exports = {
         return dietsAnswer ;
           
     },
-    fnpostRecipe : async (name,summary,hscore,steps,diets) => {
+    fnpostRecipe : async (name,summary,hscore,instructions,diets) => {
 
         //Chequeo los campos obligatorios (name,summary) - aunque deberia validarse en el front:
         if(!name || !summary) throw new Error({message: 'Recipe cannot be created with lack of name or summary'}) ;
@@ -42,7 +42,7 @@ module.exports = {
             name,
             summary,
             hscore: hscore ? hscore : null,
-            steps: steps ? steps : null,
+            instructions: instructions ? instructions : null
         }
 
         const recipe = await Recipe.create(recipeObj);
@@ -54,9 +54,8 @@ module.exports = {
             const dietsObj = diets.map( diet => { return {['name']: diet} }) ;
 
             for(let i = 0 ; i < dietsObj.length ; i++){
-                console.log(dietsObj[i])
                 let [dietInstance,created] = await Diet.findOrCreate({where:dietsObj[i],defaults: dietsObj[i]}) ;
-                dietArray.push(dietInstance)
+                dietArray.push(dietInstance) ;
             }
 
             await Promise.all(dietArray) ;
@@ -103,13 +102,13 @@ module.exports = {
             id: precipe.id, 
             name: precipe.name ? precipe.name : precipe.title,
             summary: precipe.summary,
-            dishTypes: precipe.dishTypes,
-            steps: precipe.steps ? precipe.steps : precipe.instructions,
-            image: precipe.image,
+            dishTypes: precipe.dishTypes ? precipe.dishTypes : null,
+            instructions: precipe.instructions ? precipe.instructions : null,
+            image: precipe.image ? precipe.image : null,
             hscore: precipe.hscore ? precipe.hscore : precipe.healthScore,
             diets: diets
         }
-        console.log(recipe.summary,typeof recipe.summary)
+        
         return recipe ;          
     },
     fngetRecipebyName : async (name) => {
@@ -120,7 +119,7 @@ module.exports = {
         let recipesDB ;
         //deberia hacer mi propio metodo para que tenga lowercase ademas. Faltan diets ademas
         let searchDB = await Recipe.findAll({where: {name:{[Op.or]: { [Op.iLike]: `${name}%`, [Op.iLike]: `%${name}%`}}},
-           attributes: { exclude: ['steps','createdAt','updatedAt'] },
+           attributes: { exclude: ['instructions','createdAt','updatedAt'] },
             include: {
               model: Diet,
               through: {
@@ -132,10 +131,10 @@ module.exports = {
          recipesDB = searchDB.map( recipe => {
             const obj = {
                 id:recipe.id,
-                image: recipe.image,
+                image: null,
                 name: recipe.name,
                 diets: recipe.diets.map( diet => diet.name),
-                dishTypes: recipe.dishTypes,
+                dishTypes: null,
                 hscore: recipe.hscore          
             }
             return obj ;  

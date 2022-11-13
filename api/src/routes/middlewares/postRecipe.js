@@ -1,12 +1,12 @@
-const {fnpostRecipe} = require('../methods/methods.js') ;
+const { fnpostRecipe } = require('../methods/methods.js') ;
 
 module.exports = async (req,res) => {
 
-  const {name,summary,hscore,steps,diets} = req.body ;
+  const {name,summary,hscore,instructions,diets} = req.body ;
 
    try {
 
-    const recipe = await fnpostRecipe(name,summary,hscore,steps,diets) ;
+    const recipe = await fnpostRecipe(name,summary,hscore,instructions,diets) ;
     return res.json(recipe) ;
 
   } catch (error) {
@@ -24,6 +24,6 @@ const testigo = (req,res) =>{
 }
 
 
-const json = {"name":"ags","summary":"etcetc","hscore":4,"steps":"p","diets":["vegan"]}
+const json = {"name":"ags","summary":"etcetc","hscore":4,"instructions":"p","diets":["vegan"]}
 
 // http://localhost:3001/recipes 
