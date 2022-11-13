@@ -18,19 +18,15 @@ export const Form = (props) => {
   })
 
   const [error,setError] = useState({
-    name: "" , //que no este vacio, que no contenga simbolos.
-   summary: "" , //que no este vacio, que no contenga simbolos.
+    name: "is mandatory field" , //que no este vacio, que no contenga simbolos.
+   summary: "is mandatory field" , //que no este vacio, que no contenga simbolos.
     hscore: "", //que no este vacio, que este entre 0 y 100 aclarando el criterio.
-    instructions: "" ,
-    diets: ""
+    instructions: "" 
   })
 
   const validate = (input) => {
     const value = input.trim() ;
-    
-    if(! (/^[A-Z ]+$/i.test(value.name))) setError({...error,name:'Name is mandatory field. It can only be composed by letters.'})
-    if(! (/^[A-Z ]+$/i.test(value.summary))) setError({...error,summary:'Summary is mandatory field. It can only be composed by letters.'})
-   return error;
+    return /^[A-Z ]+$/i.test(value)
   }
 
   const changeHandler = (e) => {
@@ -41,8 +37,44 @@ export const Form = (props) => {
     if(property !== 'diets') setRecipe({...recipe,[property]:value}) ;
     if(property === 'diets' && checked === true) setRecipe({...recipe,diets:[...recipe.diets,value]}) ;
     if(property === 'diets' && checked === false) setRecipe({...recipe,diets: recipe.diets.filter( r => r !== value)}) ;
-    return
+   
     // aca deberia hacer la validacion y setear el error. y el boton submit estar ligado al error.
+
+    switch(property){
+      case 'name':
+        if (!value.length) {
+          setError({...error,[property]:`${property} is mandatory field`})
+        } else if(validate(value)){
+          setError({...error,[property]:""})
+        } else {
+          setError({...error,[property]:`${property} can only be composed by letters(a,b,..,z).`})
+        }
+        break;
+      case 'summary':
+        if (!value.length) {
+          setError({...error,[property]:`${property} is mandatory field`})
+        } else if(value.length<500){
+          setError({...error,[property]:""})
+        } else {
+          setError({...error,[property]:`${property} have a maximum length of 500 characters`})
+        }
+        break;
+      case 'instructions':
+        if (value.length<500){
+          setError({...error,[property]:""})
+        } else {
+          setError({...error,[property]:`${property} have a maximum length of 500 characters`})
+        }
+        break;
+      case 'hscore':
+        if (value >=0 && value <=100){
+          setError({...error,[property]:""})
+        } else {
+          setError({...error,[property]:`${property}  must be a number between 0 and 100.`})
+        }
+        break;
+    }
+   
   }
 
 
@@ -57,21 +89,27 @@ export const Form = (props) => {
          <form id='form' onSubmit={submitHandler}>
           
                 <label htmlFor="name">Recipe Name: </label>
+                <br></br>
                 <input type="text" name="name" id="name" value={recipe.name} onChange={changeHandler}></input>
                 <br></br>
                 <br></br>
                 <label htmlFor="summary">Summary: </label>
-                <input 
-                type="text" 
-                name="summary" 
-                id="summary" 
-                placeholder="Brief description"
-                value={recipe.summary} 
-                onChange={changeHandler}>
-                </input>
                 <br></br>
+                <textarea 
+                placeholder="Brief description of the recipe (Limit: 50 words)"
+                wrap="hard"
+                name="summary"
+                id="summary"
+                maxlenght='300'
+                form='form'
+                value={recipe.summary}
+                rows='10'
+                cols='50'
+                onChange={changeHandler}>
+                </textarea>
                 <br></br>
                 <label htmlFor="hscore">Health Score: </label>
+                <br></br>
                 <input 
                 type="number"
                 placeholder="0 to 100"
@@ -82,8 +120,7 @@ export const Form = (props) => {
                 </input>
                 <p>Health Score: 100 is the healthiest recipe and 0 is the least healthy</p>
                 <br></br>
-                <br></br>
-                <label htmlFor="instructions">Steps: </label>
+                <label htmlFor="instructions">Instructions: </label>
                 <br></br>
                 <textarea 
                 placeholder="Input the summarized instructions for preparing the recipe (Limit: 50 words)"
