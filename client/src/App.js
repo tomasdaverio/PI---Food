@@ -30,10 +30,10 @@ function App() {
       <Filter />
       <Page />
       </Route>
-
+      
       <Route exact path={'/:page'} component={Cards} />
       <Route exact path={'/'} component={Cards} />
-   
+        
       <Route exact path={'/recipes/:id'} component={CardDetail} />
 
       <Route exact path={'/create'} component={Form} />
