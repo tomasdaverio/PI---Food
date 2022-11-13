@@ -1,6 +1,8 @@
 import React from 'react' ;
 import Card from './Card.jsx' ;
 import { useSelector } from "react-redux" ;
+import style from '../Styles/Cards.module.css' ;
+import { Link } from 'react-router-dom' ;
 
 function Cards(props){
 
@@ -19,7 +21,7 @@ if(page>1) array = array.slice((page-1)*9,(array.length-((page-1)*9)) >=9 ? page
 if(array.length && filtered !== 'empty'){
     
     return(
-        <div>
+        <div className={style.Cardscontainer}>
         {array.map( recipe =>
         <Card 
         name = {recipe.name}
@@ -32,7 +34,13 @@ if(array.length && filtered !== 'empty'){
         </div>
     )
 } else if(filtered === 'empty'){
-    return (<h2>0 results</h2>)
+    return (
+    <>
+    <h2>0 results</h2>
+    <h3><Link to={'/'}>Go back Home</Link></h3>
+    </>
+    )
+
 } else {
 
     return(
