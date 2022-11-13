@@ -30,9 +30,7 @@ class SearchBar extends Component {
     render() {
         let {button,recipe} = this.state ;
         return (
-            <>
-            <ul>
-                <li>
+            <div>
                 <form onSubmit={this.handleSubmit}>
                 <label htmlFor="search">Recipe Searcher: </label>
                 <input 
@@ -52,13 +50,11 @@ class SearchBar extends Component {
                 Let's search!
                 </button>
                 </form>
-               </li>
-                <li>{ (recipe ? true : null) && button && "Not valid"}</li>
-                <li> { (recipe ? true : null) && button && "Allowed: (Aa-Zz) | Not Allowed: (0-9)(/%$&#]}{})"} </li>
-                <li>{ (recipe ? true : null) && button && "I.E: Valid: Rice, Hamburguer, etc. - Not valid: Rice8, Rice*"}</li>         
-            </ul>           
-            </>
-        )
+                <p>{ (recipe ? true : null) && button && "Not valid"}</p>
+                <p> { (recipe ? true : null) && button && "Allowed: (Aa-Zz) | Not Allowed: (0-9)(/%$&#]}{})"} </p>
+                <p>{ (recipe ? true : null) && button && "I.E: Valid: Rice, Hamburguer, etc. - Not valid: Rice8, Rice*"}</p>         
+            </div>           
+                )
     }
 }
 

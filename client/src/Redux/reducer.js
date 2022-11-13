@@ -39,25 +39,25 @@ const rootReducer = (state=initialState,action)=>{
         case ORDER_BY_HEALTHSCORE_ASC:
         
             return {
-                ...state, [array]: quickSort(state[array])
+                ...state, [array]: [...quickSort(state[array])]
             }
         
         case ORDER_BY_HEALTHSCORE_DESC:
             
             return {
-                ...state, [array]: (quickSort(state[array]).reverse())
+                ...state, [array]: quickSort(state[array]).reverse()
             }
 
         case ORDER_BY_AZ:
             
             return {
-                ...state, [array]: sortAZ(state[array])
+                ...state, [array]: [...sortAZ(state[array])]
             }
 
         case ORDER_BY_ZA:
             
             return {
-                ...state, [array]: sortZA(state[array])
+                ...state, [array]: [...sortZA(state[array])]
             }
 
         case FILTER_BY_DIET:
