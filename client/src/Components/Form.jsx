@@ -2,6 +2,7 @@ import React , { useState } from "react";
 import { addRecipe } from '../Redux/actions.js' ;
 import { useDispatch } from 'react-redux' ;
 import { dietset } from '../resources/resources.js' ;
+import style from '../Styles/Form.module.css' ;
 
 export const Form = (props) => {
 
@@ -51,22 +52,55 @@ export const Form = (props) => {
 }
 
   return (
-    <div>
-         <form onSubmit={submitHandler}>
-                <label htmlFor="name">Name: </label>
+    <div className={style.form}>
+      <h1>Create your own Recipe!</h1>
+         <form id='form' onSubmit={submitHandler}>
+          
+                <label htmlFor="name">Recipe Name: </label>
                 <input type="text" name="name" id="name" value={recipe.name} onChange={changeHandler}></input>
-
+                <br></br>
+                <br></br>
                 <label htmlFor="summary">Summary: </label>
-                <input type="text" name="summary" id="summary" value={recipe.summary} onChange={changeHandler}></input>
-
+                <input 
+                type="text" 
+                name="summary" 
+                id="summary" 
+                placeholder="Brief description"
+                value={recipe.summary} 
+                onChange={changeHandler}>
+                </input>
+                <br></br>
+                <br></br>
                 <label htmlFor="hscore">Health Score: </label>
-                <input type="number" name="hscore" id="hscore" value={recipe.hscore} onChange={changeHandler}></input>
-
+                <input 
+                type="number"
+                placeholder="0 to 100"
+                name="hscore"
+                id="hscore"
+                value={recipe.hscore} 
+                onChange={changeHandler}>
+                </input>
+                <p>Health Score: 100 is the healthiest recipe and 0 is the least healthy</p>
+                <br></br>
+                <br></br>
                 <label htmlFor="instructions">Steps: </label>
-                <input type="text" name="instructions" id="instructions" value={recipe.instructions} onChange={changeHandler}></input> 
-
+                <br></br>
+                <textarea 
+                placeholder="Input the summarized instructions for preparing the recipe (Limit: 50 words)"
+                wrap="hard"
+                name="instructions"
+                id="instructions"
+                maxlenght='300'
+                form='form'
+                value={recipe.instructions}
+                rows='10'
+                cols='50'
+                onChange={changeHandler}>
+                </textarea>
+                <br></br>
+                <br></br>
                 <fieldset onChange={changeHandler}>
-                 <legend>Kind of diets related. If you are not sure or you are not professional in this subject, skip this step:</legend>
+                 <legend>Kind of diets related. If you are not sure, skip this:</legend>
                  {dietset.map( diet => { return (
                    <div>
                    <input type="checkbox" id={diet} name="diets" value={diet} />
@@ -74,7 +108,7 @@ export const Form = (props) => {
                    </div>
                 )})}
                 </fieldset>
-
+                <br></br>
                 <button type="submit" disabled={recipe.name && recipe.summary }>Create</button>           
         
           </form>

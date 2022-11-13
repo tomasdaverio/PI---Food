@@ -1,0 +1,13 @@
+.form{
+    display:flex;
+    margin-top:40px;
+    flex-direction:column ;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    align-items:center;
+    font-size:18px;
+    color: rgb(210, 147, 11) ;
+    height: auto ;
+    width:40%;
+    border-radius: 5px 
+}
