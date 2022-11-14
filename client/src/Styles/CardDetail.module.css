@@ -1,0 +1,39 @@
+.carddetail{
+    border:3px solid #ebe7df ;
+    border-radius:1%; 
+    display: flex; 
+    flex-direction:column ; 
+    align-items:center; 
+    justify-content:space-between; 
+    background-color: #282c34; 
+    color: #ebe7dfe6; 
+    width:80%; 
+    height: auto;
+    padding: 0x 0px 20px 0px;
+    font-family:sans-serif;
+    margin-bottom:30px;
+    margin-top:30px;
+}
+
+.diets{
+    display:flex;
+    flex-direction: row ;
+    font-size: 25px ;
+    height: auto;
+    width:100%;
+    margin-bottom:0px;
+    margin-top:0px;
+    align-items:center;
+    justify-content:center;
+    padding: 0x 0px 0px 0px;
+   }
+
+li{
+    display:inline;
+    margin-right:25px;
+}
+
+li::before {
+    content: '•';
+    margin-right: 1ch;
+  }

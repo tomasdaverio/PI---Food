@@ -12,25 +12,27 @@
     padding: 0x 0px 10px 0px;
     font-family:sans-serif;
     margin-bottom:28px;
-    margin-right:10px;
+    margin-top:20px;
 }
 
 .button {
     background-color:#282c34;
-    font-weight:bold ; 
-    color:rgb(232, 184, 41);
-    font-size: 18px; 
-    border: 1px solid black; 
-    border-radius:10%;
-    font-family: Verdana;
+    border: 3px solid rgb(88, 33, 206); 
+    border-radius:1%;
     padding: 0px 5px 0px 5px;
     width:auto;
-    height:auto;
-       
+    height:auto
 }
 
-.button:hover {
+.link{
+    font-weight:bold ;
+    font-size: 16px;
+    font-family: Verdana;
+    color:rgb(88, 33, 206);
+    text-decoration: none;
+}
+
+.link:hover {
     color:white ; 
-    font-weight:lighter;
-  }
+   }
 

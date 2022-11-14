@@ -2,6 +2,7 @@ import React, { useEffect } from 'react' ;
 import { useDispatch,useSelector } from 'react-redux' ;
 import { getRecipeById } from '../Redux/actions.js' ;
 import { imgdefault } from '../resources/resources.js' ;
+import style from '../Styles/CardDetail.module.css' ;
 
 
 function CardDetail (props){
@@ -17,15 +18,26 @@ function CardDetail (props){
     if(recipe){
 
         return(
-            <div>
-            <h1>Recipe: {recipe.name}</h1>
-            <h3>Diets: {recipe.diets ? recipe.diets.map(diet => <span> - {diet} </span> ) : '' }</h3>
-            <h4>Dish Types: {recipe.dishTypes ? recipe.dishTypes.map(dish => <span> - {dish} </span> ) : '' }</h4>
-            <h5>Health Score = {recipe.hscore}</h5>
-            <h6>Summary:</h6>
-            <p>{recipe.summary ? recipe.summary: null}</p>
+            <div className={style.carddetail}>
+            <h1>{recipe.name}</h1>
             <img src={recipe.image ? recipe.image : imgdefault } alt='img'/>
-            <div><p>{recipe.instructions}</p></div>
+            <div className={style.diets}>
+            <h4>Diets:</h4>
+            <ul>{recipe.diets ? recipe.diets.map(diet => <li>{diet}</li> ) : '' }</ul>
+            </div>
+            <div className={style.diets}>
+            <h4>Dish Types:</h4>
+            <ul>{recipe.dishTypes ? recipe.dishTypes.map(dish => <li>{dish}</li> ) : '' }</ul>
+            </div>
+            <div className={style.diets}>
+            <h4>Health Score = {recipe.hscore}</h4>
+            </div>
+            <h3>Summary:</h3>
+            <p>{recipe.summary ? recipe.summary: null}</p>
+            <h3>Instructions:</h3>
+            <div>{recipe.instructions}</div>
+           
+
             </div>
         )
 
@@ -39,3 +51,4 @@ function CardDetail (props){
 }
 
 export default CardDetail ;
+
