@@ -30,6 +30,7 @@ import style from '../Styles/Sorter.module.css' ;
           <form onSubmit={submitHandler} onChange={changeHandler}>
           <label className={style.sep} htmlFor="order">Order From:</label>
           <select className={style.sep} name="order" id="order">
+          <option value={ORDER_BY_AZ} disabled selected hidden>Choose an Order</option>
           <option value={ORDER_BY_AZ}>A to Z</option>
           <option value={ORDER_BY_ZA}>Z to A</option>
           <option value={ORDER_BY_HEALTHSCORE_ASC}> More Healthy to Less Healthy</option>

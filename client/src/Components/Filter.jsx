@@ -36,6 +36,7 @@ if(recipes.length){
           <form onSubmit={submitHandler} onChange={changeHandler}>
           <label className={style.sep} htmlFor="filter">Select a Diet Type: </label>
           <select className={style.sep} name="filter" id="filter">
+          <option value="" disabled selected hidden>Choose a Diet</option>
           {dietset.map( diet => { return (
             <option value={diet}>{diet}</option>
           )})}
@@ -43,9 +44,9 @@ if(recipes.length){
           <input className={style.sep} type="submit" value="Apply" disabled={(recipes.length && filter) ? false : true}></input>
           </form>
             
-          <button className={style.sep} type='button' onClick={removefilt}>remove filter</button>
-
+          <button className={style.sep} type='button' onClick={removefilt}>Remove Filter</button>
         </div>
+       
     )
 } else {
     return(null)      
