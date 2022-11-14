@@ -65,7 +65,7 @@ module.exports = {
             await Promise.all(asoc) ;
         }
         
-        return recipe ;           
+        return {...recipe.dataValues,['diets']:diets} ;           
     },
     fngetRecipebyId : async (id) => {
 

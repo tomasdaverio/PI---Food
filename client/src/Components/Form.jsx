@@ -10,7 +10,7 @@ export const Form = (props) => {
   const [recipe,setRecipe] = useState({
     name: "" ,
    summary: "" ,
-    hscore: null,
+    hscore: "",
     instructions: "" ,
     diets:[]
   })
@@ -27,16 +27,23 @@ export const Form = (props) => {
     return /^[A-Z ]+$/i.test(value)
   }
 
+  const validateNum = (input) => {
+    const value = input.trim() ;
+    return /^[0-9 ]+$/i.test(value)
+  }
+
+
+
   const changeHandler = (e) => {
     const property = e.target.name ; 
-    const value = e.target.value ; 
+    const value = (property === 'hscore' ? Number(e.target.value) : e.target.value ); 
     const checked = e.target.checked ; 
         
     if(property !== 'diets') setRecipe({...recipe,[property]:value}) ;
     if(property === 'diets' && checked === true) setRecipe({...recipe,diets:[...recipe.diets,value]}) ;
     if(property === 'diets' && checked === false) setRecipe({...recipe,diets: recipe.diets.filter( r => r !== value)}) ;
    
-    // aca deberia hacer la validacion y setear el error. y el boton submit estar ligado al error.
+    // validaciones:
 
     switch(property){
       case 'name':
@@ -65,16 +72,15 @@ export const Form = (props) => {
         }
         break;
       case 'hscore':
-        if (value >=0 && value <=100 && typeof value === 'number'){
+        console.log(property,value,typeof value)
+        if (value >=0 && value <=100 && typeof value === 'number' && Number.isInteger(value)){
           setError({...error,[property]:""})
         } else {
-          setError({...error,[property]:`${property}  must be a number between 0 and 100.`})
+          setError({...error,[property]:`${property}  must be an entire number between 0 and 100.`})
         }
         break;
     }
-   
   }
-
 
   const submitHandler=(event)=>{
     event.preventDefault();
@@ -114,8 +120,8 @@ export const Form = (props) => {
                 <br></br>
                 <input 
                 className={error.hscore && style.errorborder}
-                type="number"
-                placeholder="0 to 100"
+                type="text"
+                placeholder="Entire from 0 to 100"
                 name="hscore"
                 id="hscore"
                 value={recipe.hscore} 
@@ -143,16 +149,18 @@ export const Form = (props) => {
                 <br></br>
                 <br></br>
                 <fieldset onChange={changeHandler}>
-                 <legend>Suitable Diets: If you are not sure, skip this step:</legend>
-                 {dietset.map( diet => { return (
-                   <div>
-                   <input type="checkbox" id={diet} name="diets" value={diet} />
-                   <label htmlFor={diet}>{diet}</label>
-                   </div>
+                <legend>Suitable Diets: If you are not sure, skip this step:</legend>
+                {dietset.map( diet => { return (
+                <div>
+                <input type="checkbox" id={diet} name="diets" value={diet} />
+                <label htmlFor={diet}>{diet}</label>
+                </div>
                 )})}
                 </fieldset>
                 <br></br>
-                <button className={style.button} type="submit" disabled={(!error.name && !error.summary) ? false : true }>Create</button>           
+                <button className={style.button} 
+                type="submit"
+                disabled={(!error.name && !error.summary && !error.hscore) && !error.instructions ? false : true }>Create</button>           
         
           </form>
     
