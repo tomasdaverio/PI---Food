@@ -1,18 +1,16 @@
 import React , { useState } from "react";
 import { addRecipe } from '../Redux/actions.js' ;
-import { useDispatch } from 'react-redux' ;
 import { dietset } from '../resources/resources.js' ;
 import style from '../Styles/Form.module.css' ;
-
+import { useDispatch } from 'react-redux' ;
 export const Form = (props) => {
 
-  const dispatch = useDispatch();
-  
+  const dispatch = useDispatch() ;
 
   const [recipe,setRecipe] = useState({
     name: "" ,
    summary: "" ,
-    hscore: 50,
+    hscore: null,
     instructions: "" ,
     diets:[]
   })
@@ -81,6 +79,7 @@ export const Form = (props) => {
   const submitHandler=(event)=>{
     event.preventDefault();
     dispatch(addRecipe(recipe)) ; 
+    alert('Recipe Created! :)')
 }
 
  return (

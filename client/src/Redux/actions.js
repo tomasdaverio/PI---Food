@@ -30,6 +30,20 @@ export const removefilter = () => {
 }
 
 export const addRecipe = (data) => {
-    return {type:ADD_NEW_RECIPE,payload:data}
+    return function (dispatch) {
+      return fetch('http://localhost:3001/recipes', {
+        method: 'POST', 
+        body: JSON.stringify(data), 
+        headers:{
+          'Content-Type': 'application/json'
+        }
+      })
+    .then (response => response.json())
+    .then ( data => {
+        console.log(data)
+     dispatch({type:ADD_NEW_RECIPE, payload:data})
+       
+    })
+    }
 }
 
