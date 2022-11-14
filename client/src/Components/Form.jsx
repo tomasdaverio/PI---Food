@@ -18,8 +18,8 @@ export const Form = (props) => {
   })
 
   const [error,setError] = useState({
-    name: "is mandatory field" , //que no este vacio, que no contenga simbolos.
-   summary: "is mandatory field" , //que no este vacio, que no contenga simbolos.
+    name: "" , //que no este vacio, que no contenga simbolos.
+   summary: "" , //que no este vacio, que no contenga simbolos.
     hscore: "", //que no este vacio, que este entre 0 y 100 aclarando el criterio.
     instructions: "" 
   })
@@ -53,21 +53,21 @@ export const Form = (props) => {
       case 'summary':
         if (!value.length) {
           setError({...error,[property]:`${property} is mandatory field`})
-        } else if(value.length<500){
+        } else if(value.length<=500){
           setError({...error,[property]:""})
         } else {
           setError({...error,[property]:`${property} have a maximum length of 500 characters`})
         }
         break;
       case 'instructions':
-        if (value.length<500){
+        if (value.length<=500){
           setError({...error,[property]:""})
         } else {
           setError({...error,[property]:`${property} have a maximum length of 500 characters`})
         }
         break;
       case 'hscore':
-        if (value >=0 && value <=100){
+        if (value >=0 && value <=100 && typeof value === 'number'){
           setError({...error,[property]:""})
         } else {
           setError({...error,[property]:`${property}  must be a number between 0 and 100.`})
@@ -83,34 +83,38 @@ export const Form = (props) => {
     dispatch(addRecipe(recipe)) ; 
 }
 
-  return (
+ return (
     <div className={style.form}>
       <h1>Create your own Recipe!</h1>
          <form id='form' onSubmit={submitHandler}>
           
                 <label htmlFor="name">Recipe Name: </label>
                 <br></br>
-                <input type="text" name="name" id="name" value={recipe.name} onChange={changeHandler}></input>
+                <input className={error.name && style.errorborder} type="text" name="name" id="name" value={recipe.name} onChange={changeHandler}></input>
+                <p className={style.error}>{error.name}</p>
                 <br></br>
                 <br></br>
                 <label htmlFor="summary">Summary: </label>
                 <br></br>
                 <textarea 
-                placeholder="Brief description of the recipe (Limit: 50 words)"
+                className={error.summary && style.errorborder}
+                placeholder="Brief description of the recipe (Limit: 500 characters)"
                 wrap="hard"
                 name="summary"
                 id="summary"
-                maxlenght='300'
+                maxlenght='500'
                 form='form'
                 value={recipe.summary}
                 rows='10'
                 cols='50'
                 onChange={changeHandler}>
                 </textarea>
+                <p className={style.error}>{error.summary}</p>
                 <br></br>
                 <label htmlFor="hscore">Health Score: </label>
                 <br></br>
                 <input 
+                className={error.hscore && style.errorborder}
                 type="number"
                 placeholder="0 to 100"
                 name="hscore"
@@ -119,25 +123,28 @@ export const Form = (props) => {
                 onChange={changeHandler}>
                 </input>
                 <p>Health Score: 100 is the healthiest recipe and 0 is the least healthy</p>
+                <p className={style.error}>{error.hscore}</p>
                 <br></br>
                 <label htmlFor="instructions">Instructions: </label>
                 <br></br>
                 <textarea 
-                placeholder="Input the summarized instructions for preparing the recipe (Limit: 50 words)"
+                className={error.instructions && style.errorborder}
+                placeholder="Input the summarized instructions for preparing the recipe (Limit: 500 characters)"
                 wrap="hard"
                 name="instructions"
                 id="instructions"
-                maxlenght='300'
+                maxlenght='500'
                 form='form'
                 value={recipe.instructions}
                 rows='10'
                 cols='50'
                 onChange={changeHandler}>
                 </textarea>
+                <p className={style.error}>{error.instructions}</p>
                 <br></br>
                 <br></br>
                 <fieldset onChange={changeHandler}>
-                 <legend>Kind of diets related. If you are not sure, skip this:</legend>
+                 <legend>Suitable Diets: If you are not sure, skip this step:</legend>
                  {dietset.map( diet => { return (
                    <div>
                    <input type="checkbox" id={diet} name="diets" value={diet} />
@@ -146,7 +153,7 @@ export const Form = (props) => {
                 )})}
                 </fieldset>
                 <br></br>
-                <button type="submit" disabled={recipe.name && recipe.summary }>Create</button>           
+                <button className={style.button} type="submit" disabled={(!error.name && !error.summary) ? false : true }>Create</button>           
         
           </form>
     
