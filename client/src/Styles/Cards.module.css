@@ -1,14 +1,30 @@
 .Cardscontainer{
-    background-color: rgba(186, 184, 158, 0.822);
+   
     border-radius:2px;
     display:flex;
     flex-wrap:wrap;
     flex-direction:row; 
     justify-content:space-around; 
     align-items:space-around;
-    padding: 150px 40px 150px 40px; 
+    padding: 60px 40px 60px 40px; 
     margin: 15px 15px 15px 15px;
-    width: 80%;
+    width: 85%;
     height:auto
     
 }
+
+.sortfilt{
+        margin-top:20px;
+        display:flex;
+        flex-direction:row;
+        justify-content:space-between;
+        align-items:center;
+        font-size:14px;
+        color: whitesmoke ;
+        height: 60px ;
+        width:75%;
+        border-radius: 5px;
+        border: 1px solid white ; 
+    
+}
+

@@ -2,6 +2,7 @@ import React, { useState } from 'react' ;
 import { useSelector , useDispatch } from 'react-redux' ;
 import { filterByDiet , removefilter } from '../Redux/actions.js' ;
 import { dietset } from '../resources/resources.js' ;
+import style from '../Styles/Filter.module.css' ;
 
 function Filter(props){
 
@@ -30,19 +31,19 @@ const removefilt = (event) => {
 
 if(recipes.length){
     return (
-        <div>
+        <div className={style.filt}>
             
           <form onSubmit={submitHandler} onChange={changeHandler}>
-          <label htmlFor="filter">Select a Diet Type: </label>
-          <select name="filter" id="filter">
+          <label className={style.sep} htmlFor="filter">Select a Diet Type: </label>
+          <select className={style.sep} name="filter" id="filter">
           {dietset.map( diet => { return (
             <option value={diet}>{diet}</option>
           )})}
           </select>
-          <input type="submit" value="Apply" disabled={(recipes.length && filter) ? false : true}></input>
+          <input className={style.sep} type="submit" value="Apply" disabled={(recipes.length && filter) ? false : true}></input>
           </form>
             
-          <button type='button' onClick={removefilt}>remove filter</button>
+          <button className={style.sep} type='button' onClick={removefilt}>remove filter</button>
 
         </div>
     )

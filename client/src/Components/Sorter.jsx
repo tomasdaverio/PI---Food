@@ -2,6 +2,7 @@ import React, { useState } from 'react' ;
 import { useDispatch , useSelector } from 'react-redux' ;
 import { orderCreator } from '../Redux/actions.js' ;
 import {ORDER_BY_HEALTHSCORE_ASC, ORDER_BY_HEALTHSCORE_DESC, ORDER_BY_AZ,ORDER_BY_ZA} from '../Redux/actiontypes.js' ;
+import style from '../Styles/Sorter.module.css' ;
 
 
  function Sorter (props){
@@ -24,17 +25,17 @@ import {ORDER_BY_HEALTHSCORE_ASC, ORDER_BY_HEALTHSCORE_DESC, ORDER_BY_AZ,ORDER_B
     if(recipes.length){
 
     return(
-        <div>
+        <div className={style.sort}>
 
           <form onSubmit={submitHandler} onChange={changeHandler}>
-          <label htmlFor="order">Order From:</label>
-          <select name="order" id="order">
+          <label className={style.sep} htmlFor="order">Order From:</label>
+          <select className={style.sep} name="order" id="order">
           <option value={ORDER_BY_AZ}>A to Z</option>
           <option value={ORDER_BY_ZA}>Z to A</option>
           <option value={ORDER_BY_HEALTHSCORE_ASC}> More Healthy to Less Healthy</option>
           <option value={ORDER_BY_HEALTHSCORE_DESC}>Less Healthy to More Healthy</option>
           </select>
-          <input type="submit" value="Apply" disabled={(recipes.length && order) ? false : true} />
+          <input className={style.sep} type="submit" value="Apply" disabled={(recipes.length && order) ? false : true} />
           </form>
 
         </div>

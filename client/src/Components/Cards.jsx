@@ -3,6 +3,9 @@ import Card from './Card.jsx' ;
 import { useSelector } from "react-redux" ;
 import style from '../Styles/Cards.module.css' ;
 import { Link } from 'react-router-dom' ;
+import Sorter from './Sorter.jsx' ;
+import Filter from './Filter.jsx' ;
+import Page from './Page.jsx' ;
 
 function Cards(props){
 
@@ -21,6 +24,11 @@ if(page>1) array = array.slice((page-1)*9,(array.length-((page-1)*9)) >=9 ? page
 if(array.length && filtered !== 'empty'){
     
     return(
+        <>
+        <div className={style.sortfilt}>
+        <Sorter />
+        <Filter />  
+        </div>
         <div className={style.Cardscontainer}>
         {array.map( recipe =>
         <Card 
@@ -32,6 +40,10 @@ if(array.length && filtered !== 'empty'){
         />
         )}
         </div>
+        <div>
+        <Page />
+        </div>
+        </>
     )
 } else if(filtered === 'empty'){
     return (

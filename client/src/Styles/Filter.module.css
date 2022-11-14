@@ -1,0 +1,13 @@
+
+.filt{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-around;
+    align-items:center;
+    width:38%;
+    margin-right:2px;
+}
+
+.sep{
+    margin-left:3px;
+}

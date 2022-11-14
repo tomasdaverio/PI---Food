@@ -17,19 +17,19 @@ function App() {
 
       <Route path={'/'} component={Nav} />
 
-      <Route exact path={'/'} >
+      {/* <Route exact path={'/'} >
       <Sorter />
       <Filter />
       <Page />
-      </Route>
+      </Route> */}
 
       <Route exact path={'/'} component={Cards} />
 
-      <Route exact path={'/:page'} >
+      {/* <Route exact path={'/:page'} >
       <Sorter />
       <Filter />
       <Page />
-      </Route>
+      </Route> */}
       
       <Route exact path={'/:page'} component={Cards} />
       
