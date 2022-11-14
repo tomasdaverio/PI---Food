@@ -6,9 +6,11 @@ import { imgdefault } from '../resources/resources.js' ;
 function Card (props){
 return(
     <div className={style.cardcontainer}>
-        <h2>{props.name}</h2>
-        <h3>Diets:{props.diets ? props.diets.map(diet => <span>- {diet} </span> ) : <span>-</span>}</h3>
         <img alt='img' src={props.image ? props.image : imgdefault}/>
+        <h2>{props.name}</h2>
+        <h4>Diets:</h4>
+        <p>{props.diets ? props.diets.map(diet => <span> - {diet} </span> ) : null}</p>
+        
         <p className={style.button}><Link to={`/recipes/${props.id}`}>View Details</Link></p>  
         
     </div>

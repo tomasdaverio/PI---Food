@@ -1,6 +1,7 @@
 import React from 'react' ;
 import { useSelector } from 'react-redux' ;
-import { Link } from 'react-router-dom' ;
+import { NavLink } from 'react-router-dom' ;
+import style from '../Styles/Page.module.css' ;
 
 function Page(props){
 
@@ -17,17 +18,18 @@ function Page(props){
     if(pages>1 && filtered !== 'empty'){
         var dev = [] ;
         for(let i=1;i<pages+1;i++){
-            dev.push(<span><Link to={`/${i}`}>{i}</Link></span>)
+            dev.push(
+            <span className={style.sep}><NavLink to={`/${i}`} className={isActive => (!isActive ? style.navno : style.navyes)}>{i}</NavLink></span>)
         }    
       return (
-         <footer>
+         <div className={style.page}>
         {dev.map( page => page)}  
-        </footer>
+        </div>
       )
     } else if(pages === 1 && filtered !== 'empty'){
       return (
         <footer>
-       <span><Link to={`/1`}>1</Link></span> 
+       <span><NavLink to={`/1`}>1</NavLink></span> 
        </footer>
      )
       

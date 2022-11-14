@@ -1,17 +1,18 @@
 .cardcontainer{
-    border:1px solid orange ;
+    border:3px solid #ebe7df ;
     border-radius:1%; 
     display: flex; 
     flex-direction:column ; 
     align-items:center; 
     justify-content:space-between; 
     background-color: #282c34; 
-    color: rgba(255, 174, 0, 0.797); 
-    width:320px; 
+    color: #ebe7dfe6; 
+    width:312px; 
     height: 550px;
-    padding: 10px 25px 10px 25px;
+    padding: 0x 0px 10px 0px;
     font-family:sans-serif;
-    margin-bottom:10px;
+    margin-bottom:28px;
+    margin-right:10px;
 }
 
 .button {

@@ -29,6 +29,7 @@ if(array.length && filtered !== 'empty'){
         <Sorter />
         <Filter />  
         </div>
+        <Page />
         <div className={style.Cardscontainer}>
         {array.map( recipe =>
         <Card 

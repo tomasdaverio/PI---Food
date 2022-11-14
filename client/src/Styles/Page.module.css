@@ -1,0 +1,20 @@
+
+.sep{
+    margin-left:6px;
+    color:white;
+ 
+}
+
+.page{
+    margin-top: 20px;
+    height: 25px;
+    margin-bottom:5px;
+}
+
+.navno{
+    color:white;
+}
+
+.navyes{
+    color:orange;
+}

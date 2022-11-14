@@ -2,12 +2,28 @@
     display:flex;
     justify-content:space-between;
     align-items:center;
-   
     font-size:18px;
     font-weight: bold;
     color: black ;
     background-color: #ebe7df ;
     height: 50px ;
     width:100%;
-    border-radius: 5px 
+    border-radius: 5px ;
+    padding:5px 0px 5px 0px
+}
+
+.main{
+    font-size:25px;
+    color:rgb(32, 27, 18) ;
+    text-decoration: none;  
+    margin-left:20px;
+    margin-right:100px;
+}
+
+.main:hover{
+    font-size:25px;
+    color:rgb(75, 21, 192) ;
+    text-decoration: none;  
+    margin-left:20px;
+    margin-right:100px;
 }
