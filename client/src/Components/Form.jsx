@@ -37,7 +37,7 @@ export const Form = (props) => {
 
   const changeHandler = (e) => {
     const property = e.target.name ; 
-    const value = (property === 'hscore' ? Number(e.target.value) : e.target.value ); 
+    const value = e.target.value ; 
     const checked = e.target.checked ; 
         
     if(property !== 'diets') setRecipe({...recipe,[property]:value}) ;
@@ -73,7 +73,7 @@ export const Form = (props) => {
         }
         break;
       case 'hscore':
-        console.log(property,value,typeof value)
+        value = Number(value)
         if (value >=0 && value <=100 && typeof value === 'number' && Number.isInteger(value)){
           setError({...error,[property]:""})
         } else {
