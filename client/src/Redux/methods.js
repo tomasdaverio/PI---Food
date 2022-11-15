@@ -16,6 +16,22 @@ export const quickSort=(array) =>{
     return array;
     }
 
+export const quickSortDESC =(array) =>{
+ 
+    if(array.length>1){
+      let right = [];
+      let left = [];
+      let pivote = [array[0]];
+    for(let i=1 ; i<array.length ; i++){
+      if(array[i].hscore>array[0].hscore){
+            left.push(array[i]);
+      } else { right.push(array[i]);
+      }
+    } array = (quickSortDESC(left).concat(pivote)).concat(quickSortDESC(right))
+    } 
+    return array;
+    }
+
 
 export const sortAZ = (array) => {
   let result = array.sort(function (a, b) {

@@ -44,7 +44,7 @@ if(recipes.length){
           </select>
           <input className={style.sep} type="submit" value="Apply" disabled={(recipes.length && filter) ? false : true}></input>
           </form>
-          <NavLink to={'/app'}><span id='elementDI'></span></NavLink> 
+          <NavLink to={'/app/1'}><span id='elementDI'></span></NavLink> 
           <button className={style.sep} type='button' onClick={removefilt}>Remove Filter</button>
         </div>
        

@@ -4,15 +4,16 @@
     display: flex; 
     flex-direction:column ; 
     align-items:center; 
-    justify-content:space-between; 
+    justify-content:flex-start; 
     background-color: #282c34; 
     color: #ebe7dfe6; 
     width:312px; 
     height: 550px;
-    padding: 0x 0px 10px 0px;
+    padding: 0x 0px 0px 0px;
     font-family:sans-serif;
-    margin-bottom:28px;
-    margin-top:20px;
+    margin: 3% ;
+    position: relative;
+    
 }
 
 .button {
@@ -35,4 +36,44 @@
 .link:hover {
     color:white ; 
    }
+
+
+.list{
+    display:flex;
+    height: auto;
+    margin-top: 1px;
+    margin-bottom:1px;
+    padding-top: 0px;
+    padding-bottom:0px;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content: center;
+    width: 90%
+}
+
+.title{
+    color: #ebe7dfe6;
+    font-family:sans-serif;
+    text-decoration:none; 
+}
+.title:hover{
+    color: #ebe7dfe6;
+    font-family:sans-serif;
+    text-decoration:underline; 
+}
+
+.text{
+    margin-right:10px;
+    margin-left:10px;
+}
+
+h6{
+    position:absolute;
+    bottom: 0;
+}
+
+p{
+    position:absolute;
+    top: 390px;  
+}
 

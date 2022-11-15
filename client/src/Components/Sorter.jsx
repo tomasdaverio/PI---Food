@@ -38,7 +38,7 @@ import { NavLink } from 'react-router-dom' ;
           </select>
          <input className={style.sep} type="submit" value="Apply" disabled={(recipes.length && order) ? false : true} />
           </form>
-         <NavLink to={'/app'}><span id='elementID'></span></NavLink>
+         <NavLink to={'/app/1'}><span id='elementID'></span></NavLink>
         </div>
         )
 

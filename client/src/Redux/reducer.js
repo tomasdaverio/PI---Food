@@ -2,7 +2,7 @@ import { GET_RECIPE_BY_NAME , GET_RECIPE_BY_ID , ADD_NEW_RECIPE,
     ORDER_BY_HEALTHSCORE_ASC, ORDER_BY_HEALTHSCORE_DESC, ORDER_BY_AZ,
     ORDER_BY_ZA, FILTER_BY_DIET, REMOVE_FILTER } from './actiontypes.js' ;
 
-import { quickSort, sortAZ , sortZA } from './methods.js' ;
+import { quickSort, sortAZ , sortZA , quickSortDESC } from './methods.js' ;
 
 const initialState = {
     recipes: [],
@@ -21,7 +21,7 @@ const rootReducer = (state=initialState,action)=>{
         case GET_RECIPE_BY_NAME:
             
             return {
-                ...state, recipes:action.payload
+                recipes:action.payload, recipeDetail:{} , filteredRecipes: []
             }
 
         case GET_RECIPE_BY_ID:
@@ -45,7 +45,7 @@ const rootReducer = (state=initialState,action)=>{
         case ORDER_BY_HEALTHSCORE_DESC:
             
             return {
-                ...state, [array]: quickSort(state[array]).reverse()
+                ...state, [array]: [...quickSortDESC(state[array])]
             }
 
         case ORDER_BY_AZ:
