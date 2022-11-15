@@ -3,6 +3,7 @@ import { addRecipe } from '../Redux/actions.js' ;
 import { dietset } from '../resources/resources.js' ;
 import style from '../Styles/Form.module.css' ;
 import { useDispatch } from 'react-redux' ;
+
 export const Form = (props) => {
 
   const dispatch = useDispatch() ;
@@ -116,6 +117,7 @@ export const Form = (props) => {
                 </textarea>
                 <p className={style.error}>{error.summary}</p>
                 <br></br>
+                <br></br>
                 <label htmlFor="hscore">Health Score: </label>
                 <br></br>
                 <input 
@@ -127,7 +129,7 @@ export const Form = (props) => {
                 value={recipe.hscore} 
                 onChange={changeHandler}>
                 </input>
-                <p>Health Score: 100 is the healthiest recipe and 0 is the least healthy</p>
+                <br></br>
                 <p className={style.error}>{error.hscore}</p>
                 <br></br>
                 <label htmlFor="instructions">Instructions: </label>

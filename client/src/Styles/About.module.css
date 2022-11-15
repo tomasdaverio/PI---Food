@@ -17,20 +17,13 @@
 
 .diets{
     display:flex;
-    flex-direction: row ;
+    flex-direction: column ;
     font-size: 25px ;
     height: auto;
     width:100%;
     margin-bottom:0px;
     margin-top:0px;
     align-items:center;
-    justify-content:center;
+    justify-content:space-around;
     padding: 0x 0px 0px 0px;
    }
-
-
-
-li::before {
-    content: '•';
-    margin-right: 1ch;
-  }

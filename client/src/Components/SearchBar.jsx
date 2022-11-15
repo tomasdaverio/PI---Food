@@ -1,6 +1,7 @@
 import React, { Component } from 'react' ;
 import { getRecipeByName } from '../Redux/actions.js' ;
 import { connect } from "react-redux";
+import style from '../Styles/SearchBar.module.css'
 
 class SearchBar extends Component {
     constructor(props){
@@ -30,9 +31,9 @@ class SearchBar extends Component {
     render() {
         let {button,recipe} = this.state ;
         return (
-            <div>
+            <div className={style.search}>
                 <form onSubmit={this.handleSubmit}>
-                <label htmlFor="search">Recipe Searcher: </label>
+                <label htmlFor="search">Recipe Search: </label>
                 <input 
                 name="search" 
                 type="text" 
@@ -50,9 +51,11 @@ class SearchBar extends Component {
                 Let's search!
                 </button>
                 </form>
+                <div className={style.errors}>
                 <p>{ (recipe ? true : null) && button && "Not valid"}</p>
-                <p> { (recipe ? true : null) && button && "Allowed: (Aa-Zz) | Not Allowed: (0-9)(/%$&#]}{})"} </p>
-                <p>{ (recipe ? true : null) && button && "I.E: Valid: Rice, Hamburguer, etc. - Not valid: Rice8, Rice*"}</p>         
+                <p> { (recipe ? true : null) && button && "Only letters: Aa-Zz | Not Allowed: (0-9)(/%$&#]}{})"} </p>
+                <p>{ (recipe ? true : null) && button && "I.E: Valid: Rice, Hamburguer, etc. - Not valid: Rice8, Rice*"}</p>
+                </div> 
             </div>           
                 )
     }

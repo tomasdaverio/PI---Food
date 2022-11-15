@@ -14,14 +14,14 @@
 }
 
 .sortfilt{
-        margin-top:20px;
+        margin-top:10px;
         display:flex;
         flex-direction:row;
         justify-content:space-between;
         align-items:center;
         font-size:14px;
         color: whitesmoke ;
-        height: 60px ;
+        height: 80px ;
         width:75%;
         border-radius: 5px;
         border: 1px solid white ; 

@@ -1,16 +1,18 @@
 import React from 'react' ;
 import { NavLink } from 'react-router-dom' ;
 import style from '../Styles/Nav.module.css' ;
-import SearchBar from './SearchBar' ;
-import image from '../resources/img/logoHenry.png' ;
+import SearchBar from './SearchBar.jsx' ;
+
 
 function Nav (){
     return(
         <div className={style.navbar}>
-            <img alt="img not loaded.." src={image} />
+
+            <span><NavLink to={'/app/recipe/about'} className={style.main}>About</NavLink></span> 
             <span><NavLink to={'/app'} className={style.main}>Home</NavLink></span>
-            <SearchBar />
-            <span><NavLink to={'/app/recipe/create'} className={style.main}>Create your own Recipe!</NavLink></span>
+                 
+            {/* <span><NavLink to={'/app/recipe/about'} className={style.main}>Help</NavLink></span> */}
+            <span><NavLink to={'/app/recipe/create'} className={style.main}>Create your Recipe!</NavLink></span>
             
         </div>
     )
