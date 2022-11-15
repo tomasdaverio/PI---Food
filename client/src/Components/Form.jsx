@@ -94,14 +94,19 @@ export const Form = (props) => {
       <h1>Create your own Recipe!</h1>
          <form id='form' onSubmit={submitHandler}>
           
-                <label htmlFor="name">Recipe Name: </label>
-                <br></br>
-                <input className={error.name && style.errorborder} type="text" name="name" id="name" value={recipe.name} onChange={changeHandler}></input>
-                <p className={style.error}>{error.name}</p>
-                <br></br>
-                <br></br>
-                <label htmlFor="summary">Summary: </label>
-                <br></br>
+                <label htmlFor="name">Recipe Name: 
+                <br />
+                <input className={error.name && style.errorborder} type="text" name="name" id="name" value={recipe.name} onChange={changeHandler} />
+                </label>
+                <br />
+                <text className={style.error}>{error.name}</text>
+
+                <br />
+                <br />
+
+                <label htmlFor="summary">Summary: 
+                <br />
+                <br />
                 <textarea 
                 className={error.summary && style.errorborder}
                 placeholder="Brief description of the recipe (Limit: 500 characters)"
@@ -113,13 +118,18 @@ export const Form = (props) => {
                 value={recipe.summary}
                 rows='10'
                 cols='50'
-                onChange={changeHandler}>
+                onChange={changeHandler}
+                >
                 </textarea>
-                <p className={style.error}>{error.summary}</p>
-                <br></br>
-                <br></br>
-                <label htmlFor="hscore">Health Score: </label>
-                <br></br>
+                </label>
+                <br />
+                <text className={style.error}>{error.summary}</text>
+                
+                <br />
+                <br />
+
+                <label htmlFor="hscore">Health Score: 
+                <br />
                 <input 
                 className={error.hscore && style.errorborder}
                 type="text"
@@ -127,13 +137,18 @@ export const Form = (props) => {
                 name="hscore"
                 id="hscore"
                 value={recipe.hscore} 
-                onChange={changeHandler}>
-                </input>
-                <br></br>
-                <p className={style.error}>{error.hscore}</p>
-                <br></br>
-                <label htmlFor="instructions">Instructions: </label>
-                <br></br>
+                onChange={changeHandler}
+                />
+                </label>
+                <br />
+                <text className={style.error}>{error.hscore}</text>
+
+                <br />
+                <br />
+
+                <label htmlFor="instructions" > Instructions: 
+                <br />
+                <br />
                 <textarea 
                 className={error.instructions && style.errorborder}
                 placeholder="Input the summarized instructions for preparing the recipe (Limit: 500 characters)"
@@ -147,9 +162,13 @@ export const Form = (props) => {
                 cols='50'
                 onChange={changeHandler}>
                 </textarea>
-                <p className={style.error}>{error.instructions}</p>
-                <br></br>
-                <br></br>
+                </label>
+                <br />
+                <text className={style.error}>{error.instructions}</text>
+
+                <br />
+                <br />
+
                 <fieldset onChange={changeHandler}>
                 <legend>Suitable Diets: If you are not sure, skip this step:</legend>
                 {dietset.map( diet => { return (
@@ -159,7 +178,8 @@ export const Form = (props) => {
                 </div>
                 )})}
                 </fieldset>
-                <br></br>
+                
+                <br />
                 <button className={style.button} 
                 type="submit"
                 disabled={(!error.name && !error.summary && !error.hscore) && !error.instructions ? false : true }>Create</button>           
