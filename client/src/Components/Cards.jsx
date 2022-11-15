@@ -50,7 +50,7 @@ if(array.length && filtered !== 'empty'){
     return (
     <>
     <h2>0 results</h2>
-    <h3><Link to={'/'}>Go back Home</Link></h3>
+    <h3><Link to={'/app'}>Go back Home</Link></h3>
     </>
     )
 

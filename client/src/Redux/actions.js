@@ -18,14 +18,17 @@ export const getRecipeById = (id) => {
 
 
 export const orderCreator = (arg) => {
+    document.getElementById('elementID').click();
     return {type:arg}
 }
 
 export const filterByDiet = (diets) => {
+    document.getElementById('elementDI').click();
     return {type:FILTER_BY_DIET,payload:diets}
 }
 
 export const removefilter = () => {
+    document.getElementById('elementDI').click();
     return {type:REMOVE_FILTER}
 }
 
@@ -45,5 +48,9 @@ export const addRecipe = (data) => {
        
     })
     }
+}
+
+const clickSimulate = () => {
+    document.getElementById('elementID').click();
 }
 

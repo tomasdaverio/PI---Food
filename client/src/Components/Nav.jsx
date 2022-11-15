@@ -8,9 +8,9 @@ function Nav (){
     return(
         <div className={style.navbar}>
             <img alt="img not loaded.." src={image} />
-            <span><NavLink to={'/'} className={style.main}>Home</NavLink></span>
+            <span><NavLink to={'/app'} className={style.main}>Home</NavLink></span>
             <SearchBar />
-            <span><NavLink to={'/recipe/create'} className={style.main}>Create your own Recipe!</NavLink></span>
+            <span><NavLink to={'/app/recipe/create'} className={style.main}>Create your own Recipe!</NavLink></span>
             
         </div>
     )

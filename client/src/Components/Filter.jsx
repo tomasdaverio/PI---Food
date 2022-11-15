@@ -3,6 +3,7 @@ import { useSelector , useDispatch } from 'react-redux' ;
 import { filterByDiet , removefilter } from '../Redux/actions.js' ;
 import { dietset } from '../resources/resources.js' ;
 import style from '../Styles/Filter.module.css' ;
+import { NavLink } from 'react-router-dom' ;
 
 function Filter(props){
 
@@ -43,7 +44,7 @@ if(recipes.length){
           </select>
           <input className={style.sep} type="submit" value="Apply" disabled={(recipes.length && filter) ? false : true}></input>
           </form>
-            
+          <NavLink to={'/app'}><span id='elementDI'></span></NavLink> 
           <button className={style.sep} type='button' onClick={removefilt}>Remove Filter</button>
         </div>
        

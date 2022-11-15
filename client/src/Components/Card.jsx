@@ -11,7 +11,7 @@ return(
         <h4>Diets:</h4>
         {props.diets ? props.diets.map(diet => <span> - {diet} </span> ) : null}
         
-        <p><NavLink to={`/recipes/${props.id}`} className={style.link}>Click for details!</NavLink></p>  
+        <p><NavLink to={`/app/recipes/${props.id}`} className={style.link}>Click for details!</NavLink></p>  
         
     </div>
 )

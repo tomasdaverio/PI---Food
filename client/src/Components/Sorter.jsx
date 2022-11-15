@@ -3,7 +3,7 @@ import { useDispatch , useSelector } from 'react-redux' ;
 import { orderCreator } from '../Redux/actions.js' ;
 import {ORDER_BY_HEALTHSCORE_ASC, ORDER_BY_HEALTHSCORE_DESC, ORDER_BY_AZ,ORDER_BY_ZA} from '../Redux/actiontypes.js' ;
 import style from '../Styles/Sorter.module.css' ;
-
+import { NavLink } from 'react-router-dom' ;
 
  function Sorter (props){
    
@@ -33,12 +33,12 @@ import style from '../Styles/Sorter.module.css' ;
           <option value={ORDER_BY_AZ} disabled selected hidden>Choose an Order</option>
           <option value={ORDER_BY_AZ}>A to Z</option>
           <option value={ORDER_BY_ZA}>Z to A</option>
-          <option value={ORDER_BY_HEALTHSCORE_ASC}> More Healthy to Less Healthy</option>
-          <option value={ORDER_BY_HEALTHSCORE_DESC}>Less Healthy to More Healthy</option>
+          <option value={ORDER_BY_HEALTHSCORE_DESC}> More Healthy to Less Healthy</option>
+          <option value={ORDER_BY_HEALTHSCORE_ASC}>Less Healthy to More Healthy</option>
           </select>
-          <input className={style.sep} type="submit" value="Apply" disabled={(recipes.length && order) ? false : true} />
+         <input className={style.sep} type="submit" value="Apply" disabled={(recipes.length && order) ? false : true} />
           </form>
-
+         <NavLink to={'/app'}><span id='elementID'></span></NavLink>
         </div>
         )
 
