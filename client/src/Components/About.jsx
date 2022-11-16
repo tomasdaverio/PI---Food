@@ -13,7 +13,7 @@ function About (){
     <ul>
         <li key='1'>Find recipes searching by name</li>
         <li key='2'>Order and filter them according to diferent criteria</li>
-        <li key='3'>Create your own recipe</li>
+        
     </ul>
 
     
