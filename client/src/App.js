@@ -14,8 +14,6 @@ function App() {
   return (
     <div className="App">
 
-      <h1>Henry Food</h1>
-
       <Route exact path={'/'} component={Landing} />
 
       <Route path={'/app'} component={Nav} />

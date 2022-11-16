@@ -1,18 +1,21 @@
 .carddetail{
     border:3px solid #ebe7df ;
-    border-radius:1%; 
+    border-radius:18px; 
     display: flex; 
     flex-direction:column ; 
     align-items:center; 
     justify-content:space-between; 
-    background-color: #282c34; 
-    color: #ebe7dfe6; 
-    width:80%; 
+    background-color:#ebe7df ;
+    color: #282c34; 
+    width:45%; 
     height: auto;
-    padding: 0x 0px 20px 0px;
+    padding: 0x 0px 0px 0px;
     font-family:sans-serif;
     margin-bottom:30px;
-    margin-top:30px;
+    margin-top:100px;
+    opacity: 85%;
+    font-size: 20px ;
+   
 }
 
 .diets{
@@ -26,4 +29,14 @@
     align-items:center;
     justify-content:space-around;
     padding: 0x 0px 0px 0px;
+   }
+
+   body{
+    
+    background-image: url("../resources/img/about2.jpg");
+    
+   }
+
+   .carddetail.h1{
+    color:rgb(220, 73, 20) ;
    }
