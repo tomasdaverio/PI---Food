@@ -13,6 +13,8 @@
     font-family:sans-serif;
     margin: 3% ;
     position: relative;
+
+    
     
 }
 
@@ -72,8 +74,8 @@ h6{
     bottom: 0;
 }
 
-p{
-    position:absolute;
-    top: 390px;  
-}
 
+p.list{
+    position:absolute;
+    top: 390px; 
+}

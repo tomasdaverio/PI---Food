@@ -21,6 +21,7 @@ function CardDetail (props){
             <div className={style.carddetail}>
             <h1>{recipe.name}</h1>
             <img src={recipe.image ? recipe.image : imgdefault } alt='img'/>
+            <div className={style.row}>
             <div className={style.diets}>
             <h4>Diets:</h4>
             <ul>{recipe.diets ? recipe.diets.map(diet => <li>{diet}</li> ) : '' }</ul>
@@ -31,7 +32,10 @@ function CardDetail (props){
             </div>
             <div className={style.diets}>
             <h4>Health Score = {recipe.hscore}</h4>
+            <p>Health Score: This an entire number from 0 to 100 which represents the grade of cover of nutrients of the recipe. The higher, the healthier.</p>
             </div>
+            </div>
+            
             <h3>Summary:</h3>
             <p>{recipe.summary ? recipe.summary: null}</p>
             <h3>Instructions:</h3>
