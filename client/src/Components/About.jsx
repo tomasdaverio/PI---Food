@@ -8,10 +8,10 @@ function About (){
     <div className={style.carddetail}>
     <h1>Welcome to Food Recipe API!</h1>
     <img src={img} alt='img'/>
-    <div className={style.diets}>
+    
     <h4>Here you will be able to:</h4>
   
-    </div>
+    
     <div className={style.diets}>
     <h3>Enjoy it!</h3>
     
@@ -22,3 +22,5 @@ function About (){
     </div>
     )
 }
+
+export default About ;
