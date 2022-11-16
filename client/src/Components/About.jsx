@@ -10,7 +10,11 @@ function About (){
     <img src={img} alt='img'/>
     
     <h4>Here you will be able to:</h4>
-  
+    <ul>
+        <li>Find recipes searching by name</li>
+        <li>Order and filter them according to diferent criteria</li>
+        <li>Create your own recipe</li>
+    </ul>
     
     <div className={style.diets}>
     <h3>Enjoy it!</h3>
