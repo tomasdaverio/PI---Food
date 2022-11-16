@@ -11,14 +11,16 @@ function About (){
     
     <h4>Here you will be able to:</h4>
     <ul>
-        <li>Find recipes searching by name</li>
-        <li>Order and filter them according to diferent criteria</li>
-        <li>Create your own recipe</li>
+        <li key='1'>Find recipes searching by name</li>
+        <li key='2'>Order and filter them according to diferent criteria</li>
+        <li key='3'>Create your own recipe</li>
     </ul>
+
+    
     
     <div className={style.diets}>
     <h3>Enjoy it!</h3>
-    
+    <text>la concha de la lora</text>
     </div>
     
     <h4>Health Score: This an entire number from 0 to 100 which represents the grade of cover of nutrients of the recipe. The higher, the healthier. </h4>
