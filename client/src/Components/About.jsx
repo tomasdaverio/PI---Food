@@ -22,7 +22,7 @@ function About (){
     <h3>Enjoy it!</h3>
     <text>la concha de la lora</text>
     </div>
-    
+    <p>asfsaf</p>
     <h4>Health Score: This an entire number from 0 to 100 which represents the grade of cover of nutrients of the recipe. The higher, the healthier. </h4>
         
     </div>
