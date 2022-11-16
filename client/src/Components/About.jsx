@@ -11,8 +11,8 @@ function About (){
     
     <h4>Here you will be able to:</h4>
     <ul>
-        <li key='1'>Find recipes searching by name</li>
-        <li key='2'>Order and filter them according to diferent criteria</li>
+        <li >Find recipes searching by name</li>
+        <li >Order and filter them according to diferent criteria</li>
         
     </ul>
 
