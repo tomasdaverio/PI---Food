@@ -9,6 +9,7 @@ import About from '../src/Components/About.jsx' ;
 import SearchBar from '../src/Components/SearchBar.jsx' ;
 
 
+
 function App() {
   return (
     <div className="App">
@@ -20,6 +21,7 @@ function App() {
       <Route path={'/app'} component={Nav} />
       <Route exact path={'/app'} component={SearchBar} />
       <Route exact path={'/app'} component={Cards} />
+      
       
       <Route exact path={'/app/:page'} component={SearchBar} />
       <Route exact path={'/app/:page'} component={Cards} />
