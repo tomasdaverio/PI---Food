@@ -28,7 +28,10 @@ if(filtered === 'empty') {
         return (
         <>
         <h1>0 results for your search</h1>
-        <button onClick={()=>dispatch(removefilter())} >Click to clean filters and return to Home</button>
+        <button onClick={()=>{
+            dispatch(removefilter()) ;
+            document.getElementById('elementCL').click();
+            }} >Click to clean filters and return to Home</button>
         <NavLink to={'/app/1'}><span id='elementCL'></span></NavLink>
         </>
         )

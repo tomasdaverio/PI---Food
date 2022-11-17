@@ -24,6 +24,11 @@ const submitHandler = (event) => {
     return ;
 }
 
+const cleanFilt = () => {
+    dispatch(removefilter()) ;
+    document.getElementById('elementDI').click() ;
+}
+
 if(recipes.length){
     return (
         <div className={style.filt}>
@@ -39,7 +44,7 @@ if(recipes.length){
           <input className={style.sep} type="submit" value="Apply" disabled={(recipes.length && filter) ? false : true}></input>
           </form>
           <NavLink to={'/app/1'}><span id='elementDI'></span></NavLink> 
-          <button className={style.sep} type='button' onClick={()=>dispatch(removefilter())}>Remove Filter</button>
+          <button className={style.sep} type='button' onClick={cleanFilt}>Remove Filter</button>
         </div>
        
     )

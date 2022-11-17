@@ -61,6 +61,5 @@ export const filterByDiet = (diets) => {
 }
 
 export const removefilter = () => {
-    document.getElementById('elementDI').click();
     return {type:REMOVE_FILTER}
 }
