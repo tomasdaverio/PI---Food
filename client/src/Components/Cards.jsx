@@ -62,15 +62,12 @@ if(filtered === 'empty') {
 } else {
 
     return(
-        <h2>0 results</h2>
+        <div className={style.cardsresults}>
+        <h3>0 results</h3>
+        </div>
     )
                
 }
 }
 
 export default Cards ;
-
-// recipes : [] - filtered : []
-// recipes : [full] - filtered : []
-// recipes : [full] - filtered : [full]
-// recipes : [full] - filtered : [empty]

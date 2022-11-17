@@ -34,8 +34,13 @@
     
    }
 
-   .ul.diets{
-   justify-content:flex-start
+   li.diets{
+   justify-content:flex-start ;
+   padding-left: 0px ;
+   padding-right: 0px ;
+   margin-left:0px ;
+   margin-right:0px
+
    }
 
   
@@ -47,12 +52,20 @@
     justify-content:center
    }
 
-   .diets.p{
+   .p.diets{
     flex-wrap:wrap;
    }
 
    .cardsummary{
-    width:80%
+    width:80% ;
+    justify-content:space-between;
+    background-color:rgba(0, 0, 0, 0.503);
+    border: 1px solid #ebe7dfe6;
+    border-radius:2px;
+   }
+
+   a.cardsummary{
+    color:orange
    }
 
    .cardp{

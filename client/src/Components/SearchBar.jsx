@@ -52,9 +52,8 @@ class SearchBar extends Component {
                 </button>
                 </form>
                 <div className={style.errors}>
-                <p>{ (recipe ? true : null) && button && "Not valid"}</p>
-                <p> { (recipe ? true : null) && button && "Only letters: Aa-Zz | Not Allowed: (0-9)(/%$&#]}{})"} </p>
-                <p>{ (recipe ? true : null) && button && "I.E: Valid: Rice, Hamburguer, etc. - Not valid: Rice8, Rice*"}</p>
+                <p>{ recipe && button && "Not valid. Only letters: Aa-Zz"}</p>
+                
                 </div> 
             </div>           
                 )

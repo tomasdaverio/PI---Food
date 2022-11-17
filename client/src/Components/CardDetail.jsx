@@ -30,7 +30,6 @@ function CardDetail (props){
             <img src={recipe.image ? recipe.image : imgdefault } alt='img'/>
             <h3>Summary:</h3>
             <div className={style.cardsummary} dangerouslySetInnerHTML={{__html: recipe.summary}} />
-        {/* {recipe.summary ? recipe.summary: null} */}
             <div className={style.row}>
             <div className={style.diets}>
             <h4>Diets:</h4>
@@ -49,9 +48,6 @@ function CardDetail (props){
             <h3>Instructions:</h3>
             <div dangerouslySetInnerHTML={{__html: recipe.instructions}} />
             </div>
-            {/* <div>{recipe.instructions}</div> */}
-           
-
             </div>
         )
 

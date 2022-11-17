@@ -29,3 +29,20 @@
     
 }
 
+.cardsresults{
+    margin-top: 1px;
+    margin-bottom: 20px;
+    padding-top:0px;
+    padding-bottom:0px;
+    font-size: 20px ;
+    font-weight: bold;
+    width: 20% ;
+    border: 2px solid rgb(236, 231, 223) ;
+    color:antiquewhite ;
+    border-radius: 5px ;
+    height: auto ;
+    background-color:#222428cc ;
+    align-items:center ;
+    justify-content:space-around
+}
+
