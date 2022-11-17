@@ -17,9 +17,8 @@ function CardDetail (props){
 
     
   // For Cleaning the last presentation:
-    useEffect(()=> { return ()=> {
-      return  recipe = {name:'',image: imgdefault, diets:[],dishTypes:[], hscore: null, summary:'', instructions:''} ;
-    } 
+    useEffect(()=> { return ()=>
+       recipe = {name:'',image: imgdefault, diets:[],dishTypes:[], hscore: null, summary:'', instructions:''} ;
     }) ;
 
     if(recipe){
@@ -37,15 +36,15 @@ function CardDetail (props){
             </div>
             <div className={style.diets}>
             <h4>Dish Types:</h4>
-            <ul>{recipe.dishTypes ? recipe.dishTypes.map(dish => <li>{dish}</li> ) : '' }</ul>
+            <ul>{recipe.dishTypes ? recipe.dishTypes.map(dish => <li>{dish.trim()}</li> ) : '' }</ul>
             </div>
             <div className={style.diets}>
             <h4>Health Score = {recipe.hscore}</h4>
-            <p className={style.cardp}><b>Health Score</b>: What is it? It's a number that measure the grade of cover of nutrients of the recipe. The higher, the healthier.</p>
+            <p><b>Health Score</b> is a number that measure the grade of cover of nutrients of the recipe. The higher, the healthier.</p>
             </div>
             </div>
             <div className={style.cardinstructions}>          
-            <h3>Instructions:</h3>
+            <h2>Instructions:</h2>
             <div dangerouslySetInnerHTML={{__html: recipe.instructions}} />
             </div>
             </div>
