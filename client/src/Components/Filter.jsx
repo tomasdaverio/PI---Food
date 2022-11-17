@@ -26,7 +26,6 @@ const submitHandler = (event) => {
 
 const removefilt = (event) => {
     event.preventDefault();
-    console.log(removefilter())
     dispatch(removefilter()) ;
 }
 

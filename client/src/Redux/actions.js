@@ -28,7 +28,7 @@ export const filterByDiet = (diets) => {
 }
 
 export const removefilter = () => {
-    document.getElementById('elementDI').click();
+    document.getElementById('elementCL').click();
     return {type:REMOVE_FILTER}
 }
 

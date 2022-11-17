@@ -2,11 +2,11 @@ import React from 'react' ;
 import Card from './Card.jsx' ;
 import { useSelector , useDispatch } from "react-redux" ;
 import style from '../Styles/Cards.module.css' ;
-import { Link } from 'react-router-dom' ;
 import Sorter from './Sorter.jsx' ;
 import Filter from './Filter.jsx' ;
 import Page from './Page.jsx' ;
 import { removefilter } from '../Redux/actions.js' ;
+import { NavLink } from 'react-router-dom' ;
 
 function Cards(props){
 
@@ -16,7 +16,7 @@ let filtered = useSelector( (state) => state.filteredRecipes) ;
 const dispatch = useDispatch() ;
 
 let array = [] ;
-filtered.length  ?  array = filtered  : array = recipes ;
+(filtered.length && filtered !== 'empty')  ?  array = filtered  : array = recipes ;
 
 let page = (props.match.params.page === undefined ? undefined : Number(props.match.params.page)) ;
 
@@ -28,7 +28,8 @@ if(filtered === 'empty') {
         return (
         <>
         <h1>0 results for your search</h1>
-        <button onClick={dispatch(removefilter())} >Click to clean filters and return to Home</button>
+        <button onClick={()=>dispatch(removefilter())} >Click to clean filters and return to Home</button>
+        <NavLink to={'/app/1'}><span id='elementCL'></span></NavLink>
         </>
         )
         
@@ -69,3 +70,7 @@ if(filtered === 'empty') {
 
 export default Cards ;
 
+// recipes : [] - filtered : []
+// recipes : [full] - filtered : []
+// recipes : [full] - filtered : [full]
+// recipes : [full] - filtered : [empty]
