@@ -1,7 +1,7 @@
 import React, { Component } from 'react' ;
-import { getRecipeByName } from '../Redux/actions.js' ;
+import { getRecipeByName } from '../../Redux/actions.js' ;
 import { connect } from "react-redux";
-import style from '../Styles/SearchBar.module.css'
+import style from './SearchBar.module.css'
 
 class SearchBar extends Component {
     constructor(props){

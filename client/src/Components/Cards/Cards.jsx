@@ -1,11 +1,11 @@
 import React from 'react' ;
-import Card from './Card.jsx' ;
+import Card from '../Card/Card.jsx' ;
 import { useSelector , useDispatch } from "react-redux" ;
-import style from '../Styles/Cards.module.css' ;
-import Sorter from './Sorter.jsx' ;
-import Filter from './Filter.jsx' ;
-import Page from './Page.jsx' ;
-import { removefilter } from '../Redux/actions.js' ;
+import style from './Cards.module.css' ;
+import Sorter from '../Sorter/Sorter.jsx' ;
+import Filter from '../Filter/Filter.jsx' ;
+import Page from '../Page/Page.jsx' ;
+import { removefilter } from '../../Redux/actions.js' ;
 import { NavLink } from 'react-router-dom' ;
 
 function Cards(props){

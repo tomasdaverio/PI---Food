@@ -1,7 +1,7 @@
 import React from 'react' ;
 import { useSelector } from 'react-redux' ;
 import { NavLink } from 'react-router-dom' ;
-import style from '../Styles/Page.module.css' ;
+import style from './Page.module.css' ;
 
 function Page(props){
 

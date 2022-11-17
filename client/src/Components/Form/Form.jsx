@@ -1,7 +1,7 @@
 import React , { useState } from "react";
-import { addRecipe } from '../Redux/actions.js' ;
-import { dietset } from '../resources/resources.js' ;
-import style from '../Styles/Form.module.css' ;
+import { addRecipe } from '../../Redux/actions.js' ;
+import { dietset } from '../../resources/resources.js' ;
+import style from './Form.module.css' ;
 import { useDispatch } from 'react-redux' ;
 
 export const Form = (props) => {

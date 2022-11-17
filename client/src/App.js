@@ -1,12 +1,12 @@
 import './App.css';
 import { Route } from "react-router-dom";
-import Cards from '../src/Components/Cards.jsx' ;
-import CardDetail from '../src/Components/CardDetail.jsx' ;
-import Nav from '../src/Components/Nav.jsx' ;
-import Form from '../src/Components/Form.jsx' ;
-import Landing from '../src/Components/Landing.jsx' ;
-import About from '../src/Components/About.jsx' ;
-import SearchBar from '../src/Components/SearchBar.jsx' ;
+import Cards from '../src/Components/Cards/Cards.jsx' ;
+import CardDetail from '../src/Components/CardDetail/CardDetail.jsx' ;
+import Nav from '../src/Components/Nav/Nav.jsx' ;
+import Form from '../src/Components/Form/Form.jsx' ;
+import Landing from '../src/Components/Landing/Landing.jsx' ;
+import About from '../src/Components/About/About.jsx' ;
+import SearchBar from '../src/Components/SearchBar/SearchBar.jsx' ;
 
 
 

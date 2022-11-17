@@ -1,10 +1,8 @@
 import React from 'react' ;
-import style from '../Styles/Landing.module.css' ;
+import style from './Landing.module.css' ;
 import { NavLink } from 'react-router-dom' ;
 
 function Landing (){
-
-    //about seria aplicacion creada con sequelize postgres node react redux html css
 
     return(
     

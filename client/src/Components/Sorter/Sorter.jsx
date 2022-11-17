@@ -1,8 +1,8 @@
 import React, { useState } from 'react' ;
 import { useDispatch , useSelector } from 'react-redux' ;
-import { orderCreator } from '../Redux/actions.js' ;
-import {ORDER_BY_HEALTHSCORE_ASC, ORDER_BY_HEALTHSCORE_DESC, ORDER_BY_AZ,ORDER_BY_ZA} from '../Redux/actiontypes.js' ;
-import style from '../Styles/Sorter.module.css' ;
+import { orderCreator } from '../../Redux/actions.js' ;
+import {ORDER_BY_HEALTHSCORE_ASC, ORDER_BY_HEALTHSCORE_DESC, ORDER_BY_AZ,ORDER_BY_ZA} from '../../Redux/actiontypes.js' ;
+import style from './Sorter.module.css' ;
 import { NavLink } from 'react-router-dom' ;
 
  function Sorter (props){

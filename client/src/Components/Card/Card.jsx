@@ -1,7 +1,7 @@
 import React from 'react' ;
-import { NavLink , Link } from 'react-router-dom' ;
-import style from '../Styles/Card.module.css' ;
-import { imgdefault } from '../resources/resources.js' ;
+import { NavLink } from 'react-router-dom' ;
+import style from './Card.module.css' ;
+import { imgdefault } from '../../resources/resources.js' ;
 
 function Card (props){
 return(

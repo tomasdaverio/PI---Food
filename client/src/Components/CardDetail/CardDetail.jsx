@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react' ;
-import { useDispatch,useSelector } from 'react-redux' ;
-import { getRecipeById } from '../Redux/actions.js' ;
-import { imgdefault } from '../resources/resources.js' ;
-import style from '../Styles/CardDetail.module.css' ;
+import { useDispatch , useSelector } from 'react-redux' ;
+import { getRecipeById } from '../../Redux/actions.js' ;
+import { imgdefault } from '../../resources/resources.js' ;
+import style from './CardDetail.module.css' ;
 
 
 function CardDetail (props){
