@@ -95,7 +95,7 @@ module.exports = {
             const vegan = precipe.vegan === 'true'  ? 'vegan' : 'no' ;
             const glutenFree = precipe.glutenFree === 'true' ? 'gluten free' : 'no' ;
             const dietsArray = [...new Set([...precipe.diets,vegetarian,vegan,glutenFree])]
-            diets = dietsArray.filter( e => e !== 'no') ;  
+            diets = dietsArray.filter( e => e !== 'no') ; 
         }
       
         recipe = {

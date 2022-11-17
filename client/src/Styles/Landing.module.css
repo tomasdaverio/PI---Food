@@ -37,6 +37,15 @@
     
    }
 
-   .carddetail.h1{
-    color:rgb(220, 73, 20) ;
+    
+
+   .landinglink{
+    color: rgba(240, 11, 61, 0.99);
+    text-decoration:underline ;
+   }
+
+   .landinglink:hover{
+    color: rgba(11, 240, 202, 0.99);
+    text-decoration:none ;
+    background-color:#282c34
    }

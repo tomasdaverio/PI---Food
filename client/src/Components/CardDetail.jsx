@@ -9,11 +9,18 @@ function CardDetail (props){
 
     const id = props.match.params.id ;
 
-    const recipe = useSelector((state) => state.recipeDetail) ;
+    let recipe = useSelector((state) => state.recipeDetail) ;
 
     const dispatch = useDispatch() ;
 
     useEffect(()=> dispatch(getRecipeById(id)),[id]) ;
+
+    
+  // For Cleaning the last presentation:
+    useEffect(()=> { return ()=> {
+      return  recipe = {name:'',image: imgdefault, diets:[],dishTypes:[], hscore: null, summary:'', instructions:''} ;
+    } 
+    }) ;
 
     if(recipe){
 
@@ -21,6 +28,9 @@ function CardDetail (props){
             <div className={style.carddetail}>
             <h1>{recipe.name}</h1>
             <img src={recipe.image ? recipe.image : imgdefault } alt='img'/>
+            <h3>Summary:</h3>
+            <div className={style.cardsummary} dangerouslySetInnerHTML={{__html: recipe.summary}} />
+        {/* {recipe.summary ? recipe.summary: null} */}
             <div className={style.row}>
             <div className={style.diets}>
             <h4>Diets:</h4>
@@ -32,14 +42,14 @@ function CardDetail (props){
             </div>
             <div className={style.diets}>
             <h4>Health Score = {recipe.hscore}</h4>
-            <p>Health Score: This an entire number from 0 to 100 which represents the grade of cover of nutrients of the recipe. The higher, the healthier.</p>
+            <p className={style.cardp}><b>Health Score</b>: What is it? It's a number that measure the grade of cover of nutrients of the recipe. The higher, the healthier.</p>
             </div>
             </div>
-            
-            <h3>Summary:</h3>
-            <p>{recipe.summary ? recipe.summary: null}</p>
+            <div className={style.cardinstructions}>          
             <h3>Instructions:</h3>
-            <div>{recipe.instructions}</div>
+            <div dangerouslySetInnerHTML={{__html: recipe.instructions}} />
+            </div>
+            {/* <div>{recipe.instructions}</div> */}
            
 
             </div>

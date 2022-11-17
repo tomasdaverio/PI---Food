@@ -10,8 +10,7 @@ function Landing (){
     
     <div className={style.carddetail}>
     <h1>Welcome !</h1>
-    <h1> <NavLink to={'/app'}>Henry Food</NavLink></h1>
-    
+    <h1> <NavLink to={'/app'} className={style.landinglink}>Henry Food</NavLink></h1>
     <h4>Here you will be able to:</h4>
     <ul>
         <li >Find all kind of recipes searching by type of diet or health score</li>
