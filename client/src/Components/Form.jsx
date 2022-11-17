@@ -87,7 +87,6 @@ export const Form = (props) => {
       return alert('Missing or wrong fields.Check the red messages in each field');
     } else {
       dispatch(addRecipe(recipe)) ; 
-      alert('Recipe Created! :)') ;
 }}
 
  return (
@@ -100,10 +99,7 @@ export const Form = (props) => {
                 <input className={error.name && style.errorborder} type="text" name="name" id="name" value={recipe.name} onChange={changeHandler} />
                 </label>
                 <br />
-                <text className={style.error}>{error.name}</text>
-
-                <br />
-                <br />
+                <p className={style.error}>{error.name}</p>
 
                 <label className={style.label} htmlFor="summary">Summary: 
                 <br />
@@ -124,12 +120,9 @@ export const Form = (props) => {
                 </textarea>
                 </label>
                 <br />
-                <text className={style.error}>{error.summary}</text>
-                
-                <br />
-                <br />
-
-                <label className={style.label} htmlFor="hscore">Health Score: 
+                <p className={style.error}>{error.summary}</p>
+              
+               <label className={style.label} htmlFor="hscore">Health Score: 
                 <br />
                 <p>(The higher, the healthier)</p>
                 <input 
@@ -143,9 +136,8 @@ export const Form = (props) => {
                 />
                 </label>
                 <br />
-                <text className={style.error}>{error.hscore}</text>
+                <p className={style.error}>{error.hscore}</p>
 
-                <br />
                 <br />
 
                 <label className={style.label} htmlFor="instructions" > Instructions: 
@@ -166,9 +158,8 @@ export const Form = (props) => {
                 </textarea>
                 </label>
                 <br />
-                <text className={style.error}>{error.instructions}</text>
+                <p className={style.error}>{error.instructions}</p>
 
-                <br />
                 <br />
 
                 <fieldset onChange={changeHandler}>

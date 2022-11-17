@@ -32,25 +32,46 @@ export const removefilter = () => {
     return {type:REMOVE_FILTER}
 }
 
+
 export const addRecipe = (data) => {
-    return function (dispatch) {
-      return fetch('http://localhost:3001/recipes', {
+   return async (dispatch) => {
+    try{
+        const response = await fetch('http://localhost:3001/recipes', {
         method: 'POST', 
         body: JSON.stringify(data), 
         headers:{
           'Content-Type': 'application/json'
         }
-      })
-    .then (response => response.json())
-    .then ( data => {
-        console.log(data)
-     dispatch({type:ADD_NEW_RECIPE, payload:data})
-       
-    })
+        })
+        const pay = await response.json() ;
+        dispatch({type:ADD_NEW_RECIPE, payload:pay});
+        alert('Recipe Created Succesfully :)')
+   
+    } catch (error) {
+        console.log(error.message);
+        alert('Recipe Creation Error :(') ;
     }
+   }
 }
 
-const clickSimulate = () => {
-    document.getElementById('elementID').click();
-}
+
+
+// export const addRecipe = (data) => {
+//     return function (dispatch) {
+//       return fetch('http://localhost:3001/recipes', {
+//         method: 'POST', 
+//         body: JSON.stringify(data), 
+//         headers:{
+//           'Content-Type': 'application/json'
+//         }
+//       })
+//     .then (response => response.json())
+//     .then ( data => {
+//         console.log(data)
+//      dispatch({type:ADD_NEW_RECIPE, payload:data})
+       
+//     })
+//     }
+// }
+
 
