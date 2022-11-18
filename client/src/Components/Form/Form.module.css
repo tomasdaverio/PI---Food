@@ -19,7 +19,6 @@
 
 .button {
     background-color:rgb(232, 184, 41);
-    font-weight:bold ; 
     color:#282c34;
     font-size: 18px; 
     border: 1px solid black; 
@@ -32,10 +31,9 @@
 }
 
 .button:hover {
-    color:white ;
+    color:rgb(232, 184, 41);
     font-weight:bold ; 
-    border: 1px solid rgb(100, 230, 19); 
-    background-color: rgb(10, 102, 10)
+    background-color: #282c34;
   }
 
 .error {

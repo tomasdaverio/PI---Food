@@ -7,7 +7,7 @@
     justify-content:space-between; 
     background-color: #282c34; 
     color: #ebe7dfe6; 
-    width:85%; 
+    width:90%; 
     height: auto;
     padding: 0x 0px 20px 0px;
     font-family:sans-serif;
@@ -30,7 +30,7 @@
     width:22%;
     margin-bottom:0px;
     margin-top:20px;
-    margin-right:6px;
+    margin-right:10px;
     align-items:center;
     justify-content:flex-start;
     padding: 0x 0px 0px 0px;
@@ -76,7 +76,6 @@
 
     .cardsummary{
     width:80% ;
-    /* border: 1px solid #b7b2a8e6; */
     border-radius:5px;
     padding: 10px 10px 10px 10px ;
    }
@@ -90,8 +89,14 @@
     display:flex;
     flex-direction:column ;
     align-items:center ;
-    justify-content:center;
-    margin-right:10px
+    justify-content:flex-start;
+    margin-top:25px ;
+    margin-bottom:15px ;
+    padding-bottom:25px ;
+    border:1px solid #ebe7dfe6;
+    width:90%;
+    border-radius:5px;
+
    }
 
    .cardinstructions ol li {

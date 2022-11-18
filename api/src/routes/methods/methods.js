@@ -1,4 +1,6 @@
 //importaciones para los metodos:
+require('dotenv').config();
+const { apiKey } = process.env;
 
 //fngetDiets:
 const dietSet = require('../../../../ownresources/dietset.js')
@@ -89,7 +91,7 @@ module.exports = {
         diets = precipe.diets.length ? precipe.diets.map(d=>d.name) : [] ;
                 
         } else {
-            const search = await fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=26623d87ef014d3daeab072510ec275a`) ;
+            const search = await fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${apiKey}`) ;
             precipe = await search.json() ;
             const vegetarian = precipe.vegetarian === 'true'  ? 'vegetarian' : 'no' ;
             const vegan = precipe.vegan === 'true'  ? 'vegan' : 'no' ;
@@ -146,7 +148,7 @@ module.exports = {
             recipesDB = [] ;   
         }
        
-        const search = await fetch('https://api.spoonacular.com/recipes/complexSearch?apiKey=26623d87ef014d3daeab072510ec275a&addRecipeInformation=true&number=100')
+        const search = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&addRecipeInformation=true&number=100`)
         const answer = await search.json() ;
         let recipesApp = answer.results.map( recipe => {   
                 
