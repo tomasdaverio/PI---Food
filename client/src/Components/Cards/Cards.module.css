@@ -41,13 +41,13 @@
     justify-content:center
 }
 
-.buttonClean{
-    height:auto;
+.buttonClean{ 
+    height:40px;
     font-size:25px;
     color: whitesmoke ;
-    border-radius: 5px;
+    border-radius: 8px;
     border: 1px solid white ;
-    background-color:#222428cc ;
+    background-color:#d71254cc ;
 }
 
 .buttonClean:hover{
@@ -63,6 +63,12 @@
     background-color:#222428cc ;
     border-radius:2px;
     margin-top:10px
+}
+
+.results{
+    background-color:#222428cc ;
+    padding:4px;
+    color:antiquewhite
 }
 
 

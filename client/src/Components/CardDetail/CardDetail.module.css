@@ -17,6 +17,11 @@
     
 }
 
+.carddetail img{
+    border:2px solid #ebe7dfe6;
+    border-radius:5px;
+}
+
 .diets{
     display:flex;
     flex-direction: column ;
@@ -94,5 +99,16 @@
     right:-7px;
 
    }
+
+   .loader{
+    margin-top:60px ;
+   }
+
+   .loader img{
+    border:2px solid #ebe7dfe6;
+    border-radius:5px;
+   }
+
+   
 
   

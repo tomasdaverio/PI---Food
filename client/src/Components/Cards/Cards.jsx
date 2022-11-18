@@ -27,7 +27,7 @@ if(page>1) array = array.slice((page-1)*9,(array.length-((page-1)*9)) >=9 ? page
 if(filtered === 'empty') {
         return (
         <>
-        <h1>0 results for your search</h1>
+        <h1 className={style.results}>0 results for your search</h1>
         <button onClick={()=>{
             dispatch(removefilter()) ;
             document.getElementById('elementCL').click();

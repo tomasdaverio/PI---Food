@@ -50,7 +50,7 @@ function CardDetail (props){
 
     } else {
         return(
-            <div>
+            <div className={style.loader}>
             <img alt='img' src={loader}></img>
             </div>
         )
