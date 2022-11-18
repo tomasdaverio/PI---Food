@@ -51,7 +51,6 @@ function CardDetail (props){
     } else {
         return(
             <div>
-            <h1>Loading..</h1>
             <img alt='img' src={loader}></img>
             </div>
         )

@@ -12,6 +12,7 @@ import { NavLink } from 'react-router-dom' ;
     let [order,setOrder] = useState(ORDER_BY_AZ) ;
 
     let recipes = useSelector((state) => state.recipes) ;
+    let orderApplied = useSelector((state) => state.orderApplied) ;
 
     const changeHandler = (event) => {
       setOrder(event.target.value) ;
@@ -25,6 +26,7 @@ import { NavLink } from 'react-router-dom' ;
     if(recipes.length){
 
     return(
+      <div className={style.sorting}>
         <div className={style.sort}>
 
           <form onSubmit={submitHandler} onChange={changeHandler}>
@@ -40,6 +42,10 @@ import { NavLink } from 'react-router-dom' ;
           </form>
          <NavLink to={'/app/1'}><span id='elementID'></span></NavLink>
         </div>
+        <div>
+        <span className={style.sortapplied}>{`Order applied: ${orderApplied}`}</span>
+        </div>
+  </div>
         )
 
     } else { return(null) }

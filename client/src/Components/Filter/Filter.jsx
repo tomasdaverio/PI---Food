@@ -48,13 +48,15 @@ if(recipes.length){
           <NavLink to={'/app/1'}><span id='elementDI'></span></NavLink> 
           
         </div>
-        { filtered.length ?
-        <div>
-            <span className={style.filtapplied}>{`Filter Applied: ${filterApplied}`}</span>
+        
+        <div className={style.filtapplied}>
+            <span>{`Filter Applied: ${filterApplied}`}</span>
+            { filterApplied !== 'None' ?
             <button className={style.buttonRem} type='button' onClick={cleanFilt}>X</button>
+            :null
+            }
         </div>
-        : null
-        }
+      
         </div>
     )
 } else {

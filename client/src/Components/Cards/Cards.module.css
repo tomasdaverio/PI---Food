@@ -1,16 +1,10 @@
 .Cardscontainer{
-    background-color:#222428cc ;
-    border-radius:2px;
     display:flex;
     flex-wrap:wrap;
     flex-direction:row; 
     justify-content:space-around; 
     align-items:space-around;
-    padding: 20px 40px 10px 40px; 
-    margin: 0px 15px 0px 15px;
-    width: 85%;
     height:auto
-    
 }
 
 .sortfilt{
@@ -58,6 +52,17 @@
 
 .buttonClean:hover{
     text-decoration:underline
+}
+
+.Cards{
+    width:90%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:space-between;
+    background-color:#222428cc ;
+    border-radius:2px;
+    margin-top:10px
 }
 
 

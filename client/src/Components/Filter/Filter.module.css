@@ -2,14 +2,15 @@
 .filt{
     display:flex;
     flex-direction:row;
-    justify-content:space-around;
+    justify-content:flex-start;
     align-items:center;
-    width:100%;
+    width:95%;
     margin-right:100px;
+    margin-bottom: 10px
 }
 
 .buttonRem{
-  margin-left:0px;
+  margin-left:15px;
   height:auto;
   font-size:14px;
   color: whitesmoke ;
@@ -22,12 +23,11 @@
 
 
 .filtapplied{
-  position:relative;
-  top:1px;
-  right:100px ;
+  display:flex;
+  flex-direction:row;
+  width:95%;
   color:rgb(236, 231, 223) ;
   font-weight:bold;
-  margin-right:5px;
-  padding-right: 0px 
+  padding: 0px 
   
 }

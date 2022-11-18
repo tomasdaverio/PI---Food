@@ -47,6 +47,7 @@ if(filtered === 'empty') {
         <Sorter />
         <Filter />  
         </div>
+        <div className={style.Cards}>
         <Page />
         <div className={style.Cardscontainer}>
         {array.map( recipe =>
@@ -61,6 +62,7 @@ if(filtered === 'empty') {
         </div>
         <div>
         <Page />
+        </div>
         </div>
         </>
     )

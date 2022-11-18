@@ -8,8 +8,8 @@ const initialState = {
     recipes: [],
     recipeDetail: {},
     filteredRecipes: [],
-    filterApplied: '',
-    orderApplied: ''
+    filterApplied: 'None',
+    orderApplied: 'None'
   };
 
 const rootReducer = (state=initialState,action)=>{
@@ -23,7 +23,7 @@ const rootReducer = (state=initialState,action)=>{
         case GET_RECIPE_BY_NAME:
             
             return {
-                recipes:action.payload, recipeDetail:{} , filteredRecipes: []
+                ...initialState , recipes:action.payload, 
             }
 
         case GET_RECIPE_BY_ID:
@@ -72,7 +72,7 @@ const rootReducer = (state=initialState,action)=>{
         case REMOVE_FILTER:
             
             return {
-                ...state, filteredRecipes: []
+                ...state, filteredRecipes: [] , filterApplied: 'None' , orderApplied: 'None'
             }
         
         case CLEAN_DETAIL:
