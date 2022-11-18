@@ -7,21 +7,17 @@ function Landing (){
     return(
     
     <div className={style.carddetail}>
-    <h1>Welcome !</h1>
-    <h1> <NavLink to={'/app'} className={style.landinglink}>Henry Food</NavLink></h1>
+    <h1>Hi! Welcome to Food Recipes!🙂</h1>
     <h4>Here you will be able to:</h4>
     <ul>
         <li >Find all kind of recipes searching by type of diet or health score</li>
-        <li >Order and filter them according to diferent criteria</li>
+        <li >Order and filter it according to diferent criteria</li>
         <li >Create your own recipe for being part of Food Recipes API</li>
-        
     </ul>
-     
     <div className={style.diets}>
-    <h3>Enjoy it!</h3>
-    
+    <h3>We hope you enjoy it! Let's get into:</h3>
+    <h1> <NavLink to={'/app'} className={style.landinglink}>Click me!</NavLink></h1>
     </div>
-          
     </div>
     
     )

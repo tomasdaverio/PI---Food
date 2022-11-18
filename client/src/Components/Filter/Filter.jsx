@@ -21,8 +21,7 @@ const changeHandler = (event) => {
 const submitHandler = (event) => {
     event.preventDefault();
     dispatch(filterByDiet(filter)) ;
-    return ;
-}
+    }
 
 const cleanFilt = () => {
     dispatch(removefilter()) ;
