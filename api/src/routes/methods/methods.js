@@ -35,9 +35,9 @@ module.exports = {
     fnpostRecipe : async (name,summary,hscore,instructions,diets) => {
 
         //Chequeo los campos obligatorios (name,summary) - aunque deberia validarse en el front:
-        if(!name || !summary) throw new Error({message: 'Recipe cannot be created with lack of name or summary'}) ;
+        if(!name || !summary) throw new ReferenceError('Lack of Name|Summary (mandatory fields)') ;
 
-        if(typeof name !== 'string' || typeof summary !== 'string') throw new Error({message: 'typeof name|summary must be string'}) ;
+        if(typeof name !== 'string' || typeof summary !== 'string') throw new TypeError('Name|Summary must be string') ;
 
         //Creo la receta con los parametros enviados por el usuario a traves del formulario/front:
         const recipeObj = {
@@ -71,7 +71,7 @@ module.exports = {
     },
     fngetRecipebyId : async (id) => {
 
-        if(!id || (typeof id !== 'number' && typeof id !== 'string')) throw new Error({message: 'ID error'}) ;
+        if(!id || (typeof id !== 'number' && typeof id !== 'string')) throw new TypeError('ID error') ;
 
         let recipe;
         let diets;
@@ -115,11 +115,10 @@ module.exports = {
     },
     fngetRecipebyName : async (name) => {
 
-        if(!name || typeof name !== 'string') throw new Error({message: 'Lack of name'}) ;
+        if(!name || typeof name !== 'string' || !Number.isNaN(Number(name))) throw new TypeError('Name Error') ;
 
-        //La busco en la DB (si no la encuentra devuelve null en teoria)
         let recipesDB ;
-        //deberia hacer mi propio metodo para que tenga lowercase ademas. Faltan diets ademas
+        
         let searchDB = await Recipe.findAll({where: {name:{[Op.or]: { [Op.iLike]: `${name}%`, [Op.iLike]: `%${name}%`}}},
            attributes: { exclude: ['instructions','createdAt','updatedAt'] },
             include: {
@@ -150,7 +149,8 @@ module.exports = {
        
         const search = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&addRecipeInformation=true&number=100`)
         const answer = await search.json() ;
-        let recipesApp = answer.results.map( recipe => {   
+        if(answer.length){
+        var recipesApp = answer.results.map( recipe => {   
                 
           const vegetarian = recipe.vegetarian ? 'vegetarian' : 'no' ;
           const vegan = recipe.vegan ? 'vegan' : 'no' ;
@@ -169,11 +169,14 @@ module.exports = {
           return obj ;  
         }) 
         
-        await Promise.all(recipesApp)
+        await Promise.all(recipesApp) ;
+
+        var recipesAPI = recipesApp.filter( recipe => recipe['name'].toLowerCase().includes(name))
+
+        } else {
+          var recipesAPI = [] ;
+        }
                      
-        let recipesAPI = recipesApp.filter( recipe => recipe['name'].toLowerCase().includes(name))
-        
-        //despues agregar el Set
         const finalAnswer = [recipesDB,recipesAPI].flat() ;
         
         return finalAnswer ;

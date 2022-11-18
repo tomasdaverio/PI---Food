@@ -1,6 +1,6 @@
 const { fnpostRecipe } = require('../methods/methods.js') ;
 
-module.exports = async (req,res) => {
+module.exports = async (req,res,next) => {
 
   const {name,summary,hscore,instructions,diets} = req.body ;
 
@@ -9,18 +9,11 @@ module.exports = async (req,res) => {
     const recipe = await fnpostRecipe(name,summary,hscore,instructions,diets) ;
     return res.json(recipe) ;
 
-  } catch (error) {
-   
-    return res.send(error.message) ;
+  } catch (e) {
+
+    next(e) ;
 
   }
-}
-
-
-const testigo = (req,res) =>{
-
-    res.send(`Acá haría un POST de Recipes`)
-
 }
 
 

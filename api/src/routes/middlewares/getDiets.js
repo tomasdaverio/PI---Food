@@ -3,7 +3,7 @@ const router = Router();
 const { fngetDiets } = require('../methods/methods.js')
 
 // Ruta oficial:
-router.get('/', async (req,res) => {
+router.get('/', async (req,res,next) => {
 
     try{
 
@@ -12,7 +12,7 @@ router.get('/', async (req,res) => {
 
     } catch (e){
 
-        return res.send(e.message)
+       next(e) ;
 
     }
 })
