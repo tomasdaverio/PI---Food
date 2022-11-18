@@ -31,7 +31,10 @@ if(filtered === 'empty') {
         <button onClick={()=>{
             dispatch(removefilter()) ;
             document.getElementById('elementCL').click();
-            }} >Click to clean filters and return to Home</button>
+            }} 
+        className={style.buttonClean}
+        >
+        Click me to clean filters and return Home</button>
         <NavLink to={'/app/1'}><span id='elementCL'></span></NavLink>
         </>
         )

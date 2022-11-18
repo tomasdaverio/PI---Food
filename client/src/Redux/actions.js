@@ -1,4 +1,4 @@
-import { GET_RECIPE_BY_NAME , GET_RECIPE_BY_ID , ADD_NEW_RECIPE, FILTER_BY_DIET, REMOVE_FILTER} from './actiontypes.js' ;
+import { GET_RECIPE_BY_NAME , GET_RECIPE_BY_ID , ADD_NEW_RECIPE, FILTER_BY_DIET, REMOVE_FILTER , CLEAN_DETAIL} from './actiontypes.js' ;
 
 export const getRecipeByName = (recipe) => {
    return async (dispatch) => {
@@ -62,4 +62,8 @@ export const filterByDiet = (diets) => {
 
 export const removefilter = () => {
     return {type:REMOVE_FILTER}
+}
+
+export const cleanDetail = () => {
+    return {type:CLEAN_DETAIL}
 }

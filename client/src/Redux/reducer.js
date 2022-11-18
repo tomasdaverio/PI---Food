@@ -1,13 +1,15 @@
 import { GET_RECIPE_BY_NAME , GET_RECIPE_BY_ID , ADD_NEW_RECIPE, 
     ORDER_BY_HEALTHSCORE_ASC, ORDER_BY_HEALTHSCORE_DESC, ORDER_BY_AZ,
-    ORDER_BY_ZA, FILTER_BY_DIET, REMOVE_FILTER } from './actiontypes.js' ;
+    ORDER_BY_ZA, FILTER_BY_DIET, REMOVE_FILTER, CLEAN_DETAIL } from './actiontypes.js' ;
 
 import { quickSort, sortAZ , sortZA , quickSortDESC } from './methods.js' ;
 
 const initialState = {
     recipes: [],
     recipeDetail: {},
-    filteredRecipes: []
+    filteredRecipes: [],
+    filterApplied: '',
+    orderApplied: ''
   };
 
 const rootReducer = (state=initialState,action)=>{
@@ -39,32 +41,32 @@ const rootReducer = (state=initialState,action)=>{
         case ORDER_BY_HEALTHSCORE_ASC:
         
             return {
-                ...state, [array]: [...quickSort(state[array])]
+                ...state, [array]: [...quickSort(state[array])] , orderApplied: 'Less Healthy to More Healthy'
             }
         
         case ORDER_BY_HEALTHSCORE_DESC:
             
             return {
-                ...state, [array]: [...quickSortDESC(state[array])]
+                ...state, [array]: [...quickSortDESC(state[array])] , orderApplied: 'More Healthy to Less Healthy'
             }
 
         case ORDER_BY_AZ:
             
             return {
-                ...state, [array]: [...sortAZ(state[array])]
+                ...state, [array]: [...sortAZ(state[array])] , orderApplied: 'From A to Z'
             }
 
         case ORDER_BY_ZA:
             
             return {
-                ...state, [array]: [...sortZA(state[array])]
+                ...state, [array]: [...sortZA(state[array])] , orderApplied: 'From Z to A'
             }
 
         case FILTER_BY_DIET:
             let results = state.recipes.filter( recipe => recipe.diets.includes(action.payload)) ;
             let prop = results.length ? results : 'empty' ;
             return {
-                ...state, filteredRecipes: prop
+                ...state, filteredRecipes: prop , filterApplied: action.payload
             }
 
         case REMOVE_FILTER:
@@ -72,6 +74,12 @@ const rootReducer = (state=initialState,action)=>{
             return {
                 ...state, filteredRecipes: []
             }
+        
+        case CLEAN_DETAIL:
+
+           return {
+                ...state, recipeDetail: {}
+           }
 
         
 

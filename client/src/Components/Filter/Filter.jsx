@@ -8,6 +8,8 @@ import { NavLink } from 'react-router-dom' ;
 function Filter(props){
 
 let recipes = useSelector( (state) => state.recipes ) ;
+let filterApplied = useSelector( (state) => state.filterApplied) ;
+let filtered = useSelector( (state) => state.filteredRecipes) ;
 
 const dispatch = useDispatch() ;
 
@@ -30,6 +32,7 @@ const cleanFilt = () => {
 
 if(recipes.length){
     return (
+        <div>
         <div className={style.filt}>
             
           <form onSubmit={submitHandler} onChange={changeHandler}>
@@ -43,9 +46,16 @@ if(recipes.length){
           <input className={style.sep} type="submit" value="Apply" disabled={(recipes.length && filter) ? false : true}></input>
           </form>
           <NavLink to={'/app/1'}><span id='elementDI'></span></NavLink> 
-          <button className={style.sep} type='button' onClick={cleanFilt}>Remove Filter</button>
+          
         </div>
-       
+        { filtered.length ?
+        <div>
+            <span className={style.filtapplied}>{`Filter Applied: ${filterApplied}`}</span>
+            <button className={style.buttonRem} type='button' onClick={cleanFilt}>X</button>
+        </div>
+        : null
+        }
+        </div>
     )
 } else {
     return(null)      

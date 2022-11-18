@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react' ;
 import { useDispatch , useSelector } from 'react-redux' ;
-import { getRecipeById } from '../../Redux/actions.js' ;
+import { getRecipeById, cleanDetail } from '../../Redux/actions.js' ;
 import { imgdefault } from '../../resources/resources.js' ;
+import loader  from '../../resources/img/loader.gif' ;
 import style from './CardDetail.module.css' ;
 
 
@@ -15,13 +16,10 @@ function CardDetail (props){
 
     useEffect(()=> dispatch(getRecipeById(id)),[id]) ;
 
-    
   // For Cleaning the last presentation:
-    useEffect(()=> { return ()=>
-       recipe = {name:'',image: imgdefault, diets:[],dishTypes:[], hscore: null, summary:'', instructions:''} ;
-    }) ;
+    useEffect(()=> { return () => dispatch(cleanDetail())  },[]) ;
 
-    if(recipe){
+    if(recipe.name){
 
         return(
             <div className={style.carddetail}>
@@ -32,11 +30,11 @@ function CardDetail (props){
             <div className={style.row}>
             <div className={style.diets}>
             <h4>Diets:</h4>
-            <ul>{recipe.diets ? recipe.diets.map(diet => <li>{diet}</li> ) : '' }</ul>
+            <ul>{recipe.diets ? recipe.diets.map(diet => <li key={diet}><span>{diet}</span></li> ) : '' }</ul>
             </div>
             <div className={style.diets}>
             <h4>Dish Types:</h4>
-            <ul>{recipe.dishTypes ? recipe.dishTypes.map(dish => <li>{dish.trim()}</li> ) : '' }</ul>
+            <ul>{recipe.dishTypes ? recipe.dishTypes.map(dish => <li key={dish}><span>{dish.trim()}</span></li> ) : '' }</ul>
             </div>
             <div className={style.diets}>
             <h4>Health Score = {recipe.hscore}</h4>
@@ -52,9 +50,10 @@ function CardDetail (props){
 
     } else {
         return(
-
-            <h1>Loader</h1>
-            
+            <div>
+            <h1>Loading..</h1>
+            <img alt='img' src={loader}></img>
+            </div>
         )
     }
 }

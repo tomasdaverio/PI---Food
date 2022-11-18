@@ -6,7 +6,7 @@
     flex-direction:row; 
     justify-content:space-around; 
     align-items:space-around;
-    padding: 15px 40px 10px 40px; 
+    padding: 20px 40px 10px 40px; 
     margin: 0px 15px 0px 15px;
     width: 85%;
     height:auto
@@ -15,15 +15,15 @@
 
 .sortfilt{
         background-color:#222428cc ;
-        margin-top:10px;
+        margin-top:2px;
         display:flex;
         flex-direction:row;
         justify-content:space-between;
         align-items:center;
         font-size:14px;
         color: whitesmoke ;
-        height: 80px ;
-        width:75%;
+        height: 110px ;
+        width: 90%;
         border-radius: 5px;
         border: 1px solid white ; 
     
@@ -46,4 +46,18 @@
     align-items:center ;
     justify-content:center
 }
+
+.buttonClean{
+    height:auto;
+    font-size:25px;
+    color: whitesmoke ;
+    border-radius: 5px;
+    border: 1px solid white ;
+    background-color:#222428cc ;
+}
+
+.buttonClean:hover{
+    text-decoration:underline
+}
+
 

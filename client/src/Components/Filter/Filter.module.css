@@ -4,10 +4,30 @@
     flex-direction:row;
     justify-content:space-around;
     align-items:center;
-    width:38%;
-    margin-right:2px;
+    width:100%;
+    margin-right:100px;
 }
 
-.sep{
-    margin-left:3px;
+.buttonRem{
+  margin-left:0px;
+  height:auto;
+  font-size:14px;
+  color: whitesmoke ;
+  border-radius: 5px;
+  border: 1px solid white ;
+  background-color:#13161acc ;
+  padding: 3px  ; 
+
+}
+
+
+.filtapplied{
+  position:relative;
+  top:1px;
+  right:100px ;
+  color:rgb(236, 231, 223) ;
+  font-weight:bold;
+  margin-right:5px;
+  padding-right: 0px 
+  
 }

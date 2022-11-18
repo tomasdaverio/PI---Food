@@ -35,12 +35,16 @@
    }
 
    .diets ul li{
-   
    padding-left: 0 ;
    padding-right: 0 ;
    margin-left:0 ;
    margin-right:0
+   }
 
+   .diets ul li span{
+    position:relative;
+    left:-5px;
+ 
    }
 
    .diets p{
@@ -81,25 +85,14 @@
     display:flex;
     flex-direction:column ;
     align-items:center ;
-    
-   }
-
-   .cardinstructions ol li span{
-    
-    margin-right:0px;
-    padding-right:0px;
-    margin-left:0px;
-    padding-left:0px;
-
+    justify-content:center;
+    margin-right:10px
    }
 
    .cardinstructions ol li {
-    
-    margin-right:0px;
-    padding-right:0px;
-    margin-left:0px;
-    padding-left:0px;
-    
+    position:relative;
+    right:-7px;
+
    }
 
   
