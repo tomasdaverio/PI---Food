@@ -4,7 +4,7 @@ module.exports = async (req,res,next)=>{
 
     try{
         
-    const name = req.query.name.toLowerCase() ;
+    const name = req.query.name ;
     const recipes = await fngetRecipebyName(name) ;
     return res.json(recipes) ;
 

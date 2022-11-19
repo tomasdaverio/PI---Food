@@ -90,7 +90,9 @@ module.exports = {
     },
     fngetRecipebyId : async (id) => {
 
-        if(!id || (typeof id !== 'number' && typeof id !== 'string')) throw new TypeError('ID error') ;
+        if(!id || typeof Number(id) !== 'number') throw new TypeError('ID error') ;
+
+        id = Number(id) ;
 
         let recipe;
         let diets;
@@ -135,6 +137,8 @@ module.exports = {
     fngetRecipebyName : async (name) => {
 
         if(!name || typeof name !== 'string' || !Number.isNaN(Number(name))) throw new TypeError('Name Error') ;
+
+        name = name.toLowerCase() ;
 
         let recipesDB ;
         

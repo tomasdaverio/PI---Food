@@ -6,7 +6,7 @@ router.get('/:id', async (req,res,next)=>{
     
     
     try {
-        const id = Number(req.params.id) ;
+        const id = req.params.id ;
         const recipe = await fngetRecipebyId(id) ;
         res.json(recipe) ;
 
