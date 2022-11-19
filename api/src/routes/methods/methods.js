@@ -32,18 +32,24 @@ module.exports = {
         return dietsAnswer ;
           
     },
-    fnpostRecipe : async (name,summary,hscore,instructions,diets) => {
+    fnpostRecipe : async (name,summary,hscore,instructions,diets) => {  
 
         //Chequeo los campos obligatorios (name,summary) - aunque deberia validarse en el front:
         if(!name || !summary) throw new ReferenceError('Lack of Name|Summary (mandatory fields)') ;
 
         if(typeof name !== 'string' || typeof summary !== 'string') throw new TypeError('Name|Summary must be string') ;
 
+        if(hscore){
+
+        if(Number.isNaN(Number(hscore)) || !Number.isInteger(hscore) || hscore < 0 || hscore > 100 ) throw new TypeError('Health Score must be an Entire Number from 0 to 100') ;
+
+        }
+
         //Creo la receta con los parametros enviados por el usuario a traves del formulario/front:
         const recipeObj = {
             name,
             summary,
-            hscore: hscore ? hscore : null,
+            hscore: hscore ? Number(hscore) : null,
             instructions: instructions ? instructions : null
         }
        
