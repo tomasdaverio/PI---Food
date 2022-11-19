@@ -42,7 +42,9 @@ module.exports = {
 
         if(hscore){
 
-        if(Number.isNaN(Number(hscore)) || !Number.isInteger(hscore) || hscore < 0 || hscore > 100 ) throw new TypeError('Health Score must be an Entire Number from 0 to 100') ;
+          hscore = Number(hscore) ;
+
+        if(Number.isNaN(hscore) || !Number.isInteger(hscore) || hscore < 0 || hscore > 100 ) throw new TypeError('Health Score must be an Entire Number from 0 to 100') ;
 
         }
 
@@ -56,7 +58,7 @@ module.exports = {
         const recipeObj = {
             name,
             summary,
-            hscore: hscore ? Number(hscore) : null,
+            hscore: hscore ? hscore : null,
             instructions: instructions ? instructions : null
         }
        
