@@ -34,7 +34,8 @@ module.exports = {
     },
     fnpostRecipe : async (name,summary,hscore,instructions,diets) => {  
 
-        //Chequeo los campos obligatorios (name,summary) - aunque deberia validarse en el front:
+        //Validaciones:
+
         if(!name || !summary) throw new ReferenceError('Lack of Name|Summary (mandatory fields)') ;
 
         if(typeof name !== 'string' || typeof summary !== 'string') throw new TypeError('Name|Summary must be string') ;
@@ -42,6 +43,12 @@ module.exports = {
         if(hscore){
 
         if(Number.isNaN(Number(hscore)) || !Number.isInteger(hscore) || hscore < 0 || hscore > 100 ) throw new TypeError('Health Score must be an Entire Number from 0 to 100') ;
+
+        }
+
+        if(instructions){
+
+          if(typeof instructions !== 'string') throw new TypeError ('Instructions must be string') ;
 
         }
 
@@ -55,7 +62,11 @@ module.exports = {
        
         const recipe = await Recipe.create(recipeObj);
 
-        if(diets.length){
+        if(diets){
+
+          if(! Array.isArray(diets)) throw new TypeError ('Diets must be an array') ;
+          
+           if(diets.length){
 
             let dietArray =[];
 
@@ -72,6 +83,8 @@ module.exports = {
 
             await Promise.all(asoc) ;
         }
+
+      }
         
         return {...recipe.dataValues,['diets']:diets} ;           
     },
