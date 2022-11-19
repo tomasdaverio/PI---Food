@@ -17,7 +17,7 @@ function CardDetail (props){
     useEffect(()=> dispatch(getRecipeById(id)),[id]) ;
 
   // For Cleaning the last presentation:
-    useEffect(()=> { return () => dispatch(cleanDetail())  },[]) ;
+    useEffect(()=> { return () => dispatch(cleanDetail()) },[]) ;
 
     if(recipe.name){
 

@@ -149,7 +149,7 @@ module.exports = {
        
         const search = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&addRecipeInformation=true&number=100`)
         const answer = await search.json() ;
-        if(answer.length){
+        if(answer.results.length){
         var recipesApp = answer.results.map( recipe => {   
                 
           const vegetarian = recipe.vegetarian ? 'vegetarian' : 'no' ;

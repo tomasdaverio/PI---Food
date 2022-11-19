@@ -9,7 +9,7 @@ function Filter(props){
 
 let recipes = useSelector( (state) => state.recipes ) ;
 let filterApplied = useSelector( (state) => state.filterApplied) ;
-let filtered = useSelector( (state) => state.filteredRecipes) ;
+
 
 const dispatch = useDispatch() ;
 
@@ -40,7 +40,7 @@ if(recipes.length){
           <select className={style.sep} name="filter" id="filter">
           <option value="" disabled selected hidden>Choose a Diet</option>
           {dietset.map( diet => { return (
-            <option value={diet}>{diet}</option>
+            <option key={diet} value={diet}>{diet}</option>
           )})}
           </select>
           <input className={style.sep} type="submit" value="Apply" disabled={(recipes.length && filter) ? false : true}></input>

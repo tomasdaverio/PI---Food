@@ -19,7 +19,7 @@ function Page(props){
         var dev = [] ;
         for(let i=1;i<pages+1;i++){
             dev.push(
-            <span className={style.sep}><NavLink to={`/app/${i}`} className={isActive => (!isActive ? style.navno : style.navyes)}>{i}</NavLink></span>)
+            <span className={style.sep} key={String(pages[i])}><NavLink to={`/app/${i}`} className={isActive => (!isActive ? style.navno : style.navyes)}>{i}</NavLink></span>)
         }    
       return (
          <div className={style.page}>
@@ -29,7 +29,7 @@ function Page(props){
     } else if(pages === 1 && filtered !== 'empty'){
       return (
         <footer>
-       <span><NavLink to={`/app/1`}>1</NavLink></span> 
+       <span key={'1a'}><NavLink to={`/app/1`}>1</NavLink></span> 
        </footer>
      )
       
