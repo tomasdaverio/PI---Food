@@ -1,12 +1,20 @@
-const { fngetRecipebyName } = require('../methods/methods.js')
+const { fngetRecipebyName , fngetRecipes} = require('../methods/methods.js')
 
 module.exports = async (req,res,next)=>{
 
     try{
         
     const name = req.query.name ;
-    const recipes = await fngetRecipebyName(name) ;
-    return res.json(recipes) ;
+   
+    if(name === 'undefined'){
+        const recipes = await fngetRecipes() ;
+        return res.json(recipes) ;
+        
+    } else {
+        const recipes = await fngetRecipebyName(name) ;
+        return res.json(recipes) ;
+    }
+    
 
     }  catch (error){
 

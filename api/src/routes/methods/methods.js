@@ -1,6 +1,7 @@
 //importaciones para los metodos:
 require('dotenv').config();
 const { apiKey } = process.env;
+const { apiKeyb } = process.env;
 
 //fngetDiets:
 const dietSet = require('../../../../client/src/resources/resources.js')
@@ -206,5 +207,71 @@ module.exports = {
         
         return finalAnswer ;
         
-    }
+    },
+    fngetRecipes : async () => {
+
+   
+      let recipesDB ;
+      
+      let searchDB = await Recipe.findAll({
+         attributes: { exclude: ['instructions','createdAt','updatedAt'] },
+          include: {
+            model: Diet,
+            through: {
+              attributes: [] 
+            }
+          }
+        })
+      if(searchDB.length) {
+       recipesDB = searchDB.map( recipe => {
+          const obj = {
+              id:recipe.id,
+              image: null,
+              name: recipe.name,
+              diets: recipe.diets.map( diet => diet.name),
+              dishTypes: null,
+              hscore: recipe.hscore          
+          }
+          return obj ;  
+      }) 
+      
+       await Promise.all(recipesDB)
+     
+      } else {
+          recipesDB = [] ;   
+      }
+     
+      const search = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&addRecipeInformation=true&number=100`)
+      const answer = await search.json() ;
+      if(answer.results.length){
+      var recipesApp = answer.results.map( recipe => {   
+              
+        const vegetarian = recipe.vegetarian ? 'vegetarian' : 'no' ;
+        const vegan = recipe.vegan ? 'vegan' : 'no' ;
+        const glutenFree = recipe.glutenFree ? 'gluten free' : 'no' ;
+        const dietsArray = [...new Set([...recipe.diets,vegetarian,vegan,glutenFree])]
+        const finalArray = dietsArray.filter( e => e !== 'no') ;
+        const obj = {
+            id:recipe.id,
+            image: recipe.image,
+            name: recipe.title,
+            diets: finalArray,
+            dishTypes: recipe.dishTypes,
+            hscore: recipe.healthScore          
+        }
+        
+        return obj ;  
+      }) 
+      
+      await Promise.all(recipesApp) ;
+
+      } else {
+        var recipesApp = [] ;
+      }
+                   
+      const finalAnswer = [recipesDB,recipesApp].flat() ;
+      
+      return finalAnswer ;
+      
+  }
 }
