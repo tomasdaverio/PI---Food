@@ -171,8 +171,6 @@ module.exports = {
         } else {
             recipesDB = [] ;   
         }
-
-        try{
        
         const search = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&addRecipeInformation=true&number=100`)
         const answer = await search.json() ;
@@ -203,11 +201,6 @@ module.exports = {
         } else {
           var recipesAPI = [] ;
         }
-
-      } catch (error) {
-        console.log(error.message) ;
-        return recipesDB ;
-      }
                      
         const finalAnswer = [recipesDB,recipesAPI].flat() ;
         
