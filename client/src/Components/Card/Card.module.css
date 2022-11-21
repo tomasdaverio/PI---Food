@@ -8,14 +8,17 @@
     background-color: #282c34; 
     color: #ebe7dfe6; 
     width:312px; 
-    height: 550px;
+    height: 500px;
     padding: 0x 0px 0px 0px;
     font-family:sans-serif;
     margin: 3% ;
     position: relative;
+    
+}
 
-    
-    
+.cardcontainer h2{
+    margin-bottom: 10px ;
+    padding-bottom: 1px
 }
 
 .button {
@@ -40,7 +43,7 @@
    }
 
 
-.list{
+.list { 
     display:flex;
     height: auto;
     margin-top: 1px;
@@ -77,5 +80,5 @@ h6{
 
 p.list{
     position:absolute;
-    top: 390px; 
+    top: 350px; 
 }
