@@ -3,7 +3,7 @@ require('dotenv').config();
 const { apiKey } = process.env;
 
 //fngetDiets:
-const dietSet = require('../../../../ownresources/dietset.js')
+const dietSet = require('../../../../client/src/resources/resources.js')
 const { Diet } = require('../../db.js')
 
 //fnpostRecipe:
