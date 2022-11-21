@@ -5,7 +5,7 @@ import style from './Cards.module.css' ;
 import Sorter from '../Sorter/Sorter.jsx' ;
 import Filter from '../Filter/Filter.jsx' ;
 import Page from '../Page/Page.jsx' ;
-import { removefilter , getRecipeByName } from '../../Redux/actions.js' ;
+import { removefilter } from '../../Redux/actions.js' ;
 import { NavLink } from 'react-router-dom' ;
 
 function Cards(props){

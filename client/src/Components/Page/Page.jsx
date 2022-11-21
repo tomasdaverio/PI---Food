@@ -19,7 +19,7 @@ function Page(props){
         var dev = [] ;
         for(let i=1;i<pages+1;i++){
             dev.push(
-            <span className={style.sep} key={String(pages[i])}><NavLink to={`/app/${i}`} className={isActive => (!isActive ? style.navno : style.navyes)}>{i}</NavLink></span>)
+            <span className={style.sep} key={pages[i]}><NavLink to={`/app/${i}`} className={isActive => (!isActive ? style.navno : style.navyes)}>{i}</NavLink></span>)
         }    
       return (
          <div className={style.page}>
