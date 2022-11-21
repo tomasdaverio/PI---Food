@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react' ;
+import React from 'react' ;
 import Card from '../Card/Card.jsx' ;
 import { useSelector , useDispatch } from "react-redux" ;
 import style from './Cards.module.css' ;
@@ -14,8 +14,6 @@ let recipes = useSelector( (state) => state.recipes) ;
 let filtered = useSelector( (state) => state.filteredRecipes) ;
 
 const dispatch = useDispatch() ;
-
-useEffect(() => dispatch(getRecipeByName()),[]) ;
 
 let array = [] ;
 

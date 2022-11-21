@@ -1,8 +1,14 @@
-import React from 'react' ;
+import React , { useEffect } from 'react' ;
 import { NavLink } from 'react-router-dom' ;
 import style from './Nav.module.css' ;
+import { useDispatch } from "react-redux" ;
 
 function Nav (){
+
+    const dispatch = useDispatch() ;
+
+    useEffect(() => dispatch(getRecipeByName()),[]) ;
+
     return(
         <div className={style.navbar}>
 
