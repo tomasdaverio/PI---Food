@@ -27,6 +27,7 @@
     flex-direction: column ;
     font-size: 20px ;
     height: auto;
+    min-height:190px;
     width:25%;
     margin-bottom:0px;
     margin-top:20px;
@@ -35,7 +36,7 @@
     justify-content:flex-start;
     padding: 0x 0px 0px 0px;
     border: 1px solid #ebe7dfe6;
-    border-radius:10%;
+    border-radius:7%;
     
    }
 
@@ -88,32 +89,32 @@
    .cardinstructions{
     display:flex;
     flex-direction:column ;
+    flex-wrap:wrap;
     align-items:flex-start ;
     justify-content:flex-start;
     margin-top:25px ;
     margin-bottom:15px ;
-    padding-bottom:25px ;
+    padding-bottom:15px ;
     border:1px solid #ebe7dfe6;
-    width:90%;
+    width:auto;
+    max-width:90%;
+    min-width:62%;
     border-radius:5px;
 
    }
 
    .cardinstructions h2{
-    display:flex;
     align-self:center
    }
 
-   .cardinstructions div ol li{
-    margin-right: 0px;
-    padding-right:0px
+   .cardinstructions div ol li {
+    width:fit-content ;
+    margin-right:3px ;
+    margin-left:3px ;
+ 
    }
 
-   .cardinstructions div ol li span{
-    display:flex;
-    margin-left: 0px;
-    padding-left:0px
-   }
+
 
    .loader{
     margin-top:60px ;

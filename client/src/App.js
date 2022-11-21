@@ -20,11 +20,9 @@ function App() {
       <Route exact path={'/app'} component={SearchBar} />
       <Route exact path={'/app'} component={Cards} />
       
-      
       <Route exact path={'/app/:page'} component={SearchBar} />
       <Route exact path={'/app/:page'} component={Cards} />
 
-              
       <Route exact path={'/app/recipes/:id'} component={CardDetail} />
 
       <Route exact path={'/app/recipe/create'} component={Form} />

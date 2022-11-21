@@ -16,11 +16,19 @@ let filtered = useSelector( (state) => state.filteredRecipes) ;
 const dispatch = useDispatch() ;
 
 let array = [] ;
+
+//Qué arreglo voy a mostrar?
 (filtered.length && filtered !== 'empty')  ?  array = filtered  : array = recipes ;
+
+//En qué página estoy?
 
 let page = (props.match.params.page === undefined ? undefined : Number(props.match.params.page)) ;
 
+//Si estoy en /app o app/1, muestro desde posición 0 hasta..
+
 if(page === undefined || page === 1) array = array.slice(0,array.length >=9 ? 9 : array.length) ;
+
+//Si estoy en app/>1, muestro desde posición x hasta y..
 
 if(page>1) array = array.slice((page-1)*9,(array.length-((page-1)*9)) >=9 ? page*9 : array.length) ;
 
@@ -39,7 +47,7 @@ if(filtered === 'empty') {
         </>
         )
         
-} else if (array.length && filtered !== 'empty'){
+} else if (array.length){
 
     return(
         <>
