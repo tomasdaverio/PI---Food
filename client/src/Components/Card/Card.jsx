@@ -6,9 +6,11 @@ import { imgdefault } from '../../resources/resources.js' ;
 function Card (props){
 return(
     <div className={style.cardcontainer}>
-        <a href={`http://localhost:3000/app/recipes/${props.id}`} title="Details">
+        {/* <a href={`http://localhost:3000/app/recipes/${props.id}`} title="Details"> */}
+        <NavLink to={`/app/recipes/${props.id}`} className={style.link}>
         <img alt='img' src={props.image ? props.image : imgdefault}/>
-        </a>
+        </NavLink>
+        {/* </a> */}
         <h2><NavLink to={`/app/recipes/${props.id}`} className={style.title}>{props.name}</NavLink></h2>
         
         <p className={style.list}>
