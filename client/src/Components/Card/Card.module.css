@@ -8,7 +8,7 @@
     background-color: #282c34; 
     color: #ebe7dfe6; 
     width:312px; 
-    height: 500px;
+    height: 520px;
     padding: 0x 0px 0px 0px;
     font-family:sans-serif;
     margin: 3% ;
@@ -18,7 +18,8 @@
 
 .cardcontainer h2{
     margin-bottom: 10px ;
-    padding-bottom: 1px
+    padding-bottom: 20px ;
+    width:99%
 }
 
 .button {
@@ -46,20 +47,23 @@
 .list { 
     display:flex;
     height: auto;
-    margin-top: 1px;
+    margin-top: 10px;
     margin-bottom:1px;
     padding-top: 0px;
     padding-bottom:0px;
     flex-direction:row;
     flex-wrap:wrap;
     justify-content: center;
-    width: 90%
+    width: auto;
+    min-width:60%;
+    max-width:95%
 }
 
 .title{
     color: #ebe7dfe6;
     font-family:sans-serif;
     text-decoration:none; 
+    
 }
 .title:hover{
     color: #ebe7dfe6;
@@ -68,8 +72,9 @@
 }
 
 .text{
-    margin-right:10px;
-    margin-left:10px;
+    margin-right:3px;
+    margin-left:3px;
+
 }
 
 h6{
@@ -79,6 +84,5 @@ h6{
 
 
 p.list{
-    position:absolute;
-    top: 350px; 
+    margin-top:5px 
 }

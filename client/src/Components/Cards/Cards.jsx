@@ -30,7 +30,7 @@ if(filtered === 'empty') {
             }} 
         className={style.buttonClean}
         >
-        Click me to return Home</button>
+        Click me to return Home 🏚️</button>
         <NavLink to={'/app/1'}><span id='elementCL'></span></NavLink>
         </>
         )

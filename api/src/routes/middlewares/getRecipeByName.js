@@ -6,7 +6,7 @@ module.exports = async (req,res,next)=>{
         
     const name = req.query.name ;
    
-    if(name === 'undefined'){
+    if(name === 'undefined' || name === undefined ){
         const recipes = await fngetRecipes() ;
         return res.json(recipes) ;
         

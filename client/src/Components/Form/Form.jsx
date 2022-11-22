@@ -3,6 +3,7 @@ import { addRecipe } from '../../Redux/actions.js' ;
 import { dietset } from '../../resources/resources.js' ;
 import style from './Form.module.css' ;
 import { useDispatch } from 'react-redux' ;
+import { NavLink } from 'react-router-dom' ;
 
 export const Form = (props) => {
 
@@ -178,6 +179,8 @@ export const Form = (props) => {
                 >Create</button>           
         
           </form>
+
+          <p><NavLink className={style.goback} to={'/app'}>Go Back Home 🏚️</NavLink></p>
     
     </div>
           );

@@ -116,7 +116,7 @@ module.exports = {
         diets = precipe.diets.length ? precipe.diets.map(d=>d.name) : [] ;
                 
         } else {
-            const search = await fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${apiKeyc}`) ;
+            const search = await fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${apiKey}`) ;
             precipe = await search.json() ;
             const vegetarian = precipe.vegetarian === 'true'  ? 'vegetarian' : 'no' ;
             const vegan = precipe.vegan === 'true'  ? 'vegan' : 'no' ;
@@ -140,7 +140,7 @@ module.exports = {
     },
     fngetRecipebyName : async (name) => {
 
-        if(!name || typeof name !== 'string' || !Number.isNaN(Number(name))) throw new TypeError('Name Error') ;
+        if(!name || typeof name !== 'string' || ! /^[A-Z ]+$/i.test(name)) throw new TypeError('Name Error') ;
 
         name = name.toLowerCase() ;
 
@@ -174,7 +174,7 @@ module.exports = {
             recipesDB = [] ;   
         }
        
-        const search = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKeyc}&addRecipeInformation=true&number=100`)
+        const search = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&addRecipeInformation=true&number=100`)
         const answer = await search.json() ;
         if(answer.results.length){
         var recipesApp = answer.results.map( recipe => {   
@@ -242,7 +242,7 @@ module.exports = {
           recipesDB = [] ;   
       }
      
-      const search = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKeyc}&addRecipeInformation=true&number=100`)
+      const search = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&addRecipeInformation=true&number=100`)
       const answer = await search.json() ;
       if(answer.results.length){
       var recipesApp = answer.results.map( recipe => {   

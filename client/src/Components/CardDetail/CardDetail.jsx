@@ -25,24 +25,24 @@ function CardDetail (props){
             <div className={style.carddetail}>
             <h1>{recipe.name}</h1>
             <img src={recipe.image ? recipe.image : imgdefault } alt='img'/>
-            <h3>Summary:</h3>
+            <h3>📣 Summary:</h3>
             <div className={style.cardsummary} dangerouslySetInnerHTML={{__html: recipe.summary}} />
             <div className={style.row}>
             <div className={style.diets}>
-            <h4>Diets:</h4>
+            <h4>✔️ Diets:</h4>
             <ul>{recipe.diets ? recipe.diets.map(diet => <li key={diet}><span>{diet}</span></li> ) : '' }</ul>
             </div>
             <div className={style.diets}>
-            <h4>Dish Types:</h4>
+            <h4>🍽️ Dish Types:</h4>
             <ul>{recipe.dishTypes ? recipe.dishTypes.map(dish => <li key={dish}><span>{dish.trim()}</span></li> ) : '' }</ul>
             </div>
             <div className={style.diets}>
-            <h4>Health Score = {recipe.hscore}</h4>
-            <p><b>Health Score</b> is a number that measure the grade of cover of nutrients of the recipe. The higher, the healthier.</p>
+            <h4>✅ Health Score = {recipe.hscore}</h4>
+            <p><b> Health Score</b> is a number that measure the grade of cover of nutrients of the recipe. The higher, the healthier.</p>
             </div>
             </div>
             <div className={style.cardinstructions}>          
-            <h2>Instructions:</h2>
+            <h2>📝 Instructions:</h2>
             <div dangerouslySetInnerHTML={{__html: recipe.instructions}} />
             </div>
             </div>
