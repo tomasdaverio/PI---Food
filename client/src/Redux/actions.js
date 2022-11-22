@@ -5,11 +5,17 @@ export const getRecipeByName = (recipe) => {
     try{
         const response = await fetch(`http://localhost:3001/recipes?name=${recipe}`) ;
         const pay = await response.json() ;
+        if(pay.error) {
+            console.log(pay.status,pay.error) ;
+            alert(pay.error) ;
+            return ;
+        }
         dispatch({type:GET_RECIPE_BY_NAME, payload:pay}) ;
            
     } catch (error) {
         console.log(error.message);
         alert('We have problems with the server. Try again later') ;
+        return;
     }
    }
 }
@@ -19,11 +25,17 @@ export const getRecipeById = (id) => {
      try{
          const response = await fetch(`http://localhost:3001/recipes/${id}`) ;
          const pay = await response.json() ;
+         if(pay.error) {
+            console.log(pay.status,pay.error) ;
+            alert(pay.error) ;
+            return ;
+        }
          dispatch({type:GET_RECIPE_BY_ID, payload:pay}) ;
             
      } catch (error) {
          console.log(error.message);
          alert('We have problems with the server. Try again later') ;
+         return;
      }
     }
  }
@@ -40,6 +52,11 @@ export const addRecipe = (data) => {
          }
          })
          const pay = await response.json() ;
+         if(pay.error) {
+            console.log(pay.status,pay.error) ;
+            alert(pay.error) ;
+            return ;
+        }
          dispatch({type:ADD_NEW_RECIPE, payload:pay});
          alert('Recipe Created Succesfully :)')
     

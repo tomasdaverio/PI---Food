@@ -9,9 +9,13 @@ module.exports = async (req,res,next) => {
     const recipe = await fnpostRecipe(name,summary,hscore,instructions,diets) ;
     return res.json(recipe) ;
 
-  } catch (e) {
+  } catch (error) {
 
-    next(e) ;
+    if(error instanceof TypeError){
+      res.json({ error: error.message , status:400 }) ;
+       } else {
+      res.json({ error: 'Request could not be processed. Maybe due to dupplicated Recipe Name' , status:422 }) ;
+      }
 
   }
 }

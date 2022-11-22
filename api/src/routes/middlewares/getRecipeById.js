@@ -12,8 +12,11 @@ router.get('/:id', async (req,res,next)=>{
 
     } catch (error){
 
-       next(error) ;
-
+       if(error.message === 'ID error'){
+        res.json({ error: error.message , status:400 }) ;
+       } else {
+        res.json({ error: 'Sorry. We have problems with the server.Please, try again later' , status:503 }) ;
+       }
     }
 })
 
