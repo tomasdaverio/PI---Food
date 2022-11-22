@@ -21,10 +21,10 @@ describe('Recipe routes', () => {
     it('should get 200', () =>
       agent.get('/recipes').expect(200)
     );
-    it('should get 500 if name is not a word', () =>
+    it('should get 400 if name is not a word', () =>
       agent.get('/recipes?name=8').expect(500)
     );
-    it('should get 500 if name contains special characters', () =>
+    it('should get 400 if name contains special characters', () =>
       agent.get('/recipes?name=hola/').expect(500)
     );
   });

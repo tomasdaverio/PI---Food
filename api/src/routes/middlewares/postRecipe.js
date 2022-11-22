@@ -12,9 +12,9 @@ module.exports = async (req,res,next) => {
   } catch (error) {
 
     if(error instanceof TypeError){
-      res.json({ error: error.message , status:400 }) ;
+      res.status(400).json({ error: error.message , status:400 }) ;
        } else {
-      res.json({ error: 'Request could not be processed. Maybe due to dupplicated Recipe Name' , status:422 }) ;
+      res.status(422).json({ error: 'Request could not be processed. Maybe due to dupplicated Recipe Name' , status:422 }) ;
       }
 
   }

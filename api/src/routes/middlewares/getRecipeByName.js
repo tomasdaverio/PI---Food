@@ -18,9 +18,9 @@ module.exports = async (req,res,next)=>{
     }  catch (error){
 
         if(error.message === 'Name Error'){
-            res.json({ error: error.message , status:400 }) ;
+            res.status(400).json({ error: error.message , status:400 }) ;
        } else {
-            res.json({ error: 'Sorry. We have problems with the server.Please, try again later' , status:503 }) ;
+            res.status(503).json({ error: 'Sorry. We have problems with the server.Please, try again later' , status:503 }) ;
        }
     }
     }
