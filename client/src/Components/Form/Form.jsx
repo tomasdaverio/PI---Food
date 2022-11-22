@@ -19,7 +19,7 @@ export const Form = (props) => {
   const [error,setError] = useState({
     name: "Mandatory field" ,                               //que no este vacio, que no contenga simbolos.
    summary: "Mandatory field" ,                             //que no este vacio, que no contenga simbolos.
-    hscore: "",                                             //que no este vacio, que este entre 0 y 100 aclarando el criterio.
+    hscore: "",                                             //que este entre 0 y 100 aclarando el criterio.
     instructions: "" 
   })
 
@@ -70,8 +70,7 @@ export const Form = (props) => {
         break;
 
       case 'hscore':
-       let val = Number(value) 
-        console.log(val,typeof val)
+       let val = Number(value) ;
         if (val >=0 && val <=100 && typeof val === 'number' && Number.isInteger(val)){
           setError({...error,[property]:""})
         } else {
@@ -127,7 +126,7 @@ export const Form = (props) => {
                 <p>(The higher, the healthier)</p>
                 <input 
                 className={error.hscore && style.errorborder}
-                type="text"
+                type="number"
                 placeholder="Entire from 0 to 100"
                 name="hscore"
                 id="hscore"
@@ -165,8 +164,8 @@ export const Form = (props) => {
                 <fieldset onChange={changeHandler}>
                 <legend className={style.label}>Suitable Diets: If you are not sure, skip this step:</legend>
                 {dietset.map( diet => { return (
-                <div>
-                <input type="checkbox" id={diet} name="diets" value={diet} />
+                <div key={diet}>
+                <input type="checkbox" id={diet}  name="diets" value={diet} />
                 <label htmlFor={diet}>{diet}</label>
                 </div>
                 )})}

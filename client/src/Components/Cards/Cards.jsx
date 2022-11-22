@@ -30,7 +30,7 @@ if(filtered === 'empty') {
             }} 
         className={style.buttonClean}
         >
-        Click me to clean filters and return Home</button>
+        Click me to return Home</button>
         <NavLink to={'/app/1'}><span id='elementCL'></span></NavLink>
         </>
         )
@@ -79,7 +79,7 @@ if(page>1) array = array.slice((page-1)*9,(array.length-((page-1)*9)) >=9 ? page
 
     return(
         <div className={style.cardsresults}>
-        <h3>0 results</h3>
+        <h3>Loading..</h3>
         </div>
     )
                

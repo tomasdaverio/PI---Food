@@ -90,6 +90,7 @@
     display:flex;
     flex-direction:column ;
     flex-wrap:wrap;
+    flex-basis: 100%;
     align-items:flex-start;
     justify-content:flex-start;
     margin-top:25px ;
@@ -97,7 +98,7 @@
     padding-bottom:15px ;
     border:1px solid #ebe7dfe6;
     width:auto;
-    max-width:90%;
+    max-width:80%;
     min-width:62%;
     border-radius:5px;
 
@@ -110,7 +111,7 @@
    .cardinstructions div ol li {
     width:fit-content ;
     margin-right:3px ;
-    margin-left:3px ;
+    margin-left:0px ;
     
 
  

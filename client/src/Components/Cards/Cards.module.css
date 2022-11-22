@@ -43,11 +43,11 @@
 
 .buttonClean{ 
     height:40px;
-    font-size:25px;
-    color: whitesmoke ;
+    font-size:30px;
+    color: #54fb0ccc ;
     border-radius: 8px;
-    border: 1px solid white ;
-    background-color:#d71254cc ;
+    border: 3px solid white ;
+    background-color:#222428cc ;
 }
 
 .buttonClean:hover{

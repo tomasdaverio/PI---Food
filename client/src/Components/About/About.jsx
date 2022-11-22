@@ -9,7 +9,7 @@ function About (props){
         <div className={style.carddetail}>
         <h1>Welcome again!</h1>
         <h3>This is a Food Recipes Web App designed with academic purposes, in the context of Web Full Stack Developer career of <a href='https://www.soyhenry.com/'>Henry</a></h3>
-        <h3>The technologies used for this project were Node JS, Sequelize, Postgres, React, Redux, HTML, and CSS. <br></br>
+        <h3>The technologies used for this project were React, Redux, Node and Sequelize. <br></br>
             The information of recipes comes from Spoonacular API. 
         </h3>
         <h3>Let's start:</h3>
