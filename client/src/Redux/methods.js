@@ -33,6 +33,7 @@ export const quickSortDESC =(array) =>{
 
 
 export const sortAZ = (array) => {
+  if(!array.length) return array ;
   let result = array.sort(function (a, b) {
     if (a.name > b.name) {
       return 1;
@@ -46,6 +47,7 @@ export const sortAZ = (array) => {
 }
 
 export const sortZA = (array) => {
+  if(!array.length) return array ;
  let result = array.sort(function (a, b) {
     if (a.name > b.name) {
       return -1;

@@ -93,6 +93,13 @@ export const Form = (props) => {
       return alert('Missing or wrong fields.Check the red messages in each field');
     } else {
       dispatch(addRecipe(recipe)) ; 
+      setRecipe({
+        name: "" ,
+       summary: "" ,
+        hscore: "",
+        instructions: "" ,
+        diets:[]
+      })
 }}
 
  return (

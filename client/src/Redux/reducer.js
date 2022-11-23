@@ -14,9 +14,6 @@ const initialState = {
 
 const rootReducer = (state=initialState,action)=>{
 
-    let filtered = state.filteredRecipes ;
-
-    var array = (filtered !== 'empty' && filtered.length) ? 'filteredRecipes' : 'recipes' ;
 
      switch(action.type){
 
@@ -41,38 +38,40 @@ const rootReducer = (state=initialState,action)=>{
         case ORDER_BY_HEALTHSCORE_ASC:
         
             return {
-                ...state, [array]: [...quickSort(state[array])] , orderApplied: 'Less Healthy to More Healthy'
+                ...state, recipes: [...quickSort(state.recipes)] , filteredRecipes:[...quickSort(state.filteredRecipes)] ,  orderApplied: 'Less Healthy to More Healthy'
             }
         
         case ORDER_BY_HEALTHSCORE_DESC:
             
             return {
-                ...state, [array]: [...quickSortDESC(state[array])] , orderApplied: 'More Healthy to Less Healthy'
+                ...state, recipes: [...quickSortDESC(state.recipes)] , filteredRecipes:[...quickSortDESC(state.filteredRecipes)] , orderApplied: 'More Healthy to Less Healthy'
             }
 
         case ORDER_BY_AZ:
             
             return {
-                ...state, [array]: [...sortAZ(state[array])] , orderApplied: 'From A to Z'
+                ...state, recipes: [...sortAZ(state.recipes)] , filteredRecipes:[...sortAZ(state.filteredRecipes)] , orderApplied: 'From A to Z'
             }
 
         case ORDER_BY_ZA:
             
             return {
-                ...state, [array]: [...sortZA(state[array])] , orderApplied: 'From Z to A'
+                ...state, recipes: [...sortZA(state.recipes)] , filteredRecipes:[...sortZA(state.filteredRecipes)] , orderApplied: 'From Z to A'
             }
 
         case FILTER_BY_DIET:
+
             let results = state.recipes.filter( recipe => recipe.diets.includes(action.payload)) ;
-            let prop = results.length ? results : 'empty' ;
+            let value = results.length ? results : 'empty' ;
+
             return {
-                ...state, filteredRecipes: prop , filterApplied: action.payload
+                ...state, filteredRecipes: value , filterApplied: action.payload
             }
 
         case REMOVE_FILTER:
             
             return {
-                ...state, filteredRecipes: [] , filterApplied: 'None' , orderApplied: 'None'
+                ...state, filteredRecipes: [] , filterApplied: 'None'
             }
         
         case CLEAN_DETAIL:
@@ -80,8 +79,6 @@ const rootReducer = (state=initialState,action)=>{
            return {
                 ...state, recipeDetail: {}
            }
-
-        
 
         default: return state ;
     }
