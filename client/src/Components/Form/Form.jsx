@@ -2,12 +2,14 @@ import React , { useState } from "react";
 import { addRecipe } from '../../Redux/actions.js' ;
 import { dietset } from '../../resources/resources.js' ;
 import style from './Form.module.css' ;
-import { useDispatch } from 'react-redux' ;
+import { useDispatch , useSelector } from 'react-redux' ;
 import { NavLink } from 'react-router-dom' ;
 
 export const Form = (props) => {
 
   const dispatch = useDispatch() ;
+
+  const recipes = useSelector((state) => state.recipes) ;
 
   const [recipe,setRecipe] = useState({
     name: "" ,
@@ -18,7 +20,7 @@ export const Form = (props) => {
   })
 
   const [error,setError] = useState({
-    name: "Mandatory field" ,                               //que no este vacio, que no contenga simbolos.
+    name: "Mandatory field" ,                               //que no este vacio, que no contenga simbolos, que no se repita.
    summary: "Mandatory field" ,                             //que no este vacio, que no contenga simbolos.
     hscore: "",                                             //que este entre 0 y 100 aclarando el criterio.
     instructions: "" 
@@ -26,7 +28,7 @@ export const Form = (props) => {
 
   const validate = (input) => {
     const value = input.trim() ;
-    return /^[A-Z ]+$/i.test(value)
+    return /^[A-Z ]+$/i.test(value) 
   }
 
   const changeHandler = (e) => {
@@ -41,12 +43,16 @@ export const Form = (props) => {
     // validaciones:
 
     switch(property){
-      case 'name':
 
+      case 'name':
         if (!value.length) {
           setError({...error,[property]:`${property} is mandatory field`})
         } else if(validate(value)){
-          setError({...error,[property]:""})
+          if(! recipes.map( r => r.name === value).includes(true)) {
+            setError({...error,[property]:""}) 
+          } else {
+            setError({...error,[property]:`${property} must be unique. There is another recipe with this name. Please, use another`})
+            }
         } else {
           setError({...error,[property]:`${property} can only be composed by letters(a,b,..,z).`})
         }

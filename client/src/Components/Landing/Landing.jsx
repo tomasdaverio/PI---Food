@@ -10,8 +10,8 @@ function Landing (){
     <h1>Hi! Welcome to Food Recipes!🙂</h1>
     <h4>Here you will be able to:</h4>
     <ul>
-        <li >Find all kind of recipes searching by type of diet or health score</li>
-        <li >Order and filter it according to diferent criteria</li>
+        <li >Find all kind of recipes searching by name</li>
+        <li >Order and filter it according to different criteria</li>
         <li >Create your own recipe for being part of Food Recipes API</li>
     </ul>
     <div className={style.diets}>

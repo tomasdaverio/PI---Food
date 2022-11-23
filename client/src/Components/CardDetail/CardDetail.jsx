@@ -4,7 +4,7 @@ import { getRecipeById, cleanDetail } from '../../Redux/actions.js' ;
 import { imgdefault } from '../../resources/resources.js' ;
 import loader  from '../../resources/img/loader.gif' ;
 import style from './CardDetail.module.css' ;
-
+import { NavLink } from 'react-router-dom' ;
 
 function CardDetail (props){
 
@@ -45,6 +45,7 @@ function CardDetail (props){
             <h2>📝 Instructions:</h2>
             <div dangerouslySetInnerHTML={{__html: recipe.instructions}} />
             </div>
+            <p><NavLink className={style.goback} to={'/app'}>Go Back Home 🏚️</NavLink></p>
             </div>
         )
 

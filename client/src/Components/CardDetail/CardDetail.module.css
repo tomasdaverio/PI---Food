@@ -111,13 +111,8 @@
    .cardinstructions div ol li {
     width:fit-content ;
     margin-right:3px ;
-    margin-left:0px ;
-    
-
- 
+    margin-left:0px  
    }
-
-
 
    .loader{
     margin-top:60px ;
@@ -129,5 +124,8 @@
    }
 
    
+.goback{
+    color:white 
+}
 
   
