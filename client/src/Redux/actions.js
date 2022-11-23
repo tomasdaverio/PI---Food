@@ -11,6 +11,7 @@ export const getRecipeByName = (recipe) => {
             return ;
         }
         dispatch({type:GET_RECIPE_BY_NAME, payload:pay}) ;
+        document.getElementById('elementCL').click();
            
     } catch (error) {
         console.log(error.message);

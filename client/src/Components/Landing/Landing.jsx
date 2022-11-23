@@ -16,7 +16,7 @@ function Landing (){
     </ul>
     <div className={style.diets}>
     <h3>We hope you enjoy it! Let's get into:</h3>
-    <h1> <NavLink to={'/app'} className={style.landinglink}>Click me!</NavLink></h1>
+    <h1> <NavLink to={'/app/1'} className={style.landinglink}>Click me!</NavLink></h1>
     </div>
     </div>
     

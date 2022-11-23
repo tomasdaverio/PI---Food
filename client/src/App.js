@@ -17,8 +17,6 @@ function App() {
       <Route exact path={'/'} component={Landing} />
 
       <Route path={'/app'} component={Nav} />
-      <Route exact path={'/app'} component={SearchBar} />
-      <Route exact path={'/app'} component={Cards} />
       
       <Route exact path={'/app/:page'} component={SearchBar} />
       <Route exact path={'/app/:page'} component={Cards} />

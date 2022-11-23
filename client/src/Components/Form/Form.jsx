@@ -193,7 +193,7 @@ export const Form = (props) => {
         
           </form>
 
-          <p><NavLink className={style.goback} to={'/app'}>Go Back Home 🏚️</NavLink></p>
+          <p><NavLink className={style.goback} to={'/app/1'}>Go Back Home 🏚️</NavLink></p>
     
     </div>
           );

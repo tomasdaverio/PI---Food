@@ -14,7 +14,7 @@ function About (props){
         </h3>
         <h3>Let's start:</h3>
         <ul>
-            <li >If you want to make a Recipe Search and take a look of this site, this is your way: <NavLink to={'/app'}>Let's dive in!</NavLink></li>
+            <li >If you want to make a Recipe Search and take a look of this site, this is your way: <NavLink to={'/app/1'}>Let's dive in!</NavLink></li>
             <li >For sharing and creating your own recipe, this way: <NavLink to={'/app/recipe/create'}>Let's create!</NavLink></li>
         </ul>
         <h3>We hope you can enjoy it!🙂</h3>

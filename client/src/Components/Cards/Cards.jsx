@@ -39,15 +39,15 @@ if(filtered === 'empty') {
 
     //En qué página estoy?
 
-let page = (props.match.params.page === undefined ? undefined : Number(props.match.params.page)) ;
+let page = Number(props.match.params.page) ;
 
 //Si estoy en /app o app/1, muestro desde posición 0 hasta..
 
-if(page === undefined || page === 1) array = array.slice(0,array.length >=9 ? 9 : array.length) ;
+if(page === 1) array = array.slice(0,array.length >=9 ? 9 : array.length) ;
 
 //Si estoy en app/>1, muestro desde posición x hasta y..
 
-if(page>1) array = array.slice((page-1)*9,(array.length-((page-1)*9)) >=9 ? page*9 : array.length) ;
+if(page > 1) array = array.slice((page-1)*9,(array.length-((page-1)*9)) >=9 ? page*9 : array.length) ;
 
     return(
         <>
@@ -56,7 +56,7 @@ if(page>1) array = array.slice((page-1)*9,(array.length-((page-1)*9)) >=9 ? page
         <Filter />  
         </div>
         <div className={style.Cards}>
-        <Page />
+        <Page page={page}/>
         <div className={style.Cardscontainer}>
         {array.map( recipe =>
         <Card 
@@ -69,8 +69,9 @@ if(page>1) array = array.slice((page-1)*9,(array.length-((page-1)*9)) >=9 ? page
         )}
         </div>
         <div>
-        <Page />
+        <Page page={page}/>
         </div>
+        <NavLink to={'/app/1'}><span id='elementCL'></span></NavLink>
         </div>
         </>
     )
@@ -81,8 +82,7 @@ if(page>1) array = array.slice((page-1)*9,(array.length-((page-1)*9)) >=9 ? page
         <div className={style.cardsresults}>
         <h3>Loading..</h3>
         </div>
-    )
-               
+    )     
 }
 }
 

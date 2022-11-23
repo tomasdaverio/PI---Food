@@ -19,18 +19,20 @@ function Page(props){
         var dev = [] ;
         for(let i=1;i<pages+1;i++){
             dev.push(
-            <span className={style.sep} key={i}><NavLink to={`/app/${i}`} className={isActive => (!isActive ? style.navno : style.navyes)}>{i}</NavLink></span>)
+            <span key={i}><NavLink to={`/app/${i}`} className={isActive => (!isActive ? style.navno : style.navyes)}>{i}</NavLink></span>)
         }    
       return (
-         <div className={style.page}>
+        <div className={style.page}>
+       { props.page >1 ? <span key={'prev'}><NavLink to={`/app/${props.page-1}`} className={style.btn}>{'<Prev'}</NavLink></span> : null}
         {dev.map( page => page)}  
+       { props.page <pages ? <span key={'next'}><NavLink to={`/app/${props.page+1}`} className={style.btn}>{'Next>'}</NavLink></span> : null }
         </div>
       )
     } else if(pages === 1 && filtered !== 'empty'){
       return (
         <footer>
-       <span key={'1'}><NavLink to={`/app/1`}>1</NavLink></span> 
-       </footer>
+        <span key={'1'}><NavLink to={`/app/1`} className={style.navyes}>1</NavLink></span>
+        </footer>
      )
       
     } else {

@@ -45,7 +45,7 @@ function CardDetail (props){
             <h2>📝 Instructions:</h2>
             <div dangerouslySetInnerHTML={{__html: recipe.instructions}} />
             </div>
-            <p><NavLink className={style.goback} to={'/app'}>Go Back Home 🏚️</NavLink></p>
+            <p><NavLink className={style.goback} to={'/app/1'}>Go Back Home 🏚️</NavLink></p>
             </div>
         )
 
