@@ -2,7 +2,7 @@ const { Router } = require('express');
 const router = Router();
 const { fngetRecipebyId } = require('../methods/methods.js')
 
-router.get('/:id', async (req,res,next)=>{
+router.get('/:id', async (req,res)=>{
     
     
     try {

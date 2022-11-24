@@ -2,7 +2,6 @@ const { Router } = require('express');
 const router = Router();
 const { fngetDiets } = require('../methods/methods.js')
 
-// Ruta oficial:
 router.get('/', async (req,res,next) => {
 
     try{
@@ -17,11 +16,6 @@ router.get('/', async (req,res,next) => {
     }
 })
 
-
-// Ruta testigo:
-// router.get('/',(req,res)=>{
-//     res.send('Acá haría un get de Diets')
-// })
 
 module.exports = router ;
 

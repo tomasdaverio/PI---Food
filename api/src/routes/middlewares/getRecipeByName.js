@@ -1,6 +1,6 @@
 const { fngetRecipebyName , fngetRecipes} = require('../methods/methods.js')
 
-module.exports = async (req,res,next)=>{
+module.exports = async (req,res)=>{
 
     try{
         

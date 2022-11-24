@@ -49,7 +49,17 @@ function CardDetail (props){
             </div>
         )
 
+    } else if(recipe === 'outofservice'){
+
+        return(
+
+            <div className={style.out}>
+            <h2>Temporary out of service. Please, try again later.</h2>
+            </div>
+        )  
+        
     } else {
+
         return(
             <div className={style.loader}>
             <img alt='img' src={loader}></img>

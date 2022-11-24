@@ -26,15 +26,25 @@ if(filtered === 'empty') {
         <h1 className={style.results}>0 results for your search</h1>
         <button onClick={()=>{
             dispatch(removefilter()) ;
-            document.getElementById('elementCL').click();
+            document.getElementById('elementCT').click();
             }} 
         className={style.buttonClean}
         >
         Click me to return Home 🏚️</button>
-        <NavLink to={'/app/1'}><span id='elementCL'></span></NavLink>
+        <NavLink to={'/app/1'}><span id='elementCT'></span></NavLink>
         </>
         )
         
+} else if(recipes === 'outofservice'){
+
+    return(
+
+        <div className={style.out}>
+        <h2>Temporary out of service. Please, try again later.</h2>
+        </div>
+    )  
+
+
 } else if (array.length){
 
     //En qué página estoy?
@@ -79,6 +89,7 @@ if(page > 1) array = array.slice((page-1)*9,(array.length-((page-1)*9)) >=9 ? pa
 } else {
 
     return(
+
         <div className={style.cardsresults}>
         <h3>Loading..</h3>
         </div>

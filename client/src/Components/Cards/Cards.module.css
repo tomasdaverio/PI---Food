@@ -71,4 +71,16 @@
     color:antiquewhite
 }
 
+.out{
+    background-color:#222428cc ;
+    padding:4px;
+    color:antiquewhite;
+    width:70%;
+    height:300px ;
+    font-size:30px;
+    display:flex;
+    justify-content:center;
+    align-items:center
+}
+
 

@@ -1,6 +1,6 @@
 const { fnpostRecipe } = require('../methods/methods.js') ;
 
-module.exports = async (req,res,next) => {
+module.exports = async (req,res) => {
 
   const {name,summary,hscore,instructions,diets} = req.body ;
 
@@ -19,8 +19,3 @@ module.exports = async (req,res,next) => {
 
   }
 }
-
-
-const json = {"name":"ags","summary":"etcetc","hscore":4,"instructions":"p","diets":["vegan"]}
-
-// http://localhost:3001/recipes 

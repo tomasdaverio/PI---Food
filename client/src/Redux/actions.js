@@ -7,14 +7,19 @@ export const getRecipeByName = (recipe) => {
         const pay = await response.json() ;
         if(pay.error) {
             console.log(pay.status,pay.error) ;
+            if(pay.status === 503) dispatch({type:GET_RECIPE_BY_NAME, payload:'outofservice'}) ;
             alert(pay.error) ;
             return ;
         }
+        if(!pay.length) {
+            alert('0 results for your search :( . Try again with another name')
+            return ;
+        } 
         dispatch({type:GET_RECIPE_BY_NAME, payload:pay}) ;
         document.getElementById('elementCL').click();
            
     } catch (error) {
-        console.log(error.message);
+        console.log(error);
         alert('We have problems with the server. Try again later') ;
         return;
     }
@@ -28,6 +33,7 @@ export const getRecipeById = (id) => {
          const pay = await response.json() ;
          if(pay.error) {
             console.log(pay.status,pay.error) ;
+            dispatch({type:GET_RECIPE_BY_ID, payload:'outofservice'})
             alert(pay.error) ;
             return ;
         }
