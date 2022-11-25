@@ -244,7 +244,7 @@ module.exports = {
           recipesDB = [] ;   
       }
      
-      const search = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKeyb}&addRecipeInformation=true&number=17`)
+      const search = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKeyb}&addRecipeInformation=true&number=100`)
       const answer = await search.json() ;
       if(answer.results.length){
       var recipesApp = answer.results.map( recipe => {   
